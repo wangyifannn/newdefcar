@@ -132,12 +132,12 @@ window.caroperateEvents = {
     'click #warining_btn': function(e, value, row, index) { //线束
         getcnid(2, "#wiringCheck .wcheck_itembox");
     },
-    'click #bomCheck': function(e, value, row, index) { //线束
+    'click #bomCheck': function(e, value, row, index) { //bom
         getcnid(3, "#bomCheck .bomcheck_itembox");
     },
     'click #rd_btn': function(e, value, row, index) { //研发
         $("#toolRecord_model").modal();
-        initToolRecord("#toolRecord_model .tool_Form", row.vSn);
+        initToolRecord("#toolRecord_model .toolForm", row.vSn);
         $("#toolRecord_model .vSn").val(row.vSn);
         window.location.hash = row.vSn;
     },
@@ -182,25 +182,42 @@ var auditInfo = [
 ];
 
 /* 
-利用锚点链接的原理， 所以导航的a标签的href = #+对应内容块的ID
-为了设置对应导航高亮， 为了方便起见， 导航的class需要与对应内容块的ID保持一致
-如果楼层上面有头部等其他内容需要判断currentScroll 的值是否大于上面其它内容块的高度， 否则执行这一步（
-var id = $currentSection.attr('id')） 的时候 会报错 
+楼层导航
 */
-$(window).scroll(function() {
-    var $sections = $('#detail_part .container'); // 获取所有的内容块
-    var currentScroll = $(this).scrollTop(); // winodw滚动的高度
-    var $currentSection; //   当前内容块
-    $sections.each(function() {
-        var divPosition = $(this).offset().top; // 获取到当前内容块具体页面顶部的距离
-        if (divPosition - 1 < currentScroll) { //  通过条件判断匹配到当前滚动内容块
-            $currentSection = $(this);
+$(function() {
+    //1.楼梯什么时候显示，800px scroll--->scrollTop
+    $(window).on('scroll', function() {
+        var $scroll = $(this).scrollTop();
+        if ($scroll >= 800) {
+            $('#loutinav').show();
+        } else {
+            $('#loutinav').hide();
         }
-        // 如果楼层最上端有其它的内容快需要加一个判断
-        if (currentScroll > 300) {
-            var id = $currentSection.attr('id');
-            $('.links').removeClass('menu-active');
-            $("." + id).addClass('menu-active');
-        }
-    })
-});
+        //4.拖动滚轮，对应的楼梯样式进行匹配
+        $('.louti').each(function() {
+            var $loutitop = $('.louti').eq($(this).index()).offset().top + 400;
+            //console.log($loutitop);
+            if ($loutitop > $scroll) { //楼层的top大于滚动条的距离
+                $('#loutinav li').removeClass('active');
+                $('#loutinav li').eq($(this).index()).addClass('active');
+                return false; //中断循环
+            }
+        });
+    });
+    //2.获取每个楼梯的offset().top,点击楼梯让对应的内容模块移动到对应的位置  offset().left
+    var $loutili = $('#loutinav li').not('.last');
+    $loutili.on('click', function() {
+        $(this).addClass('active').siblings('li').removeClass('active');
+        var $loutitop = $('.louti').eq($(this).index()).offset().top;
+        //获取每个楼梯的offsetTop值
+        $('html,body').animate({ //$('html,body')兼容问题body属于chrome
+            scrollTop: $loutitop
+        })
+    });
+    //3.回到顶部
+    $('.last').on('click', function() {
+        $('html,body').animate({ //$('html,body')兼容问题body属于chrome
+            scrollTop: 0
+        })
+    });
+})

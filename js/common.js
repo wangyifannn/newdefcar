@@ -361,7 +361,7 @@ function getcnid(url, boxname) {
         "success": function(res) {
             if (url == 1 || url == 3) {
                 if (url == 1) {
-                    var checkboxs = '<div class="checktitle"><span>检查项目</span><span>要求</span><span>状态</span><span>说明（注明问题不能解决的原因）</span></div>';
+                    var checkboxs = '<div class="checktitle"><span>检查项目</span><span>要求</span><span>状态</span><span>说明问题原因</span></div>';
                     for (var i = 0; i < res.length; i++) {
                         checkboxs += '<div class="checkitem"><span>' + res[i].pname +
                             '</span><span>' + res[i].carCheckRequest.request +
@@ -371,7 +371,7 @@ function getcnid(url, boxname) {
                             '</span><span> <input type="text" class="item' + i + 'explain explain_input" value="" name="explain' + i + '"></span></div>';
                     }
                 } else if (url == 3) {
-                    var checkboxs = '<div class="checktitle"><span>零部件名称</span><span>零部件号</span><span>状态</span><span>说明（注明问题不能解决的原因）</span></div>';
+                    var checkboxs = '<div class="checktitle"><span>零部件名称</span><span>零部件号</span><span>状态</span><span>说明问题原因</span></div>';
                     for (var i = 0; i < res.length; i++) {
                         checkboxs += '<div class="checkitem"><span><input type="text" class="bom_name" value="' + res[i].pname + '">' +
                             '</span><span><input type="text" class="bom_num" value="' + res[i].components.name + '">' +
@@ -390,9 +390,9 @@ function getcnid(url, boxname) {
                 }
             } else if (url == 2 || url == 4) {
                 if (url == 2) {
-                    var checkboxs = '<div class="checktitle"><span>检查项目</span><span class="itemlist2">状态</span><span class="itemlist3">说明（注明问题不能解决的原因）</span></div>';
+                    var checkboxs = '<div class="checktitle"><span>检查项目</span><span class="itemlist2">状态</span><span class="itemlist3">说明问题原因</span></div>';
                 } else if (url == 4) {
-                    var checkboxs = '<div class="checktitle"><span class="itemlist1"><span class="itemlist_head">名称</span><span class="item_child">简明安装使用要求</span></span><span class="itemlist2">状态</span><span class="itemlist3">说明（注明问题不能解决的原因）</span></div>';
+                    var checkboxs = '<div class="checktitle"><span class="itemlist1"><span class="itemlist_head">名称</span><span class="item_child">简明安装使用要求</span></span><span class="itemlist2">状态</span><span class="itemlist3">说明问题原因</span></div>';
                 }
                 for (var i = 0; i < res.length; i++) {
                     var childitem = "";
@@ -443,6 +443,12 @@ function initsafeCheck(box1, box2) {
     initcylinder(box1); // 缸压
     getcnid(1, box2); // 初始化检查项目表
 }
+
+function findSafeInfo(box1, box2) {
+    initcylinder(box1); // 缸压
+    getcnidSolve(1, box2); // 初始化检查项目表
+}
+
 
 
 function initToolRecord(name, vSn, page) {
@@ -563,4 +569,78 @@ function initToolRecord(name, vSn, page) {
             toastr.error('程序内部错误', '审核', messageOpts);
         }
     })
+}
+
+// 5列
+function getcnidSolve(url, boxname) {
+    console.log(url);
+    $.ajax({
+        "url": "http://localhost/car/CarMangae0/json/item" + url + ".json",
+        // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
+        "type": "get",
+        "success": function(res) {
+            if (url == 1 || url == 3) {
+                if (url == 1) {
+                    var checkboxs = '<div class="checktitle"><span>检查项目</span><span>要求</span><span>状态</span><span>说明问题原因</span><span>注明解决方法</span></div>';
+                    for (var i = 0; i < res.length; i++) {
+                        checkboxs += '<div class="checkitem"><span>' + res[i].pname +
+                            '</span><span>' + res[i].carCheckRequest.request +
+                            '</span><span class="style1_radio"><input type="radio" checked="" class="statusy" value="Y" name="itemstatus' + i + '">是' +
+                            '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="statusno" value="N" name="itemstatus' + i + '">否' +
+                            '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="" value="NA" name="itemstatus' + i + '">NA' +
+                            '</span><span><input type="text" class="item' + i + 'explain explain_input" value="" name="explain' + i + '"></span>' +
+                            '<span><input type="text" class="solve' + i + ' solve_input" value="" name="solve' + i + '"></span></div>';
+                    }
+                } else if (url == 3) {
+                    var checkboxs = '<div class="checktitle"><span>零部件名称</span><span>零部件号</span><span>状态</span><span>说明问题原因</span><span>注明解决方法</span></div>';
+                    for (var i = 0; i < res.length; i++) {
+                        checkboxs += '<div class="checkitem"><span><input type="text" class="bom_name" value="' + res[i].pname + '">' +
+                            '</span><span><input type="text" class="bom_num" value="' + res[i].components.name + '">' +
+                            '</span><span class="style1_radio"><input type="radio" checked="" class="statusy my_radio" value="Y" name="itemstatus' + i + '">是' +
+                            '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="statusno my_radio" value="N" name="itemstatus' + i + '">否' +
+                            '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="my_radio" value="NA" name="itemstatus' + i + '">NA' +
+                            '</span><span> <input type="text" class="item' + i + 'explain explain_input" value="" name="explain' + i + '"></span>' +
+                            '<span><input type="text" class="solve' + i + ' solve_input" value="" name="solve' + i + '"></span></div>';
+                    }
+                }
+            } else if (url == 2 || url == 4) {
+                if (url == 2) {
+                    var checkboxs = '<div class="checktitle"><span>检查项目</span><span class="itemlist2">状态</span><span class="itemlist3">说明问题原因</span><span>注明解决方法</span></div>';
+                } else if (url == 4) {
+                    var checkboxs = '<div class="checktitle"><span class="itemlist1"><span class="itemlist_head">名称</span><span class="item_child">简明安装使用要求</span></span><span class="itemlist2">状态</span><span class="itemlist3">说明问题原因</span><span>注明解决方法</span></div>';
+                }
+                for (var i = 0; i < res.length; i++) {
+                    var childitem = "";
+                    var childstatus = "";
+                    var childexplain = "";
+                    var childsolve = "";
+                    if (res[i].carCheckItems.length == 0) {
+                        checkboxs += '<div class="checkitem"><span class="itemlist1">' + res[i].pname +
+                            '</span><span class="itemlist2 rowradio"><input checked="" type="radio" class="statusy my_radio" value="Y" name="status' + i + '">是' +
+                            '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="statusno my_radio" value="N" name="status' + i + '">否' +
+                            '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="my_radio" value="NA" name="status' + i + '">NA' +
+                            '</span><span class="itemlist3"><input type="text" class="item' + i + 'explain explain_input" value="" name="explain' + i + '"></span>' +
+                            '<span class="itemlist4"><input type="text" class="solve' + i + ' solve_input" value="" name="solve' + i + '"></span></div>';
+                    } else {
+                        for (var j = 0; j < res[i].carCheckItems.length; j++) {
+                            childitem += '<p>' + res[i].carCheckItems[j].cname + '</p>';
+                            childstatus += '<p class="rowradio"><input type="radio" checked="" class="statusy my_radio" value="Y" name="statuschild' + i + j + '">是' +
+                                '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="statusno my_radio" value="N" name="statuschild' + i + j + '">否' +
+                                '&nbsp;&nbsp;&nbsp;<input type="radio" checked="" class="my_radio" value="NA" name="statuschild' + i + j + '">NA</p>';
+                            childexplain += '<p><input type="text" class="item' + j + 'explain explain_input" value="" name="explainchild' + i + j + '"></p>';
+                            childsolve += '<p><input type="text" class="solve' + i + ' solve_input" value="" name="solve' + i + '"></p>';
+                        }
+                        checkboxs += '<div class="checkitem"><span class="itemlist1">' +
+                            '<span class="itemlist_head head' + i + '">' + res[i].pname + '</span>' +
+                            '<span class="item_child itemlist1_child' + i + '">' + childitem + '</span>' +
+                            '</span><span class="itemlist2">' + childstatus + '</span>' +
+                            '<span class="itemlist3">' + childexplain + '</span>' +
+                            '<span class="itemlist4">' + childsolve + '</span></div>';
+                    }
+                }
+            }
+            $(boxname).html(checkboxs);
+            $(".statusy").prop("checked", true); //默认单选框选中是
+        }
+    });
 }

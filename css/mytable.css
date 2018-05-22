@@ -150,11 +150,9 @@ table {
 }
 
 .form_subject {
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
     padding: 6px 12px;
-    /*color: #01034A;*/
-    /*background: #f5f5f5;*/
     background: #4A88D5;
     color: #fff;
 }
@@ -171,11 +169,6 @@ input.toolname {
 .form_subject i {
     margin-right: 5px;
     margin-top: 3px;
-}
-
-.form-horizontal {
-    width: 95%;
-    margin: 0 auto;
 }
 
 #m_cancel_btn {
@@ -619,7 +612,6 @@ input.form-control {
 
 .detail_part {
     width: 100%;
-    margin-top: 20px;
 }
 
 .datail_title {
@@ -691,9 +683,6 @@ input.form-control {
     margin-top: 15px;
 }
 
-
-/*安全检查*/
-
 .checkMenus,
 .menu_style {
     display: inline-block;
@@ -713,16 +702,6 @@ input.form-control {
 .menu_style button:hover,
 .checkMenus button:hover {
     color: #1B6DDA;
-}
-
-.form_style2,
-.pot_style,
-.bomcheck_itembox,
-.form_style4,
-.check_itembox {
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 0px;
 }
 
 .form_style2 {
@@ -774,6 +753,12 @@ input[type="file"] {
     line-height: 37px;
     font-size: 13px;
     margin-bottom: 0px;
+    /*让超出的用...实现*/
+    text-overflow: ellipsis;
+    /*禁止换行*/
+    white-space: nowrap;
+    /*超出的隐藏*/
+    overflow: hidden;
 }
 
 .checkitem p:first-child {
@@ -787,7 +772,7 @@ input[type="file"] {
 
 .checktitle span:nth-child(2),
 .checkitem span:nth-child(2) {
-    width: 10%;
+    width: 11%;
 }
 
 #insurance_model .checktitle span:nth-child(2),
@@ -871,7 +856,7 @@ button#bom_apply_btn {
 .checktitle span,
 .checkitem span {
     display: inline-block;
-    width: 24%;
+    width: 27%;
     min-height: 41px;
     height: auto;
     text-align: center;
@@ -882,17 +867,22 @@ button#bom_apply_btn {
     vertical-align: middle;
 }
 
-#carTypeIn .bom_apply .checktitle span,
-#carTypeIn .bom_apply .checkitem span {
+.toolForm .checktitle span,
+.toolForm .checkitem span {
+    width: 24%;
+}
+
+.bom_apply .checktitle span,
+.bom_apply .checkitem span {
     width: 50%;
 }
 
-#carTypeIn .rd_apply .checktitle span,
-#carTypeIn .rd_apply .checkitem span {
+.rd_apply .checktitle span,
+.rd_apply .checkitem span {
     width: 100%;
 }
 
-#carTypeIn .rd_apply .checkitem span input {
+.rd_apply .checkitem span input {
     text-align: center;
 }
 
@@ -912,7 +902,7 @@ button.btn.btn-default.btn-primary.sub_audit_btn {
 .form_style4 .checktitle span,
 .form_style2 .checktitle span,
 .form_style2 .checkitem span {
-    width: 40%;
+    width: 45%;
 }
 
 .form_style2 .itemlist1,
@@ -928,6 +918,30 @@ button.btn.btn-default.btn-primary.sub_audit_btn {
 .form_style4 .itemlist3,
 .form_style2 .itemlist3 {
     width: 40% !important;
+}
+
+.form_style1_detail .checkitem span,
+.form_style1_detail .checktitle span {
+    width: 20%;
+    line-height: normal !important;
+}
+
+.form_style2_detail .checkitem span,
+.form_style2_detail .checktitle span {
+    width: 25%;
+    line-height: normal !important;
+}
+
+.form_style1_detail .checktitle span:nth-child(1),
+.form_style1_detail .checkitem span:nth-child(1) {
+    width: 27%;
+    line-height: normal !important;
+}
+
+.form_style1_detail .checktitle span:nth-child(2),
+.form_style1_detail .checkitem span:nth-child(2) {
+    width: 13%;
+    line-height: normal !important;
 }
 
 .itemlist_head {
@@ -978,10 +992,11 @@ span.item_child {
     font-size: 13px;
 }
 
-.explain_input {
+.explain_input,
+.solve_input {
     border: none;
-    /*height: 34px;*/
     width: 100%;
+    min-height: 37px;
 }
 
 .form_style4 .explain_input {

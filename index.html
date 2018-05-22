@@ -16,11 +16,6 @@
     <link href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
     <style type="text/css">
-        body {
-            background: #FFF;
-            min-width: 1380px;
-        }
-        
         .icon {
             width: 1em;
             height: 1em;
@@ -156,34 +151,90 @@
                     </div>
                     <!--车辆详情-->
                     <div class="tab-pane" id="carDetail">
-                        <div class="form_subject detail_nav">
-                            <i class="glyphicon glyphicon-list-alt"></i><span>车辆详情</span>
-                            <ul id="menu-list">
-                                <li><a href="#one" class="links one">接车点检</a></li>
-                                <li><a href="#two" class="links two">车辆录入</a></li>
-                                <li><a href="#three" class="links three">安全/附件检查</a></li>
-                                <li><a href="#four" class="links four">线束检查</a></li>
-                                <li><a href="#five" class="links five">BOM检查</a></li>
-                                <li><a href="#six" class="links six">审核信息</a></li>
-                                <li><a href="#six" class="links six">研发工具装备记录</a></li>
-                                <li><a href="#six" class="links six">还车点检</a></li>
-                                <li><a href="#six" class="links six">保险记录</a></li>
-                                <li><a href="#six" class="links six">车牌记录</a></li>
+                        <div id="loutinav">
+                            <ul>
+                                <li class="active"><span>接车</span> </li>
+                                <li><span>录入</span> </li>
+                                <li><span>安全</span> </li>
+                                <li><span>线束</span> </li>
+                                <li><span>BOM</span> </li>
+                                <li><span>审核</span> </li>
+                                <li><span>研发</span> </li>
+                                <li><span>还车</span> </li>
+                                <li><span>保险</span> </li>
+                                <li><span>车牌</span> </li>
+                                <li class="last">顶部</li>
                             </ul>
                         </div>
-                        <div class="detail_part">
+                        <div class="detail_part" id="main">
                             <!--5个详情部分-->
-                            <div class="container" id="carTypeInForm"></div>
-                            <div class="container" id="carCheckForm"></div>
-                            <div class="container" id="sCheckForm">
-                                <div class="pot_Form pot_style"></div>
-                                <div class="safe_Form form_width_style"></div>
+                            <div class="louti" id="carCheckForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>接车点检信息</span>
+                                </div>
+                                <form class="form-horizontal even_style"></form>
                             </div>
-                            <div class="container" id="wiringCheckForm"></div>
-                            <div class="container form_width_style" id="bomCheckForm"></div>
-                            <div class="container form_width_style" id="upkeepForm"></div>
-                            <div class="container form_width_style" id="toolForm"></div>
-                            <div class="container form_width_style" id="returncarForm"></div>
+                            <div class="louti" id="carTypeInForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>车辆录入信息</span>
+                                </div>
+                                <form class="form-horizontal even_style cartypein_apply_detail"></form>
+                                <form class="form-horizontal even_style rd_apply_detail rd_apply"> </form>
+                                <form class="form-horizontal even_style bom_apply_detail bom_apply"> </form>
+                            </div>
+                            <div class="louti" id="sCheckForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>安全检查</span>
+                                </div>
+                                <div class="pot_Form pot_style"></div>
+                                <div class="safe_Form form_style1_detail"></div>
+                            </div>
+                            <div class="louti" id="wiringCheckForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>线束检查</span>
+                                </div>
+                                <div class="wcheck_itembox form_style2_detail"></div>
+                            </div>
+                            <div class="louti form_width_style" id="bomCheckForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>BOM检查</span>
+                                </div>
+                                <div class="bomcheck_itembox form_style1_detail"></div>
+                            </div>
+                            <div class="louti form_width_style" id="auditForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>审核信息</span>
+                                </div>
+                                <div class="auditDetail clearfix"></div>
+                            </div>
+
+                            <div class="louti form_width_style" id="toolForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>研发工具记录</span>
+                                </div>
+                                <form class="form-horizontal even_style toolForm"> </form>
+                                <!--div.toolForm-->
+                            </div>
+
+                            <div class="louti form_width_style" id="returncarForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>还车点检信息</span>
+                                </div>
+                                <form class="form-horizontal even_style"></form>
+                            </div>
+                            <div class="louti form_width_style" id="upkeepForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>保险信息</span>
+                                </div>
+                                <div class="upkeepDetail"></div>
+                            </div>
+                            <div class="louti form_width_style" id="plateForm">
+                                <div class="form_subject">
+                                    <i class="glyphicon glyphicon-list-alt"></i><span>车牌信息</span>
+                                </div>
+                                <div class="plateDetail"></div>
+
+                            </div>
                         </div>
                     </div>
 
@@ -777,18 +828,18 @@
         </div>
     </div>
     <!--研发工具装备记录模态框、bom-->
-    <!--<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="toolRecord_model" aria-labelledby="myLargeModalLabel">
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="toolRecord_model" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header model_title">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">研发工具装备记录</h4>
                 </div>
-                <div class="modal-body tool_Form">
+                <div class="modal-body toolForm">
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <!--保险记录-->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="insurance_model" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
@@ -1011,6 +1062,7 @@
 <script type="text/javascript" src="./js/car.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/cartypein.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/returnCar.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/detail1.js" charset="utf-8"></script>
 <!--<script type="text/javascript" src="./js/cartable.js" charset="utf-8"></script>-->
 
 <!--<script type="text/javascript" src="./js/car.js" charset="utf-8"></script>-->
