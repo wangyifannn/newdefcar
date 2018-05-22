@@ -355,7 +355,7 @@ changBread("GPS", "车辆地图");
 function getcnid(url, boxname) {
     console.log(url);
     $.ajax({
-        "url": "http://localhost/car/CarMangae0/json/item" + url + ".json",
+        "url": "/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
@@ -575,7 +575,7 @@ function initToolRecord(name, vSn, page) {
 function getcnidSolve(url, boxname) {
     console.log(url);
     $.ajax({
-        "url": "http://localhost/car/CarMangae0/json/item" + url + ".json",
+        "url": "/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
