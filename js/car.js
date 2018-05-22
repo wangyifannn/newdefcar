@@ -1,6 +1,6 @@
 function loadCarList() {
     $("#carListtable").bootstrapTable('destroy').bootstrapTable({
-        url: 'http://localhost/car/defcar/json/driverList.json',
+        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
         // dataType: "json", //数据类型
         // method: 'GET', //请求方式（*）
         dataType: 'json',
