@@ -715,6 +715,10 @@ input.form-control {
     height: auto;
 }
 
+button.btn.btn-default.btn-primary.carCheck_btn {
+    margin-right: 100px;
+}
+
 .pot_style div {
     text-align: center;
     display: inline-block;

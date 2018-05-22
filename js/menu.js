@@ -25,7 +25,8 @@ var statusobj = [{
 }];
 
 $.ajax({
-    "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
+    "url": "http://localhost/car/defcar/json/menu.json",
+    // "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
     "type": "get",
     "data": {},
     // "dataType": "jsonp", //数据类型为jsonp  
@@ -75,18 +76,6 @@ $.ajax({
                 $(this).parent().addClass("active");
             }
         });
-        $(".three_a").click(function() {
-            if ($(this).parent().hasClass("active")) {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this).parent().removeClass("active");
-                $(this).parent().parent().parent().parent().addClass("active"); //给父级加上active;
-                $(this).siblings(".sidebar-submenu").slideUp(250);
-            } else {
-                $(this).parent().addClass("active");
-                $(this).parent().parent().parent().parent().addClass("active"); //给父级加上active;
-                $(this).next(".sidebar-submenu").slideDown(250);
-            }
-        })
 
         $(".maintainLog").click(function() {
             loadLog("http://192.168.0.222:8080/car-management/log/findCarMaintainLog.action", "日志列表", "#maintainLogTable", "#toolbar_maintainLogTable");
@@ -115,7 +104,6 @@ $.ajax({
                 var ss = '<li>' + $(this).parent().parent().siblings().children()[0].innerText + "/" + '</li><li>' + this.innerText + '</li>';
                 changBread(this.parentNode.parentNode.parentNode.children[0].innerText, ss);
             } else if ($(this).hasClass("threeMenu")) {
-                // changBread("GPS", "车辆地图");
                 changBread(this.parentNode.parentNode.parentNode.children[0].children[1].innerText, "车辆录入");
             } else {
                 changBread(this.parentNode.parentNode.parentNode.children[0].children[1].innerText, this.innerText);
@@ -134,19 +122,22 @@ $.ajax({
         });
 
         //驾驶员管理
-        $(".driverList ").click(function() {
+        $(".driverList").click(function() {
             $("#driverTypeIn").removeClass("active");
             $("#driverList").addClass("active");
             loadDriverList();
+            console.log($(this).attr("class"));
+            window.location.hash = $(this).attr("class");
         });
         // 车辆录入
-        $(".carTypeIn").click(function() {
-            window.location.hash = "";
-            loadCarList();
-            // findGroupList(".cartypein_group", "http://192.168.0.222:8080/car-management/group/find.action", "limitinfo");
-            // loadCarList(JSON.stringify({
-            //     "vSn": null
-            // }), "safeTable");
+        $(".carList").click(function() {
+            window.location.hash = $(this).attr("class");
+        });
+        // 车辆列表
+        $(".carTypeIn").click(function() {});
+        // 接车点检
+        $(".carCheck").click(function() {
+            creatForm(carCheckInfo, "#carCheck form", "carCheck_btn");
         });
         // 安全检查列表
         $(".safe_table").click(function() {
@@ -154,10 +145,6 @@ $.ajax({
                 "vSn": null
             }), "safeTable");
         });
-        // 保险申请
-        // $(".insuranceApply").click(function() {
-        //     creatInsurance(".insurance_Form", insuranceArr);
-        // });
         // 保险录入
         $(".insuranceTypeIn").click(function() {
             loadCarList(JSON.stringify({
