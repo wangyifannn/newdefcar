@@ -137,35 +137,29 @@ window.caroperateEvents = {
         window.sessionStorage.beforeHash = window.location.hash;
         window.location.hash = $(this).parent().attr("href");
         $(".carList").removeClass("active");
-
     },
     'click #carTypeIn_btn': function(e, value, row, index) { //录入
         window.sessionStorage.beforeHash = window.location.hash;
         window.location.hash = $(this).parent().attr("href");
         $(".carList").removeClass("active");
-
     },
     'click #warining_btn': function(e, value, row, index) { //线束
         getcnid(2, "#wiringCheck .wcheck_itembox", "sub_wchek_btn");
         window.sessionStorage.beforeHash = window.location.hash;
         window.location.hash = $(this).parent().attr("href");
         $(".carList").removeClass("active");
-
-
     },
     'click #bomCheck': function(e, value, row, index) { //bom
         getcnid(3, "#bomCheck .bomcheck_itembox", "sub_bchek_btn");
         window.sessionStorage.beforeHash = window.location.hash;
         window.location.hash = $(this).parent().attr("href");
         $(".carList").removeClass("active");
-
-
     },
     'click #rd_btn': function(e, value, row, index) { //研发
         $("#toolRecord_model").modal();
         initToolRecord("#toolRecord_model .toolForm", row.vSn);
         $("#toolRecord_model .vSn").val(row.vSn);
-        window.sessionStorage.carInfo = json.stringify(row);
+        window.sessionStorage.carInfo = JSON.stringify(row);
     },
     'click #audit_btn': function(e, value, row, index) { //取消授权、禁用
         $("#add_model").modal();

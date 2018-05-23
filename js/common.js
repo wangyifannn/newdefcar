@@ -66,6 +66,8 @@ function changeTabs() {
     //右侧tabs 显示隐藏切换
     $(htmlHas).siblings().removeClass("active");
     $(htmlHas).addClass("active");
+    $('a[href="' + htmlHas + '"]').tab('show');
+
 }
 
 // 表单重置

@@ -129,12 +129,13 @@ $.ajax({
             initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn");
             getcnid(2, "#wiringCheck .wcheck_itembox", "sub_wchek_btn");
             getcnid(3, "#bomCheck .bomcheck_itembox", "sub_bchek_btn");
-
+            changeTabs();
             // 监听hash变化
             $(window).on("hashchange", function() { //兼容ie8+和手机端
                 console.log(window.location.hash);
                 if (window.location.hash != "") {
                     changeTabs();
+                    // $()
                 }
             });
         });
