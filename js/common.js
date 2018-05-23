@@ -48,6 +48,26 @@ function getHashParameters() {
     }
     return params;
 }
+// 历史回退，监听hash 变化，改变页面tabs
+function changeTabs() {
+    var htmlHas = window.location.hash;
+    var htmlli = htmlHas.split("#")[1];
+    htmlli = "." + htmlli;
+    //左侧菜单 显示隐藏切换
+    $(htmlli).parent().siblings().slideUp(250);
+    $(htmlli).siblings().removeClass("active");
+    $(htmlli).siblings().removeClass("active");
+    $(htmlli).parent().parent().parent().siblings().removeClass("active");
+    $(htmlli).parent().parent().slideDown(250);
+    $(htmlli).addClass("active");
+    $(htmlli).parent().addClass("active");
+    $(htmlli).parent().parent().parent().addClass("active");
+
+    //右侧tabs 显示隐藏切换
+    $(htmlHas).siblings().removeClass("active");
+    $(htmlHas).addClass("active");
+}
+
 // 表单重置
 function myformReset() {
     $(':input', 'form')
@@ -355,8 +375,8 @@ changBread("GPS", "车辆地图");
 function getcnid(url, boxname) {
     console.log(url);
     $.ajax({
-        "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        // "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        // "url": "http://localhost/car/defcar/json/item" + url + ".json",
+        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
@@ -456,8 +476,8 @@ function initToolRecord(name, vSn, page) {
     // 查询装备记录详情，如果有，加载列表页面，没有进入选择页面
     $.ajax({
         // url: "http://192.168.0.222:8080/car-management/car/develop/find/" + vSn + ".action",
-        // url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
-        url: "http://localhost/car/defcar/json/tool.json",
+        url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
+        // url: "http://localhost/car/defcar/json/tool.json",
         type: "get",
         data: {},
         success: function(res) {
@@ -577,8 +597,8 @@ function initToolRecord(name, vSn, page) {
 function getcnidSolve(url, boxname) {
     console.log(url);
     $.ajax({
-        "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        // "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        // "url": "http://localhost/car/defcar/json/item" + url + ".json",
+        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {

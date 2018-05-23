@@ -25,8 +25,8 @@ var statusobj = [{
 }];
 
 $.ajax({
-    "url": "http://localhost/car/defcar/json/menu.json",
-    // "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
+    // "url": "http://localhost/car/defcar/json/menu.json",
+    "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
     "type": "get",
     "data": {},
     // "dataType": "jsonp", //数据类型为jsonp  
@@ -78,22 +78,18 @@ $.ajax({
         });
 
         $(".maintainLog").click(function() {
-            loadLog("http://192.168.0.222:8080/car-management/log/findCarMaintainLog.action", "日志列表", "#maintainLogTable", "#toolbar_maintainLogTable");
+            // loadLog("http://192.168.0.222:8080/car-management/log/findCarMaintainLog.action", "日志列表", "#maintainLogTable", "#toolbar_maintainLogTable");
         })
         $(".dataLog").click(function() {
-            loadLog("http://192.168.0.222:8080/car-management/log/findCarSystemLog.action", "日志列表", "#sysLogTable", "#toolbar_sysLogTable");
+            // loadLog("http://192.168.0.222:8080/car-management/log/findCarSystemLog.action", "日志列表", "#sysLogTable", "#toolbar_sysLogTable");
         });
         // 车辆管理日志
         $(".manageLog").click(function() {
-            loadLog("http://192.168.0.222:8080/car-management/log/findCarLog.action", "日志列表", "#carLogTable", "#toolbar_carLogTable");
+            // loadLog("http://192.168.0.222:8080/car-management/log/findCarLog.action", "日志列表", "#carLogTable", "#toolbar_carLogTable");
         });
         // 驾驶员管理日志
         $(".approveLog").click(function() {
-            loadLog("http://192.168.0.222:8080/car-management/log/findCarDriverLog.action", "日志列表", "#driverLogTable", "#toolbar_driverLogTable");
-        })
-        $(".carTypeIn").click(function() {
-            $(this).children().css({ color: "#1B6DDA" });
-            $(this).siblings().children().css({ color: "white" });
+            // loadLog("http://192.168.0.222:8080/car-management/log/findCarDriverLog.action", "日志列表", "#driverLogTable", "#toolbar_driverLogTable");
         })
         $("#toggle-sidebar").click(function() {
             $(".page-wrapper").toggleClass("toggled");
@@ -107,7 +103,6 @@ $.ajax({
                 changBread(this.parentNode.parentNode.parentNode.children[0].children[1].innerText, "车辆录入");
             } else {
                 changBread(this.parentNode.parentNode.parentNode.children[0].children[1].innerText, this.innerText);
-
             }
             var sib = $(this).parent().parent().parent().siblings();
             for (var i = 0; i < sib.length; i++) {
@@ -120,41 +115,35 @@ $.ajax({
                 }
             }
         });
+        $(function() {　　
+            var Menuhash = document.querySelectorAll(".sidebar-submenu li");
+            for (var i = 0; i < Menuhash.length; i++) {
+                Menuhash[i].onclick = function() {
+                    console.log(this);
+                    console.log($(this).attr("class"));
+                    window.location.hash = $(this).attr("class");
+                }
+            }
 
+            loadDriverList();
+            loadCarList();
+            changeTabs();
+            // 监听hash变化
+            $(window).on("hashchange", function() { //兼容ie8+和手机端
+                console.log(window.location.hash);
+                if (window.location.hash != "") {
+                    changeTabs();
+                }
+            });
+        });
         //驾驶员管理
         $(".driverList").click(function() {
-            $("#driverTypeIn").removeClass("active");
-            $("#driverList").addClass("active");
             loadDriverList();
-            console.log($(this).attr("class"));
-            window.location.hash = $(this).attr("class");
         });
         // 车辆录入
-        $(".carList").click(function() {
-            window.location.hash = $(this).attr("class");
-        });
-        // 车辆列表
-        $(".carTypeIn").click(function() {});
-        // 接车点检
+        $(".carList").click(function() {});
         $(".carCheck").click(function() {
-            creatForm(carCheckInfo, "#carCheck form", "carCheck_btn");
-        });
-        // 安全检查列表
-        $(".safe_table").click(function() {
-            loadCarList(JSON.stringify({
-                "vSn": null
-            }), "safeTable");
-        });
-        // 保险录入
-        $(".insuranceTypeIn").click(function() {
-            loadCarList(JSON.stringify({
-                "vSn": null
-            }), "safeTable");
-        });
-        $(".carList").click(function() {
-            loadCarList(JSON.stringify({
-                "vSn": null
-            }), "carListtable");
+            // creatForm(carCheckInfo, "#carCheck form", "carCheck_btn");
         });
         $(".maintainList").click(function() {
             $('#maintainList').bootstrapTable('destroy');
