@@ -1,7 +1,7 @@
 function loadCarList() {
     $("#carListtable").bootstrapTable('destroy').bootstrapTable({
-        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
-        // url: 'http://localhost/car/defcar/json/driverList.json',
+        // url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        url: 'http://localhost/car/defcar/json/driverList.json',
         // dataType: "json", //数据类型
         // method: 'GET', //请求方式（*）
         dataType: 'json',
@@ -128,19 +128,44 @@ function caroperateFormatter(value, row, index) {
 
 window.caroperateEvents = {
     'click #safe_btn': function(e, value, row, index) { //安全
-        initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox");
+        initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn");
+        window.sessionStorage.beforeHash = window.location.hash;
+        window.location.hash = $(this).parent().attr("href");
+        $(".carList").removeClass("active");
+    },
+    'click #details_btn': function(e, value, row, index) { //详情
+        window.sessionStorage.beforeHash = window.location.hash;
+        window.location.hash = $(this).parent().attr("href");
+        $(".carList").removeClass("active");
+
+    },
+    'click #carTypeIn_btn': function(e, value, row, index) { //录入
+        window.sessionStorage.beforeHash = window.location.hash;
+        window.location.hash = $(this).parent().attr("href");
+        $(".carList").removeClass("active");
+
     },
     'click #warining_btn': function(e, value, row, index) { //线束
-        getcnid(2, "#wiringCheck .wcheck_itembox");
+        getcnid(2, "#wiringCheck .wcheck_itembox", "sub_wchek_btn");
+        window.sessionStorage.beforeHash = window.location.hash;
+        window.location.hash = $(this).parent().attr("href");
+        $(".carList").removeClass("active");
+
+
     },
     'click #bomCheck': function(e, value, row, index) { //bom
-        getcnid(3, "#bomCheck .bomcheck_itembox");
+        getcnid(3, "#bomCheck .bomcheck_itembox", "sub_bchek_btn");
+        window.sessionStorage.beforeHash = window.location.hash;
+        window.location.hash = $(this).parent().attr("href");
+        $(".carList").removeClass("active");
+
+
     },
     'click #rd_btn': function(e, value, row, index) { //研发
         $("#toolRecord_model").modal();
         initToolRecord("#toolRecord_model .toolForm", row.vSn);
         $("#toolRecord_model .vSn").val(row.vSn);
-        window.location.hash = row.vSn;
+        window.sessionStorage.carInfo = json.stringify(row);
     },
     'click #audit_btn': function(e, value, row, index) { //取消授权、禁用
         $("#add_model").modal();

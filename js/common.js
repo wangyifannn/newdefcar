@@ -331,9 +331,9 @@ function creatForm(filArr, name, btnname) {
             '</div>'
     }
     ss += '<div class="form-group">' +
-        '<div class="col-sm-offset-4 col-sm-5">' +
-        '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary ' + btnname + '">保存</button>' +
-        '<button type="button" class="btn btn-default btn-primary" data-dismiss="modal">取消</button>' +
+        '<div class="form_btngroup clearfix">' +
+        '<button type="button" data-dismiss="" aria-label="" class="btn btn-default pull-left btn-primary ' + btnname + '">保存</button>' +
+        '<button type="button" class="btn btn-default btn-primary pull-right" data-dismiss="modal">取消</button>' +
         '</div>' +
         '</div>';
     $(name).html(ss);
@@ -372,11 +372,11 @@ function changBread(bread1, bread2) {
 }
 changBread("GPS", "车辆地图");
 
-function getcnid(url, boxname) {
+function getcnid(url, boxname, btnname) {
     console.log(url);
     $.ajax({
-        // "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        "url": "http://localhost/car/defcar/json/item" + url + ".json",
+        // "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
@@ -441,8 +441,18 @@ function getcnid(url, boxname) {
                     }
                 }
             }
+            checkboxs += '<div class="form-group">' +
+                '<div class="form_btngroup clearfix">' +
+                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary pull-left ' + btnname + '">保存</button>' +
+                '<a href="#" data-toggle="tab"><button type="button" class="btn btn-default btn-primary pull-right cancal_btn">取消</button></a>' +
+                '</div>' +
+                '</div>';
             $(boxname).html(checkboxs);
             $(".statusy").prop("checked", true); //默认单选框选中是
+            $(".cancal_btn").click(function() {
+                $(this).parent().attr("href", "#carList");
+                $('#myTab a[href="#carList"]').tab('show')
+            })
         }
     });
 }
@@ -460,24 +470,22 @@ function initcylinder(box1) {
     $("input[name='cylinder_p']").css("display", "none");
 }
 
-function initsafeCheck(box1, box2) {
+function initsafeCheck(box1, box2, btn) {
     initcylinder(box1); // 缸压
-    getcnid(1, box2); // 初始化检查项目表
+    getcnid(1, box2, btn); // 初始化检查项目表
 }
 
-function findSafeInfo(box1, box2) {
+function findSafeInfo(box1, box2, btnname) {
     initcylinder(box1); // 缸压
-    getcnidSolve(1, box2); // 初始化检查项目表
+    getcnidSolve(1, box2, btnname); //安全检查表详情
 }
-
-
 
 function initToolRecord(name, vSn, page) {
     // 查询装备记录详情，如果有，加载列表页面，没有进入选择页面
     $.ajax({
         // url: "http://192.168.0.222:8080/car-management/car/develop/find/" + vSn + ".action",
-        url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
-        // url: "http://localhost/car/defcar/json/tool.json",
+        // url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
+        url: "http://localhost/car/defcar/json/tool.json",
         type: "get",
         data: {},
         success: function(res) {
@@ -594,11 +602,11 @@ function initToolRecord(name, vSn, page) {
 }
 
 // 5列
-function getcnidSolve(url, boxname) {
+function getcnidSolve(url, boxname, btnname) {
     console.log(url);
     $.ajax({
-        // "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        "url": "http://localhost/car/defcar/json/item" + url + ".json",
+        // "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
@@ -662,8 +670,18 @@ function getcnidSolve(url, boxname) {
                     }
                 }
             }
+            checkboxs += '<div class="form-group">' +
+                '<div class="form_btngroup clearfix">' +
+                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary pull-left ' + btnname + '">保存</button>' +
+                '<a href="#" data-toggle="tab"><button type="button" class="btn btn-default btn-primary pull-right cancal_btn">取消</button></a>' +
+                '</div>' +
+                '</div>';
             $(boxname).html(checkboxs);
             $(".statusy").prop("checked", true); //默认单选框选中是
+            $(".cancal_btn").click(function() {
+                $(this).parent().attr("href", "#carList");
+                $('#myTab a[href="#carList"]').tab('show')
+            })
         }
     });
 }

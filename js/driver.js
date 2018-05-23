@@ -1,7 +1,7 @@
 function loadDriverList() {
     $("#DriverTable").bootstrapTable('destroy').bootstrapTable({
-        // url: 'http://localhost/car/defcar/json/driverList.json',
-        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        url: 'http://localhost/car/defcar/json/driverList.json',
+        // url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
         // url: 'http://192.168.0.222:8080/car-management/carDriver/CarDriverList.action',
         // dataType: "json", //数据类型
         // method: 'GET', //请求方式（*）

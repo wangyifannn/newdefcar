@@ -6,20 +6,16 @@ ToolRecordApply("#carTypeInForm .rd_apply_detail", "");
 bomApply("#carTypeInForm .bom_apply_detail", $("#carTypeIn .vSn").val(), bomapplyArr);
 
 // 安全
-findSafeInfo("#sCheckForm .pot_Form", "#sCheckForm .safe_Form");
+findSafeInfo("#sCheckForm .pot_Form", "#sCheckForm .safe_Form", "up_sCheck_btn");
 // 线束
-getcnidSolve(2, "#wiringCheckForm .wcheck_itembox");
+getcnidSolve(2, "#wiringCheckForm .wcheck_itembox", "up_wchek_btn");
 // bom
-getcnidSolve(3, "#bomCheckForm .bomcheck_itembox");
+getcnidSolve(3, "#bomCheckForm .bomcheck_itembox", "up_bchek_btn");
 // 研发
 initToolRecord("#toolForm .toolForm", "2");
 // 审核信息
 creatForm(auditInfo, "#add_model .modal-body form", "sub_audit_btn");
 
-// .checkitem.bom_name input[value=""] 
-// if () {
-
-// }
 var auditArr = [{ "name": "车辆编号" }, { "name": "安全检查人" },
     { "name": "安全核对人" }, { "name": "线束检查人" },
     { "name": "线束核对人" }, { "name": "BOM检查人" },

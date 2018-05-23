@@ -25,8 +25,8 @@ var statusobj = [{
 }];
 
 $.ajax({
-    // "url": "http://localhost/car/defcar/json/menu.json",
-    "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
+    "url": "http://localhost/car/defcar/json/menu.json",
+    // "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
     "type": "get",
     "data": {},
     // "dataType": "jsonp", //数据类型为jsonp  
@@ -124,10 +124,12 @@ $.ajax({
                     window.location.hash = $(this).attr("class");
                 }
             }
-
             loadDriverList();
             loadCarList();
-            changeTabs();
+            initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn");
+            getcnid(2, "#wiringCheck .wcheck_itembox", "sub_wchek_btn");
+            getcnid(3, "#bomCheck .bomcheck_itembox", "sub_bchek_btn");
+
             // 监听hash变化
             $(window).on("hashchange", function() { //兼容ie8+和手机端
                 console.log(window.location.hash);

@@ -899,6 +899,16 @@ button.btn.btn-default.btn-primary.sub_audit_btn {
     margin-left: 100px;
 }
 
+form.pot_pressure.pot_style {
+    padding-left: 10px;
+}
+
+.form_btngroup {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 
 /*************.form_style4表示部件检查表单的相关样式*************************************/
 
