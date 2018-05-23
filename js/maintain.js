@@ -70,12 +70,13 @@ function addmaintain(url, da, that, box) {
         }
     });
 }
+
 $("#send_btn").click(function() {
     var url = "/carMaintain/PutInCarMaintainApply.action";
-    var maintain_form_data = $(".send_form").serializeObject();
+    // var maintain_form_data = $(".send_form").serializeObject();
 
-    maintain_form_data.send_time = changeDateFormat(new Date().getTime());
-    console.log(maintain_form_data);
+    // maintain_form_data.send_time = changeDateFormat(new Date().getTime());
+    // console.log(maintain_form_data);
     var that = this;
     addmaintain(url, maintain_form_data, that, ".send_tips");
 });
@@ -88,69 +89,60 @@ $("#m_submit_btn").click(function() {
     var that = this;
     addmaintain(url, maintain_form_data, that, "");
 });
-// 维修列表
-var mainpageNum = 1;
 
 // 初始化加载维修列表
-function loadMaintainList(mainpageNum, size, vSn, status) {
-    var data;
-    var url;
-    if (mainpageNum == "" || size == "") {
-        alert("维修列表分页参数有误");
-        return;
-    } else {
-        data = {
-            "page": mainpageNum,
-            "size": size,
-            "vSn": vSn,
-            "status": status
-        }
-        url = "http://192.168.0.222:8080/car-management/carMaintain/pageQueryCarMaintain.action";
-    }
-    console.log(data);
-    $.ajax({
-        "url": url,
-        "type": "get",
-        "data": data,
-        "success": function(res) {
-            console.log(res);
-            console.log(res.rows);
-            window.location.hash = "pagenum=" + mainpageNum;
-            var ress;
-            if (res.rows) {
-                ress = res.rows;
-            } else {
-                ress = res;
-            }
-            $('#tablescreen').bootstrapTable('destroy');
-            console.log(ress);
-            initmaintain(ress, "#toolbar_tablescreen");
-            var maxPage = Math.ceil(res.total / data.size);
-            if (maxPage >= 9) {
-                maintainPagings(maxPage, ".pageMaintain ul", ".pageMaintain li");
-            } else {
-                maintainPaging(maxPage, mainpageNum - 1, ".pageMaintain ul", ".pageMaintain li");
-            }
-        },
-        "error": function(res) {
-            console.log(res);
-        }
-    });
-}
-// 维修列表
-function initmaintain(res, toolbarid) {
-    $('#tablescreen').bootstrapTable('destroy');
-    $("#tablescreen").bootstrapTable({
-        data: res,
+function loadMaintainList() {
+    $('#maintainTable').bootstrapTable('destroy');
+    $("#maintainTable").bootstrapTable({
+        // url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        url: 'http://localhost/car/defcar/json/driverList.json',
+        // dataType: "json", //数据类型
+        // method: 'GET', //请求方式（*）
+        dataType: 'json',
+        // ajaxOptions: {
+        //     xhrFields: { //跨域
+        //         withCredentials: true
+        //     },
+        //     crossDomain: true
+        // },
+        striped: true, //是否显示行间隔色
         toggle: "table",
-        toolbar: toolbarid,
+        toolbar: "toolbar_maintainTable",
+        pagination: "true", //是否显示分页（*）
+        sortOrder: "asc", //排序方式
+        sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber: 1, //初始化加载第一页，默认第一页
+        pageSize: 5, //每页的记录行数（*）
+        pageList: [5, 10, 50, 100], //可供选择的每页的行数（*）
+        search: true, //是否搜索查询
+        showColumns: true, //是否显示所有的列
+        showRefresh: false, //是否显示刷新按钮
+        sortable: true, //是否启用排序
+        minimumCountColumns: 2, //最少允许的列数
+        clickToSelect: true, //是否启用点击选中行
+        searchOnEnterKey: true, //设置为 true时，按回车触发搜索方法
+        strictSearch: false, //设置为 true启用全匹配搜索， 否则为模糊搜索
+        showToggle: true, //是否显示切换视图（table/card）按钮
+        searchAlign: "right",
+        showExport: true,
+        exportDataType: "basic",
+        exportOptions: {
+            ignoreColumn: [0, 8], //忽略某一列的索引  
+            fileName: '测试车辆-车辆列表', //文件名称设置  
+            worksheetName: 'sheet1', //表格工作区名称  
+            tableName: '测试车辆-车辆列表',
+            excelstyles: ['background-color', 'color', 'font-size', 'font-weight']
+                // onMsoNumberFormat: DoOnMsoNumberFormat
+        },
+        exportDataType: "selected",
+        uniqueId: "vSn", // 每一行的唯一标识  
         columns: [
             [{
                 "title": "测试车辆维修列表",
                 "halign": "center",
                 "align": "center",
                 // 合并维修列表 表头的列单元
-                "colspan": 15
+                "colspan": 14
             }],
             [{
                 field: 'ids',
@@ -167,7 +159,7 @@ function initmaintain(res, toolbarid) {
                 title: "送修申请表",
                 valign: "middle",
                 align: "center",
-                colspan: 7,
+                colspan: 6,
                 rowspan: 1
             }, {
                 field: 'status',
@@ -208,20 +200,7 @@ function initmaintain(res, toolbarid) {
                 width: "6%"
             }, {
                 field: 'carMaintainApply',
-                title: '停放地点',
-                valign: "middle",
-                align: "center",
-                width: "7%",
-                formatter: function(value, row, index) {
-                    if (value == null) {
-                        return "";
-                    } else {
-                        return value.send_park
-                    }
-                }
-            }, {
-                field: 'carMaintainApply',
-                title: '送修人',
+                title: '申请人',
                 valign: "middle",
                 align: "center",
                 width: "6%",
@@ -262,18 +241,15 @@ function initmaintain(res, toolbarid) {
                 }
             }, {
                 field: 'carMaintainApply',
-                title: "要求完成日期",
+                title: '停放地点',
                 valign: "middle",
                 align: "center",
-                // colspan: 1,
-                // rowspan: 2,
                 width: "7%",
-                background: '#BFEBEB',
                 formatter: function(value, row, index) {
                     if (value == null) {
                         return "";
                     } else {
-                        return value.appointedtime
+                        return value.send_park
                     }
                 }
             }, {
@@ -372,17 +348,18 @@ function initmaintain(res, toolbarid) {
 function maintainListFormatter(value, row, index) {
     if (row.status == 1) {
         return [
-            '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">删除</button>',
-            '<button type="button" id="btn_maintainTop" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">置顶</button>',
-            '<button type="button" disabled="disabled" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">维修</button>',
-            '<a href="#" data-toggle="tab"><button type="button" disabled="disabled" id="btn_maintainpeople" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">填写</button></a>'
+            // '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">删除</button>',
+            '<button type="button" disabled="disabled" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">分配</button>',
+            '<a href="#" data-toggle="tab"><button type="button" disabled="disabled" id="btn_maintainpeople" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">完成</button></a>',
+            '<button type="button" id="btn_maintainTop" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">优先</button>',
+            '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">保养</button>'
         ].join('');
     } else {
         return [
-            '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">删除</button>',
-            '<button type="button" id="btn_maintainTop" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">置顶</button>',
-            '<button type="button" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">维修</button>',
-            '<a href="#" data-toggle="tab"><button type="button" id="btn_maintainpeople" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">填写</button></a>'
+            '<button type="button" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">分配</button>',
+            '<a href="#" data-toggle="tab"><button type="button" disabled="disabled" id="btn_maintainpeople" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">完成</button></a>',
+            '<button type="button" id="btn_maintainTop" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">优先</button>',
+            '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">保养</button>'
         ].join('');
     }
 }
@@ -431,7 +408,7 @@ window.maintainListoperateEvents = {
             "success": function(res) {
                 console.log(res);
                 if (res.ret) {
-                    loadMaintainList(1, 10, "", "");
+                    loadMaintainList();
                 }
             },
             "error": function(res) {
@@ -441,109 +418,51 @@ window.maintainListoperateEvents = {
     },
     // 修改维修状态操作
     'click #btn_ChangeStatus': function(e, value, row, index) {
-        var mainArr = [];
-        mainArr.push(row.id);
-        var mainString = mainArr.join(",");
-        window.location.hash = "pagenum=" + getHashParameter("pagenum") + "&id=" + row.id + "&vSn=" + row.vSn; //车辆数据库编号
-        $.ajax({
-            "url": "http://192.168.0.222:8080/car-management/carMaintain/startMaintain.action",
-            "type": "post",
-            "data": {
-                "ids": mainString
-            },
-            "dataType": "jsonp", //数据类型为jsonp  
-            "jsonp": "jsonpCallback", //服务端用于接收callback调用的function名的参数
-            "success": function(res) {
-                console.log(res);
-                if (res.ret) {
-                    toastr.success('维修状态修改成功', '维修', messageOpts);
-                    loadMaintainList(1, 10, "", "");
-                } else {
-                    toastr.warning('维修状态修改失败', '维修', messageOpts);
-                }
-            },
-            "error": function(res) {
-                console.log(res);
-            }
+        console.log(row);
+        $("#add_model").modal();
+        $("#add_model #myModalLabel").html("分配任务");
+        creatForm(dividedInfo, "#add_model .modal-body form", "editDriver_btn");
+        showData("#add_model .modal-body form", row); // 编辑时数据回显
+        $(".editDriver_btn").click(function() {
+            var subcar_data = $("#addcar_model .modal-body form").serialize();
+            var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
+            subcar_data += opt;
+            var subcar_ubtrl = allurl + "/data-management/vehicle/add.json";
+            console.log(subcar_data);
+            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+            subData(subcar_url, subcar_data, "post", "editDriver_btn");
         })
     }
 };
 $("#auditLit_search_btn").click(function() {
     $('#tablescreen').bootstrapTable('destroy');
-    loadMaintainList(1, 10, $(".mainList_vSn").val(), $("#mainList_status").val());
+    loadMaintainList();
 });
-// 分页---------------------------------------------------------------------
-// 分页——————————————————————————————————————————————————————————————————————————————————————————————
-function maintainPagings(maxPage, pageul, pageli) {
-    var lis = "";
-    for (var p = 1; p < 8; p++) {
-        lis += "<li>" + p + "</li>";
-    }
-    $(pageul).html(lis);
-    //根据不同情况有不同的7小格的序号编排（看笔记）：
-    if (mainpageNum >= 1 && mainpageNum <= 3) {
-        $(pageli).eq(0).html("1");
-        $(pageli).eq(1).html("2");
-        $(pageli).eq(2).html("3");
-        $(pageli).eq(3).html("4");
-        $(pageli).eq(4).html("…");
-        $(pageli).eq(5).html(maxPage - 1);
-        $(pageli).eq(6).html(maxPage);
-        //cur
-        $(pageli).eq(mainpageNum - 1).addClass("cur").siblings().removeClass("cur");
-    } else if (mainpageNum <= maxPage && mainpageNum >= maxPage - 2) {
-        $(pageli).eq(0).html("1");
-        $(pageli).eq(1).html("2");
-        $(pageli).eq(2).html("…");
-        $(pageli).eq(3).html(maxPage - 3);
-        $(pageli).eq(4).html(maxPage - 2);
-        $(pageli).eq(5).html(maxPage - 1);
-        $(pageli).eq(6).html(maxPage);
-        //cur
-        $(pageli).eq(mainpageNum - maxPage - 1).addClass("cur").siblings().removeClass("cur");
-    } else {
-        $(pageli).eq(0).html("1");
-        $(pageli).eq(1).html("…");
-        $(pageli).eq(2).html(mainpageNum - 1);
-        $(pageli).eq(3).html(mainpageNum);
-        $(pageli).eq(4).html(mainpageNum + 1);
-        $(pageli).eq(5).html("…");
-        $(pageli).eq(6).html(maxPage);
-        //cur
-        $(pageli).eq(3).addClass("cur").siblings().removeClass("cur");
-    }
-    $(pageli).click(function(event) {
-        if ($(this).html() == "…") {
-            return;
-        }
-        //改变信号量
-        mainpageNum = parseInt($(this).html());
-        //调用ajax，切换分页按钮样式
-        // console.log(mainpageNum);
-        loadMaintainList(mainpageNum, 10, "", "");
-        maintainPagings(maxPage, ".pageMaintain ul", ".pageMaintain li");
-        //更新URL的hash
-        window.location.hash = "pagenum=" + mainpageNum;
-    });
-}
 
-
-function maintainPaging(maxPage, i, pageul, pageli) {
-    $(pageul).html("");
-    var lis = "";
-    for (var p = 1; p < maxPage + 1; p++) {
-        lis += "<li>" + p + "</li>";
-    }
-    $(pageul).html(lis);
-    $(pageli).eq(i).addClass("cur").siblings().removeClass("cur");
-    // 点击时间
-    $(pageli).click(function(event) {
-        //改变信号量
-        mainpageNum = parseInt($(this).html());
-        //调用ajax，切换分页按钮
-        loadMaintainList(mainpageNum, 10, "", "");
-        maintainPaging(maxPage, mainpageNum, ".pageMaintain ul", ".pageMaintain li");
-        //更新URL的hash
-        window.location.hash = "pagenum=" + mainpageNum;
-    });
-}
+var maintainApply = [
+    { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
+    { "name": "停放地点", "type": "text", "inputName": "send_park", "must": "*" },
+    { "name": "维修项目", "type": "text", "inputName": "reason", "must": "" },
+    { "name": "备注", "type": "text", "inputName": "send_remark", "must": "*" },
+];
+var dividedInfo = [
+    { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
+    { "name": "预计完成日期", "type": "text", "inputName": "send_park", "must": "*" },
+    { "name": "操作人", "type": "text", "inputName": "reason", "must": "" },
+    { "name": "工作内容", "type": "text", "inputName": "reason", "must": "" },
+    { "name": "备注", "type": "text", "inputName": "send_remark", "must": "*" },
+];
+// 新增维修申请
+$("#add_maintain_apply").click(function() {
+    $("#add_model").modal();
+    $("#add_model #myModalLabel").html("新增维修申请");
+    creatForm(maintainApply, "#add_model .modal-body form", "subMainApply_btn");
+    $(".subMainApply_btn").click(function() {
+        var subcar_data = $("#addcar_model .modal-body form").serialize();
+        // var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
+        // subcar_data += opt;
+        var subcar_url = allurl + "/data-management/vehicle/add.json";
+        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        subData(subcar_url, subcar_data, "post", "subDriver_btn");
+    })
+})

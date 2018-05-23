@@ -129,13 +129,15 @@ $.ajax({
             initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn");
             getcnid(2, "#wiringCheck .wcheck_itembox", "sub_wchek_btn");
             getcnid(3, "#bomCheck .bomcheck_itembox", "sub_bchek_btn");
+            loadInsuranceList(); //保险列表
             changeTabs();
+            loadsumCarList();
+            loadMaintainList(); //维修
             // 监听hash变化
             $(window).on("hashchange", function() { //兼容ie8+和手机端
                 console.log(window.location.hash);
                 if (window.location.hash != "") {
                     changeTabs();
-                    // $()
                 }
             });
         });
@@ -145,13 +147,9 @@ $.ajax({
         });
         // 车辆录入
         $(".carList").click(function() {});
-        $(".carCheck").click(function() {
-            // creatForm(carCheckInfo, "#carCheck form", "carCheck_btn");
-        });
+        $(".carCheck").click(function() {});
         $(".maintainList").click(function() {
-            $('#maintainList').bootstrapTable('destroy');
-            window.location.hash = "pagenum=1";
-            loadMaintainList(1, 10);
+            loadMaintainList();
         });
         $(".rights").click(function() {
             loadRightsList();

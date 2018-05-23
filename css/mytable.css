@@ -27,7 +27,7 @@ table {
 
 .btn {
     font-size: 12px;
-    padding: 3px 12px;
+    padding: 4px 12px;
 }
 
 .form_twolist .form-group {
@@ -236,9 +236,10 @@ a.a_select span {
     line-height: 30px;
 }
 
-.panel-body .pull-right {
+
+/*.panel-body .pull-right {
     margin-bottom: 15px;
-}
+}*/
 
 .radio_group {
     vertical-align: middle;
@@ -348,7 +349,8 @@ input.bom_num {
     background-color: #E5F1FB;
 }
 
-.pull-right .form-control {
+#toolbar_maintainTable .form-control,
+.search .form-control {
     height: 26px;
 }
 
@@ -463,11 +465,14 @@ form#sumcar_search_form {
 }
 
 .form-control {
-    width: 80%;
+    width: 90%;
+}
+
+span {
+    display: inline-block;
 }
 
 div#add_model .form-group:last-child button:nth-child(1) {
-    /*border: 1px solid red;*/
     margin-right: 30px;
 }
 
@@ -480,11 +485,11 @@ input.form-control {
 }
 
 #maintainList table td:nth-child(9) {
-    background: #E5F1FB;
+    /*background: #E5F1FB;*/
 }
 
 #maintainList table thead tr:nth-child(2) th:nth-child(3) {
-    background: #E5F1FB;
+    /*background: #E5F1FB;*/
 }
 
 .role_check_box label,
@@ -654,7 +659,7 @@ input.form-control {
 }
 
 .fixed-table-toolbar {
-    margin-top: -20px;
+    margin-top: -25px;
     padding-bottom: 20px;
 }
 

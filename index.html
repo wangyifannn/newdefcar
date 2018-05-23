@@ -277,6 +277,44 @@
                             </table>
                         </div>
                     </div>
+                    <!--保险-->
+                    <div class="tab-pane" id="insuranceTypeIn">
+                        <div class="table-responsive">
+                            <table id="InsTable">
+                                <div id="InsTable_toolbar" class="btn-group tablelistbox">
+                                    <a href="#" data-toggle="tab">
+                                        <button id="Insurance_apply" type="button" class="btn btn-default" style="margin-right:10px;">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>保险申请
+                                         </button>
+                                    </a>
+                                    <a href="#" class="">
+                                        <button id="del_tempcarlist_all" type="button" class="btn btn-default" style="margin-right:10px;">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>修改
+                                         </button>
+                                    </a>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                    <!--车辆总表-->
+                    <div class="tab-pane" id="sumCarList">
+                        <div class="table-responsive">
+                            <table id="sumcarTable">
+                                <div id="sumcarTable_toolbar" class="btn-group tablelistbox">
+                                    <a href="#" data-toggle="tab">
+                                        <button id="Insurance_apply" type="button" class="btn btn-default" style="margin-right:10px;">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>保险申请
+                                         </button>
+                                    </a>
+                                    <a href="#" class="">
+                                        <button id="del_tempcarlist_all" type="button" class="btn btn-default" style="margin-right:10px;">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>修改
+                                         </button>
+                                    </a>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
                     <!--驾驶员列表-->
                     <div class="tab-pane" id="driverList">
                         <div class="table-responsive form_width_style">
@@ -321,98 +359,36 @@
                             </div>
                         </div>
                     </div>
-                    <!--维修申请-->
-                    <div class="tab-pane tableTypein" id="maintainTypeIn">
-                        <div class="rightbox">
-                            <img class="table_footer" src="./img/index/table_footer.png" alt="">
-                            <form class="form-horizontal maintain_form send_form">
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">车辆编号</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control col-sm-7 vSn" name="vSn" placeholder="请输入车辆编号">
-                                        <span class="col-sm-5 tip_style m_vSn_tips">*</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">停放地点</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="send_park" placeholder="请输入车辆停放地点">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">维修项目</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="reason" placeholder="请填写维修项目">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">要求完成日期</label>
-                                    <div class="col-sm-8">
-                                        <input placeholder="请选择日期,选填" type="" name="appointedtime" class="form-control layer-date mydata_input much-date" id="discuss_time">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">备注</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="send_remark" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-8">
-                                        <a href="#" data-toggle="tab">
-                                            <button type="button" class="btn btn-default btn-primary" id="send_btn">提交</button>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="form-group from-group-tips">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <label for="" class="send_tips"></label>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+
                     <!--维修列表-->
                     <div class="tab-pane" id="maintainList">
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="tablescreen" data-toggle="table" data-show-export="true" data-toolbar="#toolbar_tablescreen" data-checkbox="true" data-show-columns="true" data-search="true" data-data-type="json" data-show-refresh="true" data-show-toggle="true" data-show-columns="true"
-                                    data-sort-name="id" data-page-list="[10, 15, 30, All]" data-page-size="12" data-side-pagination="client" data-pagination="true" data-show-pagination-switch="true">
-                                    <div id="toolbar_tablescreen" class="btn-group">
-                                        <!--maintainTypeIn-->
-                                        <a href="#maintainTypeIn" data-toggle="tab">
-                                            <button id="addrow_btn" type="button" class="btn btn-default">
+                                <table id="maintainTable">
+                                    <div id="toolbar_maintainTable" class="btn-group">
+                                        <a href="#">
+                                            <button id="add_maintain_apply" type="button" class="btn btn-default">
                                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增维修申请
                                             </button>
                                         </a>
                                         <span>
                                             <input type="text" class="form-control mainList_vSn" placeholder="请输入车辆编号">
-                                            <select name="" id="mainList_status" class="form-control input-sm">
+                                        </span>
+                                        <span>
+                                        <select name="" id="mainList_status" class="form-control input-sm">
                                                 <option value="">全部</option>
                                                 <option value="1">排队中</option>
                                                 <option value="2">维修中</option>
-                                                <option value="3">已维修</option>
                                                 <option value="4">已完成</option>
                                             </select>
-                                            <button class="btn btn-primary" id="auditLit_search_btn">搜索</button>
+                                        </span>
+                                        <span>
+                                        <button class="btn btn-primary" id="auditLit_search_btn">搜索</button>
                                         </span>
                                     </div>
                                 </table>
-                                <!--后台分页-->
-                                <div class="pageMaintain">
-                                    <ul>
-                                        <li class="cur"></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
-                        <!--////////////////////////////////////////////////////////////////////////////////-->
                     </div>
                     <!--驾驶员日志-->
                     <div class="tab-pane" id="approveLog">
@@ -1039,7 +1015,9 @@
 <script type="text/javascript" src="./js/cartypein.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/returnCar.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/detail1.js" charset="utf-8"></script>
-<!--<script type="text/javascript" src="./js/cartable.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="./js/insurance.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/sumcar.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/maintain.js" charset="utf-8"></script>
 
 <!--<script type="text/javascript" src="./js/car.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/maintain.js" charset="utf-8"></script>-->
