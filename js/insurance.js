@@ -92,7 +92,7 @@ function InsoperateFormatter(value, row, index) {
     ].join('');
 }
 // 临牌申请
-$("plate_apply").click(function() {
+$("#plate_apply").click(function() {
     $("#add_model").modal();
     $("#add_model #myModalLabel").html("临牌申请");
     creatForm(plateInfo, "#add_model .modal-body form", "plate_apply_btn");
