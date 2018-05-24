@@ -106,16 +106,28 @@ window.sumcaroperateEvents = {
     'click #sumcar_detail': function(e, value, row, index) { //，
     }
 };
-$("#Insurance_apply").click(function() {
+$("#yanche").click(function() {
     var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
     deletAll(Ins_Arr, "Ins_apply");
 });
-
+$("#sumcar_filter").click(function() {
+    var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
+    deletAll(Ins_Arr, "Ins_apply");
+});
 // 车辆总表查询
-var sumcar_filter = [
+var sumcar_row_filter = [
     { "name": "项目号", "type": "text", "inputName": "vSn", "must": "" },
     { "name": "车架号", "type": "text", "inputName": "safeCheck", "must": "" },
     { "name": "发动机号", "type": "text", "inputName": "safeVerify", "must": "" },
     { "name": "项目工程师", "type": "text", "inputName": "wCheck", "must": "" }
 ];
-creatSelect(sumcar_filter, "#sumCarList .sumcar_top .form-inline", "sumcar_filter_btn");
+creatSelect(sumcar_row_filter, "#sumCarList .sumcar_top .form-inline", "sumcar_filter_btn");
+var sumcar_filter = [
+    { "name": "厂牌型号", "type": "text", "inputName": "vSn", "must": "" },
+    { "name": "发动机号", "type": "text", "inputName": "safeCheck", "must": "" },
+    { "name": "车架号", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "保单号", "type": "text", "inputName": "wCheck", "must": "" },
+    { "name": "保险日期", "type": "text", "inputName": "wCheck", "must": "" },
+    { "name": "牌照日期", "type": "text", "inputName": "wCheck", "must": "" },
+    { "name": "接车日期", "type": "text", "inputName": "wCheck", "must": "" }
+];

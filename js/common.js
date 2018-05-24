@@ -712,7 +712,7 @@ $(function() {
     //1.楼梯什么时候显示，800px scroll--->scrollTop
     $(window).on('scroll', function() {
         var $scroll = $(this).scrollTop();
-        console.log($scroll);
+        // console.log($scroll);
         if ($scroll >= 800) {
             $('#loutinav').show();
         } else {
@@ -720,11 +720,11 @@ $(function() {
         }
         //4.拖动滚轮，对应的楼梯样式进行匹配
         $('.louti').each(function() {
-            console.log($(this).index());
+            // console.log($(this).index());
             var $loutitop = $('.louti').eq($(this).index()).offset().top + 400;
-            console.log("loutitop=" + $loutitop, "scroll=" + $scroll);
+            // console.log("loutitop=" + $loutitop, "scroll=" + $scroll);
             if ($loutitop > $scroll) { //楼层的top大于滚动条的距离
-                console.log("index=" + $(this).index());
+                // console.log("index=" + $(this).index());
                 $('#loutinav li').removeClass('active');
                 $('#loutinav li').eq($(this).index()).addClass('active');
                 return false; //中断循环

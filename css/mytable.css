@@ -798,7 +798,7 @@ button#bom_apply_btn {
 }
 
 #carTypeIn .cartypein_apply button {
-    display: none;
+    /*display: none;*/
 }
 
 .rd_apply div.checkitem {
