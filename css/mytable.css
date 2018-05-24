@@ -897,6 +897,13 @@ form.pot_pressure.pot_style {
     text-align: center;
 }
 
+.data_tab_box {
+    width: 100%;
+    padding: 10px 20px 17px;
+    margin: 10px auto;
+    box-shadow: 0 0 7px #999;
+}
+
 
 /*************.form_style4表示部件检查表单的相关样式*************************************/
 
