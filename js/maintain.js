@@ -158,19 +158,6 @@ function loadMaintainList() {
                 width: "6%"
             }, {
                 field: 'carMaintainApply',
-                title: '申请人',
-                valign: "middle",
-                align: "center",
-                width: "6%",
-                formatter: function(value, row, index) {
-                    if (value == null) {
-                        return "";
-                    } else {
-                        return value.sendPeople
-                    }
-                }
-            }, {
-                field: 'carMaintainApply',
                 title: '维修项目',
                 valign: "middle",
                 align: "center",
@@ -185,7 +172,20 @@ function loadMaintainList() {
                 }
             }, {
                 field: 'carMaintainApply',
-                title: '送修日期',
+                title: '申请人',
+                valign: "middle",
+                align: "center",
+                width: "6%",
+                formatter: function(value, row, index) {
+                    if (value == null) {
+                        return "";
+                    } else {
+                        return value.sendPeople
+                    }
+                }
+            }, {
+                field: 'carMaintainApply',
+                title: '申请日期',
                 valign: "middle",
                 align: "center",
                 width: "7%",
@@ -252,7 +252,7 @@ function loadMaintainList() {
 
             }, {
                 field: 'maintenancecoordination',
-                title: '完成日期',
+                title: '预计完成时间',
                 valign: "middle",
                 align: "center",
                 width: "5%",
