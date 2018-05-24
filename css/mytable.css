@@ -472,24 +472,12 @@ span {
     display: inline-block;
 }
 
-div#add_model .form-group:last-child button:nth-child(1) {
-    margin-right: 30px;
-}
-
 #upkeep_model .form-control {
     width: 109%;
 }
 
 input.form-control {
     background: white;
-}
-
-#maintainList table td:nth-child(9) {
-    /*background: #E5F1FB;*/
-}
-
-#maintainList table thead tr:nth-child(2) th:nth-child(3) {
-    /*background: #E5F1FB;*/
 }
 
 .role_check_box label,
@@ -897,11 +885,6 @@ button#bom_apply_btn {
 
 #tool_submit_btn {
     margin: 5% 40% 2%;
-}
-
-button.btn.btn-default.btn-primary.sub_audit_btn {
-    margin-right: 30px;
-    margin-left: 100px;
 }
 
 form.pot_pressure.pot_style {
