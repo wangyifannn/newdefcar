@@ -96,6 +96,8 @@
         "iccard": "小轿车",
         "remark": "女",
         "vSn": "2019-222",
+        "isallow": "2",
+        "status": "2",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -107,6 +109,8 @@
         "iccard": "小轿车",
         "remark": "女",
         "vSn": "2019-222",
+        "isallow": "2",
+        "status": "2",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -117,6 +121,8 @@
         "EmployeeCard": "33",
         "iccard": "小轿车",
         "remark": "女",
+        "isallow": "2",
+        "status": "2",
         "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
@@ -128,6 +134,8 @@
         "EmployeeCard": "33",
         "iccard": "小轿车",
         "remark": "女",
+        "isallow": "2",
+        "status": "2",
         "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
