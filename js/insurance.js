@@ -129,8 +129,7 @@ window.InsoperateEvents = {
 var plateInfo = [
     { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
     { "name": "临牌起始日", "type": "text", "inputName": "safeCheck", "must": "*" },
-    { "name": "审核备注", "type": "text", "inputName": "remark", "must": "" },
-    { "name": "临牌终止日", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "临牌终止日", "type": "text", "inputName": "safeVerify", "must": "" }
 ];
 // 保险录入
 var InsuranceInfo = [
