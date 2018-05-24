@@ -87,8 +87,8 @@ function loadInsuranceList() {
 
 function InsoperateFormatter(value, row, index) {
     return [
-        '<a href="#carTypeIn" data-toggle="tab"><button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a>',
-        '<a href="#sCheck" data-toggle="tab"><button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button></a>'
+        '<button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button>',
+        '<button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button>'
     ].join('');
 }
 // 临牌申请
