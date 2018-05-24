@@ -163,7 +163,6 @@ function loadMaintainList() {
                 align: "center",
                 width: "8%",
                 formatter: function(value, row, index) {
-                    // return value.time
                     if (value == null) {
                         return "";
                     } else {

@@ -88,29 +88,42 @@ function loadInsuranceList() {
 function InsoperateFormatter(value, row, index) {
     return [
         '<a href="#carTypeIn" data-toggle="tab"><button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a>',
-        '<a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button></a>',
-        // '<button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button>',
+        '<a href="#sCheck" data-toggle="tab"><button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button></a>'
     ].join('');
 }
 // 临牌申请
 $("plate_apply").click(function() {
-
+    $("#add_model").modal();
+    $("#add_model #myModalLabel").html("临牌申请");
+    creatForm(plateInfo, "#add_model .modal-body form", "plate_apply_btn");
+    $("#add_model .modal-body .vSn").val(row.vSn);
+    $(".plate_apply_btn").click(function() { //完成维修
+        var sub_data = $("#add_model .modal-body form").serialize();
+        var sub_url = allurl + "/data-management/vehicle/add.json";
+        console.log(sub_data);
+        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        subData(sub_url, sub_data, "post", "sub_plate");
+    });
 })
 window.InsoperateEvents = {
     'click #Insurance_typein': function(e, value, row, index) { //录入保险
-        initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox");
+        $("#add_model").modal();
+        $("#add_model #myModalLabel").html("保险录入");
+        creatForm(InsuranceInfo, "#add_model .modal-body form", "Insurance_typein_btn");
+        $("#add_model .modal-body .vSn").val(row.vSn);
+        $(".Insurance_typein_btn").click(function() { //完成维修
+            var sub_data = $("#add_model .modal-body form").serialize();
+            var sub_url = allurl + "/data-management/vehicle/add.json";
+            console.log(sub_data);
+            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+            subData(sub_url, sub_data, "post", "sub_Insurance");
+        });
     },
-    'click #warining_btn': function(e, value, row, index) { //线束
-        getcnid(2, "#wiringCheck .wcheck_itembox");
-    },
-    'click #bomCheck': function(e, value, row, index) { //bom
-        getcnid(3, "#bomCheck .bomcheck_itembox");
+    'click #Renewal_btn': function(e, value, row, index) { //续保
+        // var sub_url = allurl + "/data-management/vehicle/add.json";
+        // subData(sub_url, sub_data, "post", "sub_Renewal");
     }
 };
-// $("#Insurance_apply").click(function() {
-//     var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
-//     deletAll(Ins_Arr, "Ins_apply");
-// });
 
 // 临牌录入
 var plateInfo = [
