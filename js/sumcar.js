@@ -110,62 +110,11 @@ $("#Insurance_apply").click(function() {
     deletAll(Ins_Arr, "Ins_apply");
 });
 
-// 审核模态框
-var auditInfo = [
-    { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
-    { "name": "安全检查人", "type": "text", "inputName": "safeCheck", "must": "*" },
-    { "name": "安全核对人", "type": "text", "inputName": "safeVerify", "must": "" },
-    { "name": "线束检查人", "type": "text", "inputName": "wCheck", "must": "*" },
-    { "name": "线束核对人", "type": "text", "inputName": "wVerify", "must": "" },
-    { "name": "bom检查人", "type": "text", "inputName": "bCheck", "must": "*" },
-    { "name": "bom核对人", "type": "text", "inputName": "bVerify", "must": "" },
-    {
-        "name": "审核是否通过",
-        "type": "radio",
-        "inputName": "ifaudit",
-        "must": "*",
-        "option": [{ "name": "是" }, { "name": "否" }]
-    },
-    { "name": "审核备注", "type": "text", "inputName": "remark", "must": "" },
+// 车辆总表查询
+var sumcar_filter = [
+    { "name": "项目号", "type": "text", "inputName": "vSn", "must": "" },
+    { "name": "车架号", "type": "text", "inputName": "safeCheck", "must": "" },
+    { "name": "发动机号", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "项目工程师", "type": "text", "inputName": "wCheck", "must": "" }
 ];
-
-/* 
-楼层导航
-*/
-$(function() {
-    //1.楼梯什么时候显示，800px scroll--->scrollTop
-    $(window).on('scroll', function() {
-        var $scroll = $(this).scrollTop();
-        if ($scroll >= 800) {
-            $('#loutinav').show();
-        } else {
-            $('#loutinav').hide();
-        }
-        //4.拖动滚轮，对应的楼梯样式进行匹配
-        $('.louti').each(function() {
-            var $loutitop = $('.louti').eq($(this).index()).offset().top + 400;
-            //console.log($loutitop);
-            if ($loutitop > $scroll) { //楼层的top大于滚动条的距离
-                $('#loutinav li').removeClass('active');
-                $('#loutinav li').eq($(this).index()).addClass('active');
-                return false; //中断循环
-            }
-        });
-    });
-    //2.获取每个楼梯的offset().top,点击楼梯让对应的内容模块移动到对应的位置  offset().left
-    var $loutili = $('#loutinav li').not('.last');
-    $loutili.on('click', function() {
-        $(this).addClass('active').siblings('li').removeClass('active');
-        var $loutitop = $('.louti').eq($(this).index()).offset().top;
-        //获取每个楼梯的offsetTop值
-        $('html,body').animate({ //$('html,body')兼容问题body属于chrome
-            scrollTop: $loutitop
-        })
-    });
-    //3.回到顶部
-    $('.last').on('click', function() {
-        $('html,body').animate({ //$('html,body')兼容问题body属于chrome
-            scrollTop: 0
-        })
-    });
-})
+creatSelect(sumcar_filter, "#sumCarList .sumcar_top .form-inline", "sumcar_filter_btn");
