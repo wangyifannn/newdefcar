@@ -107,12 +107,20 @@ window.sumcaroperateEvents = {
     }
 };
 $("#yanche").click(function() {
-    var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
-    deletAll(Ins_Arr, "Ins_apply");
+    // var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
+    // deletAll(Ins_Arr, "Ins_apply");
 });
 $("#sumcar_filter").click(function() {
-    var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
-    deletAll(Ins_Arr, "Ins_apply");
+    $("#add_model").modal();
+    $("#add_model #myModalLabel").html("车辆筛选");
+    creatForm(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
+    $(".sumcar_filter_btn").click(function() { //完成维修
+        var sub_data = $("#add_model .modal-body form").serialize();
+        var sub_url = allurl + "/data-management/vehicle/add.json";
+        console.log(sub_data);
+        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        subData(sub_url, sub_data, "post", "sub_sumcar_filter");
+    });
 });
 // 车辆总表查询
 var sumcar_row_filter = [
