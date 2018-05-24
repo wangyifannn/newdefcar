@@ -87,14 +87,17 @@ function loadInsuranceList() {
 
 function InsoperateFormatter(value, row, index) {
     return [
-        '<a href="#carTypeIn" data-toggle="tab"><button type="button" id="carTypeIn_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a>',
+        '<a href="#carTypeIn" data-toggle="tab"><button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a>',
         '<a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button></a>',
         // '<button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button>',
     ].join('');
 }
+// 临牌申请
+$("plate_apply").click(function() {
 
+})
 window.InsoperateEvents = {
-    'click #safe_btn': function(e, value, row, index) { //安全
+    'click #Insurance_typein': function(e, value, row, index) { //录入保险
         initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox");
     },
     'click #warining_btn': function(e, value, row, index) { //线束
@@ -104,67 +107,24 @@ window.InsoperateEvents = {
         getcnid(3, "#bomCheck .bomcheck_itembox");
     }
 };
-$("#Insurance_apply").click(function() {
-    var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
-    deletAll(Ins_Arr, "Ins_apply");
-});
+// $("#Insurance_apply").click(function() {
+//     var Ins_Arr = $("#carListtable").bootstrapTable('getSelections');
+//     deletAll(Ins_Arr, "Ins_apply");
+// });
 
-// 审核模态框
-var auditInfo = [
+// 临牌录入
+var plateInfo = [
     { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
-    { "name": "安全检查人", "type": "text", "inputName": "safeCheck", "must": "*" },
-    { "name": "安全核对人", "type": "text", "inputName": "safeVerify", "must": "" },
-    { "name": "线束检查人", "type": "text", "inputName": "wCheck", "must": "*" },
-    { "name": "线束核对人", "type": "text", "inputName": "wVerify", "must": "" },
-    { "name": "bom检查人", "type": "text", "inputName": "bCheck", "must": "*" },
-    { "name": "bom核对人", "type": "text", "inputName": "bVerify", "must": "" },
-    {
-        "name": "审核是否通过",
-        "type": "radio",
-        "inputName": "ifaudit",
-        "must": "*",
-        "option": [{ "name": "是" }, { "name": "否" }]
-    },
+    { "name": "临牌起始日", "type": "text", "inputName": "safeCheck", "must": "*" },
     { "name": "审核备注", "type": "text", "inputName": "remark", "must": "" },
+    { "name": "临牌终止日", "type": "text", "inputName": "safeVerify", "must": "" },
 ];
-
-/* 
-楼层导航
-*/
-$(function() {
-    //1.楼梯什么时候显示，800px scroll--->scrollTop
-    $(window).on('scroll', function() {
-        var $scroll = $(this).scrollTop();
-        if ($scroll >= 800) {
-            $('#loutinav').show();
-        } else {
-            $('#loutinav').hide();
-        }
-        //4.拖动滚轮，对应的楼梯样式进行匹配
-        $('.louti').each(function() {
-            var $loutitop = $('.louti').eq($(this).index()).offset().top + 400;
-            //console.log($loutitop);
-            if ($loutitop > $scroll) { //楼层的top大于滚动条的距离
-                $('#loutinav li').removeClass('active');
-                $('#loutinav li').eq($(this).index()).addClass('active');
-                return false; //中断循环
-            }
-        });
-    });
-    //2.获取每个楼梯的offset().top,点击楼梯让对应的内容模块移动到对应的位置  offset().left
-    var $loutili = $('#loutinav li').not('.last');
-    $loutili.on('click', function() {
-        $(this).addClass('active').siblings('li').removeClass('active');
-        var $loutitop = $('.louti').eq($(this).index()).offset().top;
-        //获取每个楼梯的offsetTop值
-        $('html,body').animate({ //$('html,body')兼容问题body属于chrome
-            scrollTop: $loutitop
-        })
-    });
-    //3.回到顶部
-    $('.last').on('click', function() {
-        $('html,body').animate({ //$('html,body')兼容问题body属于chrome
-            scrollTop: 0
-        })
-    });
-})
+// 保险录入
+var InsuranceInfo = [
+    { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
+    { "name": "保单号", "type": "text", "inputName": "remark", "must": "" },
+    { "name": "保险起始日", "type": "text", "inputName": "safeCheck", "must": "*" },
+    { "name": "保险终止日", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "厂牌型号（保）", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "保险备注", "type": "text", "inputName": "safeVerify", "must": "" },
+];

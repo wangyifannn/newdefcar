@@ -121,7 +121,7 @@ function loadMaintainList() {
                 rowspan: 1
             }, {
                 field: 'status',
-                title: "当前状态",
+                title: "维修状态",
                 valign: "middle",
                 align: "center",
                 colspan: 1,
