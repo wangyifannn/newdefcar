@@ -576,7 +576,7 @@ input.form-control {
     display: inline-block;
 }
 
-#carList .table-responsive {
+.table-responsive {
     width: 95%;
     margin: 0 auto;
 }
