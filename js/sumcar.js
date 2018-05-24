@@ -66,7 +66,7 @@ function loadsumCarList() {
                 "title": "测试车辆-车辆总表",
                 "halign": "center",
                 "align": "center",
-                "colspan": 21
+                "colspan": 22
             }],
             [{ field: "checkbox", title: "全选", checkbox: true, align: 'center' },
                 { field: 'index', title: "序号", valign: "middle", align: "center", width: "5%", formatter: function(value, row, index) { return index + 1; } },
@@ -76,6 +76,7 @@ function loadsumCarList() {
                 { field: "name", title: "客户", align: 'center' },
                 { field: "name", title: "项目工程师", align: 'center' },
                 { field: "name", title: "车辆状态", align: 'center' },
+                { field: "name", title: "车辆类型", align: 'center' },
                 { field: "name", title: "发动机号", align: 'center' },
                 { field: "name", title: "车架号", align: 'center' },
                 { field: "name", title: "吨位", align: 'center' },
