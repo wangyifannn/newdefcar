@@ -901,7 +901,13 @@ form.pot_pressure.pot_style {
     width: 100%;
     padding: 10px 20px 17px;
     margin: 10px auto;
+    border: 1px solid #ddd;
     box-shadow: 0 0 7px #999;
+}
+
+form.form-inline input {
+    /*border: 1px solid red;*/
+    width: 80% !important;
 }
 
 
