@@ -1,7 +1,7 @@
 function loadCarList() {
     $("#carListtable").bootstrapTable('destroy').bootstrapTable({
-        // url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
-        url: 'http://localhost/car/defcar/json/driverList.json',
+        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        // url: 'http://localhost/car/defcar/json/driverList.json',
         // dataType: "json", //数据类型
         // method: 'GET', //请求方式（*）
         dataType: 'json',
@@ -167,8 +167,8 @@ window.caroperateEvents = {
         creatForm(auditInfo, "#add_model .modal-body form", "sub_audit_btn");
         // showData("#add_model .modal-body form", row); // 编辑时数据回显
         $(".sub_audit_btn").click(function() {
-            var subcar_data = $("#addcar_model .modal-body form").serialize();
-            var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
+            var subcar_data = $("#add_model .modal-body form").serialize();
+            var opt = "&carType=" + $("#add_model option:selected").attr("name");
             subcar_data += opt;
             var subcar_ubtrl = allurl + "/data-management/vehicle/add.json";
             console.log(subcar_data);

@@ -43,59 +43,17 @@ $("#maintainTypeIn .vSn").bind('input porpertychange', function() {
     }
 });
 
-function addmaintain(url, da, that, box) {
-    console.log(da);
-    $.ajax({
-        type: "get",
-        url: "http://192.168.0.222:8080/car-management" + url,
-        "dataType": "jsonp", //数据类型为jsonp  
-        "jsonp": "jsonpCallback", //服务端用于接收callback调用的function名的参数  
-        data: da,
-        success: function(res) {
-            console.log(res);
-            if (res.ret == true) {
-                $(box).html(res.msg);
-                $(that).parent().attr("href", "#maintainList");
-                $('a[href="#maintainList"]').tab('show');
-                $(".maintainform").hide();
-                loadMaintainList(1, 10, "", "");
-                $('#coord_model').modal('hide');
-                toastr.success('维修协调员填写信息提交成功', '维修协调员填写', messageOpts);
-            } else {
-                $(box).html(res.msg);
-                $(".maintainform").show();
-                toastr.warning('维修协调员填写信息提交失败', '维修协调员填写', messageOpts);
-                return;
-            }
-        }
-    });
-}
-
-$("#send_btn").click(function() {
-    var url = "/carMaintain/PutInCarMaintainApply.action";
-    // var maintain_form_data = $(".send_form").serializeObject();
-
-    // maintain_form_data.send_time = changeDateFormat(new Date().getTime());
-    // console.log(maintain_form_data);
-    var that = this;
-    addmaintain(url, maintain_form_data, that, ".send_tips");
-});
-// 维修协调员填写
-$("#m_submit_btn").click(function() {
-    var url = "/carMaintain/coordination.action";
-    var maintain_form_data = $(".finish_form").serializeObject();
-    maintain_form_data.infoid = getHashParameter("id");
-    console.log(maintain_form_data);
-    var that = this;
-    addmaintain(url, maintain_form_data, that, "");
-});
-
+// $("#send_btn").click(function() {
+//     var url = "/carMaintain/PutInCarMaintainApply.action";
+//     var that = this;
+//     addmaintain(url, maintain_form_data, that, ".send_tips");
+// });
 // 初始化加载维修列表
 function loadMaintainList() {
     $('#maintainTable').bootstrapTable('destroy');
     $("#maintainTable").bootstrapTable({
-        // url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
-        url: 'http://localhost/car/defcar/json/driverList.json',
+        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        // url: 'http://localhost/car/defcar/json/driverList.json',
         // dataType: "json", //数据类型
         // method: 'GET', //请求方式（*）
         dataType: 'json',
@@ -179,7 +137,7 @@ function loadMaintainList() {
                     } else if (value == "2") {
                         var a = '<span style="color:green">维修中</span>';
                     } else if (value == "3") {
-                        var a = '<span style="color:blue">已维修</span>';
+                        var a = '<span style="color:blue">已完成</span>';
                     } else {
                         var a = '<span>已完成</span>';
                     }
@@ -348,55 +306,41 @@ function loadMaintainList() {
 function maintainListFormatter(value, row, index) {
     if (row.status == 1) {
         return [
-            // '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">删除</button>',
-            '<button type="button" disabled="disabled" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">分配</button>',
-            '<a href="#" data-toggle="tab"><button type="button" disabled="disabled" id="btn_maintainpeople" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">完成</button></a>',
+            '<button type="button" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">分配</button>',
+            '<a href="#" data-toggle="tab"><button type="button" disabled="disabled" id="finish_btn" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">完成</button></a>',
             '<button type="button" id="btn_maintainTop" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">优先</button>',
-            '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">保养</button>'
+            '<button type="button" id="btn_upkeep" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">保养</button>'
         ].join('');
     } else {
         return [
             '<button type="button" id="btn_ChangeStatus" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">分配</button>',
-            '<a href="#" data-toggle="tab"><button type="button" disabled="disabled" id="btn_maintainpeople" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">完成</button></a>',
+            '<a href="#" data-toggle="tab"><button type="button" id="finish_btn" class="RoleOfB btn btn-default  btn-sm my_btn" style="margin-right:10px;margin-top:5px;">完成</button></a>',
             '<button type="button" id="btn_maintainTop" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">优先</button>',
-            '<button type="button" id="btn_maintaindel" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">保养</button>'
+            '<button type="button" id="btn_upkeep" class="RoleOfA btn btn-default  btn-sm my_btn" style="margin-right:10px;">保养</button>'
         ].join('');
     }
 }
 window.maintainListoperateEvents = {
-    'click #btn_maintaindel': function(e, value, row, index) {
-        $(this).parent().parent().remove();
-        // 删除维修列表操作
-        $.ajax({
-            "url": "http://192.168.0.222:8080/car-management/carMaintain/delete.action",
-            "type": "get",
-            "data": {
-                "infoid": row.id
-            },
-            "dataType": "jsonp", //数据类型为jsonp  
-            "jsonp": "jsonpCallback", //服务端用于接收callback调用的function名的参数
-            "success": function(res) {
-                console.log(res);
-                if (res.ret) {
-                    var indexs = parseInt(index / 10);
-                    loadMaintainList(indexs + 1, 10, "", "");
-                }
-            },
-            "error": function(res) {
-                console.log(res);
-            }
-        })
+    'click #btn_upkeep': function(e, value, row, index) {
+        // 保养
+        $('#upkeep_model').modal();
+        $('#upkeep_model .vSn').val(row.vSn);
     },
-    'click #btn_maintainpeople': function(e, value, row, index) {
-        myformReset();
-        $('#coord_model').modal();
-        $("#coord_model #vSn").val(row.vSn);
-        $("#coord_model #vSn").attr("readOnly", true);
-        window.location.hash = "pagenum=" + getHashParameter("pagenum") + "&id=" + row.id + "&vSn=" + row.vSn; //车辆数据库编号
+    'click #finish_btn': function(e, value, row, index) { //完成
+        $("#add_model").modal();
+        $("#add_model #myModalLabel").html("维修完成");
+        creatForm(finishMaintain, "#add_model .modal-body form", "finish_btn");
+        $("#add_model .modal-body .vSn").val(row.vSn);
+        $(".finish_btn").click(function() { //完成维修
+            var sub_data = $("#add_model .modal-body form").serialize();
+            var sub_url = allurl + "/data-management/vehicle/add.json";
+            console.log(sub_data);
+            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+            subData(sub_url, sub_data, "post", "finish_btn");
+        });
     },
     // 置顶操作
     'click #btn_maintainTop': function(e, value, row, index) {
-        window.location.hash = "pagenum=" + getHashParameter("pagenum") + "&id=" + row.id + "&vSn=" + row.vSn; //车辆数据库编号
         $.ajax({
             "url": "http://192.168.0.222:8080/car-management/carMaintain/top.action",
             "type": "get",
@@ -416,53 +360,65 @@ window.maintainListoperateEvents = {
             }
         })
     },
-    // 修改维修状态操作
+    // 修改维修状态操作，分配任务-维修中
     'click #btn_ChangeStatus': function(e, value, row, index) {
         console.log(row);
         $("#add_model").modal();
         $("#add_model #myModalLabel").html("分配任务");
-        creatForm(dividedInfo, "#add_model .modal-body form", "editDriver_btn");
+        creatForm(dividedInfo, "#add_model .modal-body form", "divided_btn");
+        $("#add_model .modal-body .vSn").val(row.vSn);
         showData("#add_model .modal-body form", row); // 编辑时数据回显
-        $(".editDriver_btn").click(function() {
-            var subcar_data = $("#addcar_model .modal-body form").serialize();
-            var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
-            subcar_data += opt;
-            var subcar_ubtrl = allurl + "/data-management/vehicle/add.json";
-            console.log(subcar_data);
+        $(".divided_btn").click(function() { //分配任务
+            var sub_data = $("#add_model .modal-body form").serialize();
+            var opt = "&jobOption=" + $("#add_model option:selected").attr("name");
+            sub_data += opt;
+            var sub_url = allurl + "/data-management/vehicle/add.json";
+            console.log(sub_data);
             $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-            subData(subcar_url, subcar_data, "post", "editDriver_btn");
+            subData(sub_url, sub_data, "post", "subdivided_btn");
         })
     }
 };
-$("#auditLit_search_btn").click(function() {
-    $('#tablescreen').bootstrapTable('destroy');
-    loadMaintainList();
-});
-
+// $("#auditLit_search_btn").click(function() {
+//     $('#tablescreen').bootstrapTable('destroy');
+//     loadMaintainList();
+// });
+// 申请
 var maintainApply = [
     { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
-    { "name": "停放地点", "type": "text", "inputName": "send_park", "must": "*" },
-    { "name": "维修项目", "type": "text", "inputName": "reason", "must": "" },
-    { "name": "备注", "type": "text", "inputName": "send_remark", "must": "*" },
+    { "name": "停放地点", "type": "text", "inputName": "sendpark", "must": "" },
+    { "name": "维修项目", "type": "text", "inputName": "reason", "must": "*" },
+    { "name": "备注", "type": "text", "inputName": "sendremark", "must": "" },
 ];
+// 完成
+var finishMaintain = [
+    { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
+    { "name": "停放地点", "type": "text", "inputName": "finishpark", "must": "" },
+    { "name": "备注", "type": "text", "inputName": "remark", "must": "" },
+];
+// 分配
 var dividedInfo = [
     { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
-    { "name": "预计完成日期", "type": "text", "inputName": "send_park", "must": "*" },
-    { "name": "操作人", "type": "text", "inputName": "reason", "must": "" },
-    { "name": "工作内容", "type": "text", "inputName": "reason", "must": "" },
-    { "name": "备注", "type": "text", "inputName": "send_remark", "must": "*" },
+    { "name": "预计完成日期", "type": "end-3date", "inputName": "estimated", "must": "*" },
+    {
+        "name": "操作人",
+        "type": "select",
+        "inputName": "jobOption",
+        "must": "*",
+        "option": [{ "name": "成存玉" }, { "name": "方伟新" }, { "name": "刘琼" }, { "name": "桂旭阳" }, { "name": "柴油" }]
+    },
+    { "name": "工作内容", "type": "text", "inputName": "job", "must": "" }
 ];
 // 新增维修申请
 $("#add_maintain_apply").click(function() {
-    $("#add_model").modal();
     $("#add_model #myModalLabel").html("新增维修申请");
-    creatForm(maintainApply, "#add_model .modal-body form", "subMainApply_btn");
+    $("#add_model").modal();
+    creatForm(maintainApply, "#add_model .modal-body .form-horizontal", "subMainApply_btn");
     $(".subMainApply_btn").click(function() {
-        var subcar_data = $("#addcar_model .modal-body form").serialize();
-        // var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
-        // subcar_data += opt;
+        var subcar_data = $("#add_model .modal-body form").serialize();
+        console.log(subcar_data);
         var subcar_url = allurl + "/data-management/vehicle/add.json";
         $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-        subData(subcar_url, subcar_data, "post", "subDriver_btn");
+        subData(subcar_url, subcar_data, "post", "subMaintainApply_btn");
     })
 })

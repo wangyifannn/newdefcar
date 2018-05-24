@@ -1,6 +1,8 @@
 var todayDate = new Date();
 var dateend = new Date(todayDate);
-dateend.setDate(todayDate.getDate() + 365);
+var date3end = new Date(todayDate);
+dateend.setDate(todayDate.getDate() + 365); //授权，默认一年
+date3end.setDate(todayDate.getDate() + 3); //预计完成日期，3天后
 lay('.much-date').each(function() {
     laydate.render({
         elem: this,
@@ -141,7 +143,6 @@ function Invert(btn, name) {
 }
 // 删除所有接口
 function deletAll(a, name) {
-    // var a = $("#carLogTable").bootstrapTable('getSelections');
     var delArr = [];
     var nameArr = [];
     var delString = "";
@@ -160,9 +161,9 @@ function deletAll(a, name) {
 
         if (name == "editcarInfo") { //编辑更新车辆信息
             // 编辑车辆信息
-            $("#addcar_model").modal();
-            $("#addcar_model #myModalLabel").html("编辑车辆信息");
-            creatForm(addcarInfo, "#addcar_model .modal-body .form-horizontal", "subcar_btn");
+            $("#add_model").modal();
+            $("#add_model #myModalLabel").html("编辑车辆信息");
+            creatForm(addcarInfo, "#add_model .modal-body .form-horizontal", "subcar_btn");
         } else if (name == "Ins_apply") { //保险申请
             $("#del_model").modal();
             $("#del_model .text-center").html('<i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;&nbsp;<span>确认申请吗？</span>');
@@ -255,7 +256,11 @@ function subData(url, data, type, name) {
                 console.log(name);
                 if (name == "subDriver_btn" || name == "editDriver_btn") {
                     console.log("驾驶员添加成功");
-                } else if (name == "subcar_btn" || name == "editcar_btn") {}
+                } else if (name == "subcar_btn" || name == "editcar_btn") {
+                    console.log("车辆录入")
+                } else if (name == "subMaintainApply_btn") {
+                    console.log("维修申请");
+                }
             } else {
                 toastr.warning(res.msg, "提示", messageOpts);
                 return;
@@ -300,11 +305,13 @@ function creatForm(filArr, name, btnname) {
     for (var i = 0; i < filArr.length; i++) {
         if (filArr[i].type == "data") {
             var ifdata = "much-date";
-            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + ifdata + '" value="" typeholder="' + filArr[i].type + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + ifdata + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
         } else if (filArr[i].type == "today-date") {
-            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 today-date" value="" typeholder="' + filArr[i].type + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 today-date"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
         } else if (filArr[i].type == "end-date") {
-            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 end-date" value="" typeholder="' + filArr[i].type + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 end-date"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+        } else if (filArr[i].type == "end-3date") {
+            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 end-3date"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
         } else if (filArr[i].type == "select") {
             var ifdata = "";
             var options = "";
@@ -323,9 +330,9 @@ function creatForm(filArr, name, btnname) {
                 optstyle += '<input type="radio" value="' + filArr[i].option[j].name + '" name="' + filArr[i].option[j].name + '" class="' + filArr[i].option[j].name + '">' + filArr[i].option[j].name;
             }
         } else if (filArr[i].type == "text") {
-            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + filArr[i].inputName + '" value="" typeholder="' + filArr[i].type + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + filArr[i].inputName + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
         } else if (filArr[i].type == "file") {
-            optstyle = '<input type="file" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + filArr[i].inputName + '" value="" typeholder="' + filArr[i].type + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+            optstyle = '<input type="file" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + filArr[i].inputName + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
         }
         ss += '<div class="form-group">' +
             '<label class="col-sm-4 control-label">' + filArr[i].name + '：</label>' +
@@ -357,11 +364,20 @@ function creatForm(filArr, name, btnname) {
             theme: '#041473'
         });
     });
+    lay('.end-3date').each(function() {
+        laydate.render({
+            elem: this,
+            trigger: 'click',
+            format: 'yyyy-MM-dd',
+            value: date3end,
+            theme: '#041473'
+        });
+    });
 };
 // form表单数据回显函数
 function showData(boxname, obj) {
     for (var k in obj) {
-        console.log($(boxname + ' input[name="' + k + '"]'));
+        // console.log($(boxname + ' input[name="' + k + '"]'));
         $(boxname + ' input[name="' + k + '"]').val(obj[k]);
         $(boxname + ' option[name="' + obj[k] + '"]').attr("selected", "selected");
     }
@@ -377,8 +393,8 @@ changBread("GPS", "车辆地图");
 function getcnid(url, boxname, btnname) {
     console.log(url);
     $.ajax({
-        "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        // "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        // "url": "http://localhost/car/defcar/json/item" + url + ".json",
+        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
@@ -486,8 +502,8 @@ function initToolRecord(name, vSn, page) {
     // 查询装备记录详情，如果有，加载列表页面，没有进入选择页面
     $.ajax({
         // url: "http://192.168.0.222:8080/car-management/car/develop/find/" + vSn + ".action",
-        // url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
-        url: "http://localhost/car/defcar/json/tool.json",
+        url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
+        // url: "http://localhost/car/defcar/json/tool.json",
         type: "get",
         data: {},
         success: function(res) {
@@ -607,8 +623,8 @@ function initToolRecord(name, vSn, page) {
 function getcnidSolve(url, boxname, btnname) {
     console.log(url);
     $.ajax({
-        "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        // "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        // "url": "http://localhost/car/defcar/json/item" + url + ".json",
+        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {

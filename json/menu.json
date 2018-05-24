@@ -155,17 +155,6 @@
                 "operator": "admin",
                 "operate_ip": "192.168.1.1",
                 "childrenMenus": []
-            },
-            {
-                "mid": 401,
-                "name": "维修申请",
-                "url": "maintainTypeIn",
-                "priority": "2",
-                "remark": "申请",
-                "createTime": "2018-03-08",
-                "operator": "王春森",
-                "operate_ip": "192.168.1.1",
-                "childrenMenus": []
             }
         ]
     },

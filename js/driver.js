@@ -1,7 +1,7 @@
 function loadDriverList() {
     $("#DriverTable").bootstrapTable('destroy').bootstrapTable({
-        url: 'http://localhost/car/defcar/json/driverList.json',
-        // url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        // url: 'http://localhost/car/defcar/json/driverList.json',
+        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
         // url: 'http://192.168.0.222:8080/car-management/carDriver/CarDriverList.action',
         // dataType: "json", //数据类型
         // method: 'GET', //请求方式（*）
@@ -174,8 +174,8 @@ window.driveroperateEvents = {
         creatForm(addDrverInfo, "#add_model .modal-body form", "editDriver_btn");
         showData("#add_model .modal-body form", row); // 编辑时数据回显
         $(".editDriver_btn").click(function() {
-            var subcar_data = $("#addcar_model .modal-body form").serialize();
-            var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
+            var subcar_data = $("#add_model .modal-body form").serialize();
+            var opt = "&carType=" + $("#add_model option:selected").attr("name");
             subcar_data += opt;
             var subcar_ubtrl = allurl + "/data-management/vehicle/add.json";
             console.log(subcar_data);
@@ -205,8 +205,8 @@ $("#driver_add_btn").click(function() {
     $("#add_model #myModalLabel").html("驾驶员录入");
     creatForm(addDrverInfo, "#add_model .modal-body form", "subdriver_btn");
     $(".subdriver_btn").click(function() {
-        var subcar_data = $("#addcar_model .modal-body form").serialize();
-        var opt = "&carType=" + $("#addcar_model option:selected").attr("name");
+        var subcar_data = $("#add_model .modal-body form").serialize();
+        var opt = "&carType=" + $("#add_model option:selected").attr("name");
         subcar_data += opt;
         var subcar_url = allurl + "/data-management/vehicle/add.json";
         $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });

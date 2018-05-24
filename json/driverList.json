@@ -7,7 +7,10 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "vSn": "2019-222",
+        "isallow": "2",
+        "status": "2",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -18,6 +21,7 @@
         "EmployeeCard": "33",
         "iccard": "小轿车",
         "isallow": "2",
+        "status": "1",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -28,6 +32,7 @@
         "EmployeeCard": "33",
         "iccard": "小轿车",
         "isallow": "2",
+        "status": "1",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -37,7 +42,10 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
+        "remark": "女",
         "isallow": "1",
+        "status": "1",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -47,7 +55,10 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "isallow": "2",
+        "status": "2",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -57,7 +68,10 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "isallow": "2",
+        "status": "2",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -66,8 +80,11 @@
         "remark": "男6",
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
+        "isallow": "2",
+        "status": "2",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -77,7 +94,8 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -87,7 +105,8 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -97,7 +116,8 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }, {
@@ -107,7 +127,8 @@
         "databegin": "2018.1-1",
         "EmployeeCard": "33",
         "iccard": "小轿车",
-        "isallow": "1",
+        "remark": "女",
+        "vSn": "2019-222",
         "driverGroup": "2018.7-1",
         "telephone": "61042518888893"
     }]

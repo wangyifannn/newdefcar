@@ -5,15 +5,14 @@
     <title>测试车辆管理系统-主页</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-3.3.7.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/scrollscreen.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/custom.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link rel="stylesheet" type="text/css" href="./css/mytable.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/scrollscreen.css" />
     <!--消息提示框-->
-    <link href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
     <style type="text/css">
         .icon {
@@ -303,18 +302,14 @@
                                 <div id="sumcarTable_toolbar" class="btn-group tablelistbox">
                                     <a href="#" data-toggle="tab">
                                         <button id="Insurance_apply" type="button" class="btn btn-default" style="margin-right:10px;">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>保险申请
-                                         </button>
-                                    </a>
-                                    <a href="#" class="">
-                                        <button id="del_tempcarlist_all" type="button" class="btn btn-default" style="margin-right:10px;">
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>修改
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>筛选
                                          </button>
                                     </a>
                                 </div>
                             </table>
                         </div>
                     </div>
+
                     <!--驾驶员列表-->
                     <div class="tab-pane" id="driverList">
                         <div class="table-responsive form_width_style">
@@ -355,11 +350,10 @@
                     <div class="tab-pane" id="maintainScreen">
                         <div class="panel-body">
                             <div class="maintainScreen">
-                                <!--<iframe class="iframebgs" src="./html/workscreen.html" width="100%" height="800px" scrolling="no" frameborder="no" border="0"></iframe>-->
+                                <iframe class="iframebgs" src="./html/workscreen.html" width="100%" height="800px" scrolling="no" frameborder="no" border="0"></iframe>
                             </div>
                         </div>
                     </div>
-
                     <!--维修列表-->
                     <div class="tab-pane" id="maintainList">
                         <div class="panel-body">
@@ -807,9 +801,6 @@
             </div>
         </div>
     </div>
-    <!--车牌模态框-->
-    <!--<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="plate_model" aria-labelledby="myLargeModalLabel">
-    </div>-->
     <!--录入/编辑模态框-->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="add_model" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
@@ -843,7 +834,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">保养日期：</label>
                             <div class="col-sm-6 car_tools_check">
-                                <input placeholder="请选择日期" disabled="disabled" id="upkeepTime" class="form-control col-sm-7 layer-date mydata_input upkeepTime today-date">
+                                <input placeholder="请选择日期" disabled="disabled" id="upkeepTime" class="form-control col-sm-7 upkeepTime today-date">
                             </div>
                         </div>
                         <div class="form-group">
@@ -855,7 +846,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">下次保养：</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control col-sm-7 layer-date mydata_input nextupkeepTime future-date" id="nextupkeepTime" placeholder="下次保养日期">
+                                <input type="text" class="form-control col-sm-7 end-date" id="nextupkeepTime" placeholder="下次保养日期">
                             </div>
                         </div>
                         <div class="upitem_group">
@@ -917,10 +908,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group zhanwei">
-                        </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-7">
+                            <div class="form-btngroup">
                                 <button type="button" class="btn btn-default btn-primary" id="upkeep_btn">提交</button>
                                 <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">取消</button>
                             </div>
@@ -989,8 +978,8 @@
 <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="./assets/js/laydate.js" charset="utf-8"></script>
 <script type="text/javascript" src="./assets/js/iconfont.js" charset="utf-8"></script>
-<script type="text/javascript" src="assets/js/custom.js" charset="utf-8"></script>
-<script type="text/javascript" src="assets/js//jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="./assets/js/custom.js" charset="utf-8"></script>
+<script type="text/javascript" src="./assets/js//jquery.mCustomScrollbar.concat.min.js"></script>
 <!--<script type="text/javascript" src="./js/index.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/test.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/rightstable.js" charset="utf-8"></script>-->
@@ -1001,20 +990,21 @@
 <!--<script type="text/javascript" src="./js/drivertable.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/logtable.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/maintable.js" charset="utf-8"></script>-->
-<script type="text/javascript" src="./js/FileSaver.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="./assets/js/FileSaver.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/extensions/export/bootstrap-table-export.js"></script>
-<script type="text/javascript" src="./js/tableExport.min.js"></script>
+<script type="text/javascript" src="./assets/js/tableExport.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.js"></script>
 
 <script type="text/javascript" src="./js/menu.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/common.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/driver.js" charset="utf-8"></script>
-<script type="text/javascript" src="./js/carCheck.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/carcheck.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/car.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/cartypein.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/returnCar.js" charset="utf-8"></script>
-<script type="text/javascript" src="./js/detail1.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="./js/detail.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/insurance.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/sumcar.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/maintain.js" charset="utf-8"></script>

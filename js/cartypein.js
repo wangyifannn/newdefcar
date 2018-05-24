@@ -18,7 +18,13 @@ var addcarInfo = [
     { "name": "轮胎规格", "type": "text", "inputName": "tyresize", "must": "" },
     { "name": "后轮胎压力", "type": "text", "inputName": "reaTireP", "must": "" },
     { "name": "前轮胎压力", "type": "text", "inputName": "frontTireP", "must": "" },
-    { "name": "车辆分组", "type": "text", "inputName": "gids", "must": "" },
+    {
+        "name": "车辆分组",
+        "type": "select",
+        "inputName": "gids",
+        "must": "",
+        "option": [{ "name": "成存玉组" }, { "name": "方伟新组" }, { "name": "刘琼组" }, { "name": "桂旭阳组" }, { "name": "柴油及其他组" }]
+    },
     { "name": "制作日期", "type": "text", "inputName": "makeTime", "must": "" },
     { "name": "车辆图片", "type": "file", "inputName": "iccard", "must": "" },
     { "name": "备注", "type": "text", "inputName": "remark", "must": "" }
