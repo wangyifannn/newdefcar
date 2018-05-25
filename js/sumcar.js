@@ -111,9 +111,9 @@ $("#yanche").click(function() {
     // deletAll(Ins_Arr, "Ins_apply");
 });
 $("#sumcar_filter").click(function() {
-    $("#add_model").modal();
-    $("#add_model #myModalLabel").html("车辆筛选");
-    creatFilter(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
+    $("#filter_model").modal();
+    // $("#filter_model #myModalLabel").html("车辆筛选");
+    // creatFilter(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
     $(".sumcar_filter_btn").click(function() {
         var sub_data = $("#add_model .modal-body form").serialize();
         var sub_url = allurl + "/data-management/vehicle/add.json";

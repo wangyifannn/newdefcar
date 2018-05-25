@@ -830,6 +830,84 @@
             </div>
         </div>
     </div>
+    <!--总表筛选模态框-->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="filter_model" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header model_title">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">车辆筛选</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal even_style clearfix">
+                        <div class="text_group">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">厂牌型号:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">发动机号:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">车架号:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">保单号:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="range_group">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">保险日期:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn" placeholder="起始日">
+                                    <span>——</span>
+                                    <input type="text" class="form-control col-sm-7 vSn" placeholder="终止日">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">牌照日期:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn" placeholder="起始日">
+                                    <span>——</span>
+                                    <input type="text" class="form-control col-sm-7 vSn" placeholder="终止日">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">接车日期:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control col-sm-7 vSn" placeholder="起始日">
+                                    <span>——</span>
+                                    <input type="text" class="form-control col-sm-7 vSn" placeholder="终止日">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button_group">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">车辆计数:</label>
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-default">先前归还</button>
+                                    <button type="button" class="btn btn-default">当月归还</button>
+                                    <button type="button" class="btn btn-default">当月新车</button>
+                                    <button type="button" class="btn btn-default">当月归还</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--保养记录模态框-->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="upkeep_model" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
