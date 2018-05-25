@@ -295,7 +295,7 @@
         $(".line").slideUp("", myheight);
     })
     $.ajax({
-        url: 'http://restapi.amap.com/v3/weather/weatherInfo',
+        url: 'https://restapi.amap.com/v3/weather/weatherInfo',
         type: "post",
         data: {
             key: "dfb9a576fbcb2c9a13a65ab736e47004",
@@ -307,8 +307,13 @@
             var obj = res.forecasts[0].casts;
             console.log(obj);
             var weathericon = "";
-            if (obj[0].dayweather == "大雨") {
-                // weathericon = '<img src="../img/screen/">'
+            if (obj[0].dayweather == "多云") {
+                weathericon = '<i class="iconfont icon-duoyun"></i>';
+            } else if (obj[0].dayweather == "晴") {
+                weathericon = '<i class="iconfont icon-qing"></i>';
+            } else if (obj[0].dayweather == "阴天") {
+                weathericon = '<i class="iconfont icon-yintian"></i>';
+            } else {
                 weathericon = '<i class="iconfont icon-yu"></i>';
             }
             var cast = '<div><span>' + weathericon + '</span><span>' + obj[0].daytemp + '℃</span>' +
