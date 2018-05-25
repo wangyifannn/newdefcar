@@ -114,13 +114,13 @@ $("#sumcar_filter").click(function() {
     $("#filter_model").modal();
     // $("#filter_model #myModalLabel").html("车辆筛选");
     // creatFilter(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
-    $(".sumcar_filter_btn").click(function() {
-        var sub_data = $("#add_model .modal-body form").serialize();
-        var sub_url = allurl + "/data-management/vehicle/add.json";
-        console.log(sub_data);
-        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-        subData(sub_url, sub_data, "post", "sub_sumcar_filter");
-    });
+    // $(".sumcar_filter_btn").click(function() {
+    //     var sub_data = $("#add_model .modal-body form").serialize();
+    //     var sub_url = allurl + "/data-management/vehicle/add.json";
+    //     console.log(sub_data);
+    //     $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+    //     subData(sub_url, sub_data, "post", "sub_sumcar_filter");
+    // });
 });
 // 车辆总表查询
 var sumcar_row_filter = [
