@@ -171,6 +171,32 @@ function loadMaintainList() {
                 }
             }, {
                 field: 'carMaintainApply',
+                title: '停放地点',
+                valign: "middle",
+                align: "center",
+                width: "7%",
+                formatter: function(value, row, index) {
+                    if (value == null) {
+                        return "";
+                    } else {
+                        return value.send_park
+                    }
+                }
+            }, {
+                field: 'carMaintainApply',
+                title: '备注',
+                valign: "middle",
+                align: "center",
+                width: "5%",
+                formatter: function(value, row, index) {
+                    if (value == null) {
+                        return "";
+                    } else {
+                        return value.send_remark
+                    }
+                }
+            }, {
+                field: 'carMaintainApply',
                 title: '申请人',
                 valign: "middle",
                 align: "center",
@@ -194,32 +220,6 @@ function loadMaintainList() {
                         return "";
                     } else {
                         return value.send_time
-                    }
-                }
-            }, {
-                field: 'carMaintainApply',
-                title: '停放地点',
-                valign: "middle",
-                align: "center",
-                width: "7%",
-                formatter: function(value, row, index) {
-                    if (value == null) {
-                        return "";
-                    } else {
-                        return value.send_park
-                    }
-                }
-            }, {
-                field: 'carMaintainApply',
-                title: '备注',
-                valign: "middle",
-                align: "center",
-                width: "5%",
-                formatter: function(value, row, index) {
-                    if (value == null) {
-                        return "";
-                    } else {
-                        return value.send_remark
                     }
                 }
             }, {

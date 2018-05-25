@@ -135,7 +135,103 @@ var sumcar_filter = [
     { "name": "发动机号", "type": "text", "inputName": "safeCheck", "must": "" },
     { "name": "车架号", "type": "text", "inputName": "safeVerify", "must": "" },
     { "name": "保单号", "type": "text", "inputName": "wCheck", "must": "" },
-    { "name": "保险日期", "type": "text", "inputName": "wCheck", "must": "" },
-    { "name": "牌照日期", "type": "text", "inputName": "wCheck", "must": "" },
-    { "name": "接车日期", "type": "text", "inputName": "wCheck", "must": "" }
+    {
+        "name": "保险日期",
+        "type": "range",
+        "inputName": "wCheck",
+        "must": "",
+        "option": [{ "name": "起始日期" }, { "name": "终止日期" }]
+    },
+    {
+        "name": "牌照日期",
+        "type": "range",
+        "inputName": "wCheck",
+        "must": "",
+        "option": [{ "name": "起始日期" }, { "name": "终止日期" }]
+    },
+    {
+        "name": "接车日期",
+        "type": "range",
+        "inputName": "wCheck",
+        "must": "",
+        "option": [{ "name": "起始日期" }, { "name": "终止日期" }]
+    },
+    {
+        "name": "还车日期",
+        "type": "range",
+        "inputName": "wCheck",
+        "must": "",
+        "option": [{ "name": "起始日期" }, { "name": "终止日期" }]
+    },
+    {
+        "name": "项目状态",
+        "type": "button",
+        "inputName": "wCheck",
+        "must": "",
+        "option": [{ "name": "进行中" }, { "name": "已完成" }]
+    },
+    {
+        "name": "车辆计数",
+        "type": "button",
+        "inputName": "wCheck",
+        "must": "",
+        "option": [{ "name": "先前归还" }, { "name": "当月归还" },
+            { "name": "当月新车" }, { "name": "当月归还" },
+            { "name": "在用车辆" }, { "name": "停止车辆" },
+            { "name": "有临牌无保险" }, { "name": "有保险无临牌" }
+        ]
+    },
 ];
+
+function creatFilter(filArr, name, btnname) {
+    var ss = "";
+    var optstyle = "";
+    for (var i = 0; i < filArr.length; i++) {
+        if (filArr[i].type == "range") {
+            var ifdata = "";
+            var rangeoptions = "";
+            rangeoptions = '<div class="range_group"><input type="text" name="' + filArr[i].option[0].name + '" class="form-control col-sm-7 much-date">————' +
+                '<input type="text" name="' + filArr[i].option[1].name + '" class="form-control col-sm-7 much-date"></div>';
+        } else if (filArr[i].type == "text") {
+            optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + filArr[i].inputName + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
+            var textoptions = "";
+            textoptions = '<div class="form-group">' +
+                '<label class="col-sm-4 control-label">' + filArr[i].name + '：</label>' +
+                '<div class="col-sm-6">' + optstyle + '</div>' +
+                '</div>'
+        } else if (filArr[i].type == "button") {
+            var btn = "";
+            var btnoptions = "";
+            for (var j = 0; j < filArr[i].option.length; j++) {
+                btn += '<button name="' + filArr[i].option[j].name + '" class="' + filArr[i].option[j].name + '">' + filArr[i].option[j].name + '</button>';
+            }
+            btnoptions = '<div class="button_group">' + btn + '</div>';
+        }
+        ss = textoptions + rangeoptions + btnoptions;
+    }
+    ss += '<div class="form-group">' +
+        '<div class="form_btngroup clearfix">' +
+        '<button type="button" data-dismiss="" aria-label="" class="btn btn-default pull-left btn-primary ' + btnname + '">确定</button>' +
+        '<button type="button" class="btn btn-default btn-primary pull-right" data-dismiss="modal">取消</button>' +
+        '</div>' +
+        '</div>';
+    $(name).html(ss);
+    lay('.much-date').each(function() {
+        laydate.render({
+            elem: this,
+            trigger: 'click',
+            format: 'yyyy-MM-dd',
+            value: todayDate,
+            theme: '#041473'
+        });
+    });
+    lay('.end-date').each(function() {
+        laydate.render({
+            elem: this,
+            trigger: 'click',
+            format: 'yyyy-MM-dd',
+            value: dateend,
+            theme: '#041473'
+        });
+    });
+};
