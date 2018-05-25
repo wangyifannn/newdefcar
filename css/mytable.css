@@ -59,6 +59,10 @@ table {
     text-align: center;
 }
 
+#filter_model .range_group input {
+    width: 24% !important;
+}
+
 .range_group {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
