@@ -212,11 +212,11 @@
                     if (obj[i].status == null) {
                         a = '';
                     } else if (obj[i].status == "1") {
-                        a = '<span style="color:red;width:100%;weight:bold;">排队中</span>';
+                        a = '<span style="color:#c55ea5;width:100%;weight:bold;">排队中</span>';
                     } else if (obj[i].status == "2") {
-                        a = '<span style="color:#2ff1cf;width:100%;weight:bold;">维修中</span>';
+                        a = '<span style="color:#dacd73;width:100%;weight:bold;">维修中</span>';
                     } else if (obj[i].status == "3") {
-                        a = '<span style="color:yellow;width:100%;weight:bold;">已维修</span>';
+                        a = '<span style="color:#4abdbc;width:100%;weight:bold;">已完成</span>';
                     } else {
                         a = '<span>已完成</span>';
                     }
@@ -229,8 +229,8 @@
                     screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[i].vSn +
                         '</span><span class="list2 ' + classname + '">' + obj[i].operator + '</span><span class="list3">' + obj[i].item +
                         '</span><span class="list4">' + obj[i].park +
-                        '</span><span class="list5">' + obj[i].status + '</span>' +
-                        '</span><span class="list6">' + a + '</span></li>';
+                        '</span><span class="list5">' + a + '</span>' +
+                        '</span><span class="list6">' + obj[i].park + '</span></li>';
                 }
                 $(".line").html(screenHtml);
             },

@@ -16,8 +16,10 @@ html {
     min-height: 820px;
     height: 100%;
     padding-top: 20px;
+    font-family: "微软雅黑";
     /*background: #0531b7;*/
-    font: 20px Helvetica, sans-serif;
+    /*font: 20px Helvetica, sans-serif;*/
+    /*font-weight: bold;*/
 }
 
 .shopwhole {
@@ -81,7 +83,7 @@ ul.title li span {
     float: left;
     margin-left: 0.8%;
     text-align: center;
-    font-size: 22px;
+    font-size: 19px;
     box-sizing: border-box;
     /*字体垂直居中*/
     display: flex;
