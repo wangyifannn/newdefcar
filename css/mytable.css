@@ -54,6 +54,11 @@ table {
     text-align: center;
 }
 
+#filter_model .even_style .range_group .form-group {
+    width: 100% !important;
+    text-align: center;
+}
+
 .range_group {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
