@@ -4,8 +4,10 @@
 }
 
 html {
-    background: #0531b7;
+    /*background: #0531b7;*/
     height: 100%;
+    /*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+    font-family: 'simhei';
 }
 
 .shopbody {
@@ -14,7 +16,7 @@ html {
     min-height: 820px;
     height: 100%;
     padding-top: 20px;
-    background: #0531b7;
+    /*background: #0531b7;*/
     font: 20px Helvetica, sans-serif;
 }
 
@@ -50,7 +52,7 @@ html {
 }
 
 ul.title {
-    width: 100.3%;
+    width: 100%;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -59,6 +61,8 @@ ul.title {
 ul.title li {
     width: 100%;
     display: inline-block;
+    background: #0000ff;
+    color: #fff;
 }
 
 ul.title li span {
@@ -67,7 +71,8 @@ ul.title li span {
     float: left;
     margin-left: 0.8%;
     text-align: center;
-    color: white;
+    /*background: #0000ff;*/
+    /*color: #fff;*/
     font-size: 24px;
     box-sizing: border-box;
     /*字体垂直居中*/
@@ -80,7 +85,8 @@ ul.line li span {
     width: 14%;
     float: left;
     margin-left: 0.8%;
-    color: white;
+    /*background: #fff;*/
+    color: #0000ff;
     font-size: 16px;
     text-align: center;
     box-sizing: border-box;
@@ -107,7 +113,7 @@ ul.line li span {
     font-size: 40px;
     padding: 15px 0px;
     letter-spacing: 2px;
-    color: white;
+    color: #0000ff;
     text-align: center;
 }
 
@@ -127,7 +133,6 @@ ul.line li span.list6 {
 
 ul.line {
     width: 100%;
-    margin-left: 5px;
     min-height: 438px;
     height: 95%;
     text-align: center;
@@ -146,16 +151,12 @@ ul.line li {
     height: 42px;
     line-height: 42px;
     list-style: none;
-    border-top: 2px solid #0531b7;
-    border-bottom: 2px solid #0531b7;
+    background: #ebf5fe;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
     -webkit-transition: 1s duration timing-function delay;
     -moz-transition: 1s duration timing-function delay;
     transition: 1s duration timing-function delay;
-}
-
-ul.line li:nth-child(2n+1) {
-    background: url("../img/workshopScreen/odd.png") no-repeat;
-    background-size: 100% 100%;
 }
 
 .list6 span {
@@ -174,25 +175,34 @@ ul.line li:nth-child(2n+1) {
 }
 
 .shopfooter .footer_left {
-    color: white;
+    color: #0000ff;
     margin-top: 37px;
 }
 
 .font-big {
     font-size: 29px;
-    font-family: 圆体;
+    font-family: simhei;
     margin-top: 10px;
+}
+
+h3 img {
+    width: 160px;
+    vertical-align: middle;
+}
+
+.shopfooter p {
+    font-size: 16px;
 }
 
 .footer_content {
     margin: 0px 100px;
-    color: #ffc;
+    color: #0000ff;
     margin-top: 26px;
 }
 
 .footer_right {
     float: right;
-    color: white;
+    color: #0000ff;
     margin-left: 100px;
     margin-top: 26px;
 }

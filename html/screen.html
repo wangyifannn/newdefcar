@@ -5,8 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>维修车间大屏</title>
-    <link rel="stylesheet" type="text/css" href="../css/workscreensmall.css" media="screen and (max-width: 2100px)">
-    <link rel="stylesheet" type="text/css" href="../css/workscreenbig.css" media="screen and (min-width: 2100px) and (max-width: 5148px)">
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/screensmall.css" media="screen and (max-width: 2100px)">
+    <link rel="stylesheet" type="text/css" href="../css/screenbig.css" media="screen and (min-width: 2100px) and (max-width: 5148px)">
     <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
     <!--<script type="text/javascript" src="../assets/js/myslideup.js"></script>-->
 
@@ -15,8 +16,13 @@
 <body class="shopbody" style="height: 100%;" id="full_mainlist">
     <div class="shopwhole">
         <img class="logo" src="../img/logo.png" alt="">
-        <h3>维修车辆列表</h3>
+
+        <h3>
+            <img src="../img/screen/left.png" alt=""> 维修车辆列表
+            <img src="../img/screen/right.png" alt="">
+        </h3>
         <button id='btn'>全屏显示</button>
+        <!--<i class="glyphicon glyphicon-fullscreen full_btn"></i>-->
         <div class="workshopList">
             <ul class="title">
                 <li>
@@ -32,15 +38,22 @@
             </ul>
         </div>
         <div class="shopfooter">
-            <div class="footer_left">
-                <p class="data"></p>
+            <div class="data_group">
                 <p class="datatime font-big"></p>
+                <p class="font_smalll"><span class="data"></span><span class="day"></span></p>
             </div>
-            <div class="footer_content">
-                <p>维修车辆：</p>
+            <div class="weather_group">
+                天气
+            </div>
+            <!--<div class="footer_content">
+                <p>总维修车辆：</p>
                 <p><span class="font-big maintain_countCar">200</span>&nbsp;&nbsp;<span>辆</span></p>
-            </div>
+            </div>-->
             <div class="footer_right">
+                <div class="rightBox">
+                    <p>总维修车辆：</p>
+                    <p><span class="font-big maintain_countCar">200</span>&nbsp;&nbsp;<span>辆</span></p>
+                </div>
                 <div class="rightBox">
                     <p class="circleChart" id="0"></p>
                     <p>排队中：<span class="maintain_queueCar">200</span>辆</p>
@@ -78,7 +91,7 @@
                     alert("未检索到维修车辆");
                     return;
                 }
-                // console.log(res);
+                console.log(res);
                 $(".maintain_countCar").html(res.count);
                 $(".maintain_completeCar").html(res.complete);
                 $(".maintain_currentCar").html(res.current);
@@ -98,7 +111,7 @@
                         });
                         $(".circleChart#0").circleChart({
                             size: 190,
-                            color: "#E41937",
+                            color: "#eacd51",
                             backgroundColor: "#505f76",
                             value: res.queuepercentage,
                             text: 0,
@@ -108,7 +121,7 @@
                         });
                         $(".circleChart#1").circleChart({
                             size: 190,
-                            color: "#2ff1cf",
+                            color: "#d04390",
                             backgroundColor: "#505f76",
                             value: res.currentpercentage,
                             text: 0,
@@ -130,8 +143,9 @@
                     } else {
                         $(".circleChart#0").circleChart({
                             size: 70,
+                            // color: "#eace50",
                             color: "#E41937",
-                            backgroundColor: "#505f76",
+                            backgroundColor: "#eee",
                             value: res.queuepercentage,
                             text: 0,
                             onDraw: function(el, circle) {
@@ -140,8 +154,8 @@
                         });
                         $(".circleChart#1").circleChart({
                             size: 70,
-                            color: "#2ff1cf",
-                            backgroundColor: "#505f76",
+                            color: "#eace50",
+                            backgroundColor: "#eee",
                             value: res.currentpercentage,
                             text: 0,
                             top: 50,
@@ -151,8 +165,8 @@
                         });
                         $(".circleChart#2").circleChart({
                             size: 70,
-                            color: "#eace50",
-                            backgroundColor: "#505f76",
+                            color: "#2ff1cf",
+                            backgroundColor: "#eee",
                             // value: 22,
                             value: res.completepercentage,
                             text: 0,
@@ -206,17 +220,17 @@
     getList();
 
     function formatterDate() {
-        var date = new Date()
-        var month = date.getMonth() + 1
+        var date = new Date();
+        var month = date.getMonth() + 1;
         var datetime = date.getFullYear() +
-            "年" // "年"
+            "/" // "年"
             +
             (month >= 10 ? month : "0" + month) +
-            "月" // "月"
+            "/" // "月"
             +
             (date.getDate() < 10 ? "0" + date.getDate() : date
                 .getDate()) +
-            "日";
+            "";
         return datetime;
     }
 
@@ -233,15 +247,19 @@
                 .getSeconds());
         return datetimehour;
     }
-    console.log(formatterDate());
-    console.log(formatterDateTime());
-    // setInterval(function() {
-    //     $(".data").html(formatterDate());
-    //     $(".datatime").html(formatterDateTime());
-    // }, 1000);
+    var mydate = new Date();
+    var myday = mydate.getDay() //注:0-6对应为星期日到星期六 
+    console.log(myday);
+    // console.log(formatterDate());
+    // console.log(formatterDateTime());
+    setInterval(function() {
+        $(".data").html(formatterDate());
+        $(".datatime").html(formatterDateTime());
+        $(".day").html("星期" + myday);
+    }, 1000);
     setInterval(function() {
         // getList();
-    }, 111150000); //1小时刷新一次 维修大屏列表和 百分比
+    }, 3000); //1小时刷新一次 维修大屏列表和 百分比
     // 早上刷新一次，下午刷新一次？
     // 字体大小变化
     if ($(document.body).width() >= 3800) {
@@ -275,6 +293,28 @@
     $("#btn").click(function() {
         myheight = $("ul.line li").height();
         $(".line").slideUp("", myheight);
+    })
+    $.ajax({
+        url: 'http://restapi.amap.com/v3/weather/weatherInfo',
+        type: "post",
+        data: {
+            key: "dfb9a576fbcb2c9a13a65ab736e47004",
+            city: "上海市",
+            extensions: "all"
+        },
+        success: function(res) {
+            console.log(res.forecasts[0]);
+            var obj = res.forecasts[0].casts;
+            console.log(obj);
+            var weathericon = "";
+            if (obj[0].dayweather == "大雨") {
+                // weathericon = '<img src="../img/screen/">'
+                weathericon = '<i class="iconfont icon-yu"></i>';
+            }
+            var cast = '<div><span>' + weathericon + '</span><span>' + obj[0].daytemp + '℃</span>' +
+                '</div><div class="font_smalll"><span class="dayweather">' + obj[0].dayweather + '</span><span>风级' + obj[0].daypower + '</span></div > '
+            $(".weather_group").html(cast);
+        }
     })
 </script>
 
