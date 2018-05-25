@@ -17,6 +17,17 @@
             font-family: 'langqingti';
             /*src: url('../assets/yuanti.otf');*/
             src: url('../assets/langqianti.otf');
+            /*src: url('../assets/UnidreamLED.ttf');*/
+            /*src: url('../font/pinghei.eot?#iefix') format('embedded-opentype'), url('../font/pinghei.woff') format('woff'), url('../font/pinghei.ttf') format('truetype'), url('../font/pinghei.svg') format('svg');*/
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'UnidreamLED';
+            /*src: url('../assets/yuanti.otf');*/
+            /*src: url('../assets/langqianti.otf');*/
+            src: url('../assets/UnidreamLED.ttf');
             /*src: url('../font/pinghei.eot?#iefix') format('embedded-opentype'), url('../font/pinghei.woff') format('woff'), url('../font/pinghei.ttf') format('truetype'), url('../font/pinghei.svg') format('svg');*/
             font-weight: normal;
             font-style: normal;
@@ -324,7 +335,7 @@
     $("#btn").click(function() {
         myheight = $("ul.line li").height();
         $(".line").slideUp("", myheight);
-    })
+    });
     $.ajax({
         url: 'https://restapi.amap.com/v3/weather/weatherInfo',
         type: "post",
