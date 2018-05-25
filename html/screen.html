@@ -247,15 +247,35 @@
                 .getSeconds());
         return datetimehour;
     }
-    var mydate = new Date();
-    var myday = mydate.getDay() //注:0-6对应为星期日到星期六 
-    console.log(myday);
+
+    function formatterDay() {
+        var mydate = new Date();
+        var myday = mydate.getDay() //注:0-6对应为星期日到星期六 
+        if (myday == 0) {
+            return "星期日";
+        } else if (myday == 1) {
+            return "星期一";
+        } else if (myday == 2) {
+            return "星期二";
+        } else if (myday == 3) {
+            return "星期三";
+        } else if (myday == 4) {
+            return "星期四";
+        } else if (myday == 5) {
+            return "星期五";
+        } else if (myday == 6) {
+            return "星期六";
+        }
+    }
+
+
+    // console.log(myday);
     // console.log(formatterDate());
     // console.log(formatterDateTime());
     setInterval(function() {
         $(".data").html(formatterDate());
         $(".datatime").html(formatterDateTime());
-        $(".day").html("星期" + myday);
+        $(".day").html(formatterDay());
     }, 1000);
     setInterval(function() {
         // getList();
