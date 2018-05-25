@@ -49,6 +49,16 @@ table {
     text-align: center;
 }
 
+#filter_model .even_style .form-group:last-child {
+    width: 50% !important;
+    text-align: center;
+}
+
+.range_group {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
 .modal .even_style .form-group:nth-child(4n+3),
 .modal .even_style .form-group:nth-child(4n+4) {
     background: transparent;
