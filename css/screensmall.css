@@ -195,7 +195,7 @@ ul.line li {
     color: #0000ff;
     margin-top: 37px;
     font-family: 'langqingti';
-    /*font-family: '';*/
+    min-width: 150px;
 }
 
 i.iconfont.icon-yu {
