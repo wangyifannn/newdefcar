@@ -113,8 +113,8 @@ $("#yanche").click(function() {
 $("#sumcar_filter").click(function() {
     $("#add_model").modal();
     $("#add_model #myModalLabel").html("车辆筛选");
-    creatForm(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
-    $(".sumcar_filter_btn").click(function() { //完成维修
+    creatFilter(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
+    $(".sumcar_filter_btn").click(function() {
         var sub_data = $("#add_model .modal-body form").serialize();
         var sub_url = allurl + "/data-management/vehicle/add.json";
         console.log(sub_data);
