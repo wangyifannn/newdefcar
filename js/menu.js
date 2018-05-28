@@ -37,7 +37,10 @@ $.ajax({
         for (var i = 0; i < res.length; i++) {
             menuli =
                 '<li class="sidebar-dropdown">' +
-                '<a class="sidebar_dropdown_hover two_a" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-' + res[i].url + '"></use></svg><span>' +
+                '<a class="sidebar_dropdown_hover two_a" href="#">' +
+                '<i class="iconfont icon-' + res[i].url + '"></i>' +
+                // '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-' + res[i].url + '"></use></svg>' +
+                '<span>' +
                 res[i].name + '</span><span class="badge">' + res[i].childrenMenus.length + '</span></a>' +
                 '<div class="sidebar-submenu">' +
                 '<ul class="menuli_ulli' + i + '">' +
