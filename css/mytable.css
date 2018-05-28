@@ -128,7 +128,7 @@ table {
 }
 
 .btn-default:hover {
-    background: #010B52;
+    background: #3a4f72;
     color: white;
 }
 
@@ -139,7 +139,8 @@ table {
 
 .my_btn {
     color: white;
-    background: #3a4f72;
+    background: transparent;
+    border: 1px solid #3a4f72;
 }
 
 #carDetail .row {
