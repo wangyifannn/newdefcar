@@ -289,6 +289,22 @@ a.a_select span {
     line-height: 30px;
 }
 
+.audit_top div p {
+    border: 1px solid #ddd;
+    width: 100%;
+    padding: 3px 0px;
+    margin: 0px;
+    border-bottom: none;
+    border-right: none;
+}
+
+.audit_top div {
+    border: 1px solid #ddd;
+    padding: 0px;
+    text-align: center;
+    border-right: none;
+}
+
 
 /*.panel-body .pull-right {
     margin-bottom: 15px;
@@ -823,7 +839,7 @@ input[type="file"] {
 
 .checktitle span:nth-child(2),
 .checkitem span:nth-child(2) {
-    width: 11%;
+    width: 14%;
 }
 
 #insurance_model .checktitle span:nth-child(2),
