@@ -5,4 +5,4 @@ function autoScroll() {
         $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
     })
 }
-var anifun = setInterval('autoScroll()', 3000);
+// var anifun = setInterval('autoScroll()', 3000);

@@ -65,16 +65,6 @@
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="../img/index/home.png" alt="First slide">
-                    </div>
-                    <div class="item">
-                        <img src="../img/login/login_bg1.jpg" alt="Second slide">
-                    </div>
-                    <div class="item">
-                        <li><span>sds</span></li>
-                        <li><span>sds</span></li>
-                    </div>
                 </div>
                 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -86,8 +76,7 @@
                 </a>
             </div>-->
 
-            <ul class="line">
-            </ul>
+            <ul class="line"></ul>
         </div>
         <div class="shopfooter">
             <div class="data_group">
@@ -229,12 +218,14 @@
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 // var obj = res;
                 var screenHtml = "";
+                var lunbo = "";
                 var classname = "";
                 var obj = res.data;
                 if (obj == null) {
                     return;
                 }
                 console.log(obj);
+                var linum = "";
                 for (var i = 0; i < obj.length; i++) {
                     var a = "";
                     if (obj[i].status == null) {
@@ -254,35 +245,27 @@
                     if (obj[i].park == null) {
                         obj[i].park = "--";
                     }
-                    var pagenum = "";
-                    var pagesize = 10;
-                    var pageContent = ""; //每一页的html内容
-                    var count = Math.ceil(obj.length / 10); //每页10条，计算可以分几页,有小数，就加一页，上取整
 
-                    // for (var linum = 0; linum < obj.length; linum++) {
-
-                    // for (var pagenum = 0; pagenum < count; pagenum++) {
-                    //     pageContent += '<div class="item"></div>';
-                    //     for (var j = 0; j < 10; j++) {
-                    //         screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[j].vSn +
-                    //             '</span><span class="list2 ' + classname + '">' + obj[j].operator + '</span><span class="list3">' + obj[j].item +
-                    //             '</span><span class="list4">' + obj[j].park +
-                    //             '</span><span class="list5">' + a + '</span>' +
-                    //             '</span><span class="list6">' + obj[j].park + '</span></li>';
-                    //     }
-                    // }
-                    // }
+                    if (i == 0) {
+                        activename = "active";
+                    } else {
+                        activename = "";
+                    }
                     screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[i].vSn +
                         '</span><span class="list2 ' + classname + '">' + obj[i].operator + '</span><span class="list3">' + obj[i].data +
                         '</span><span class="list4">' + obj[i].operator +
                         '</span><span class="list5">' + a + '</span>' +
                         '</span><span class="list6">' + obj[i].park + '</span></li>';
+                    // lunbo += '<div class="item ' + activename + '"><li style="margin-top:0px;"><span class="list1">' + obj[i].vSn +
+                    //     '</span><span class="list2 ' + classname + '">' + obj[i].operator + '</span><span class="list3">' + obj[i].data +
+                    //     '</span><span class="list4">' + obj[i].operator +
+                    //     '</span><span class="list5">' + a + '</span>' +
+                    //     '</span><span class="list6">' + obj[i].park + '</span></li></div>';
+
+
                 }
                 $(".line").html(screenHtml);
-                var li = document.querySelectorAll(".line li");
-                console.log(li);
-
-
+                // $(".carousel-inner").html(lunbo);
             },
             "error": function(res) {
                 console.log(res);
@@ -385,9 +368,8 @@
     // $(".line").slideUp("", myheight);
 
     $("#btn").click(function() {
-        myheight = $("ul.line li").height();
-        clearInterval(anifun); //清除自动滑动动画
-        anifun = setInterval('autoScroll()', 2000);
+        // clearInterval(anifun); //清除自动滑动动画
+        // anifun = setInterval('autoScroll()', 2000);
 
     });
     $.ajax({
