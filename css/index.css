@@ -73,7 +73,7 @@
         }
         
         .sidebar-brand {
-            background-color: #F5F5F5;
+            background-color: #edf4f6;
             border-bottom: 4px solid #3a4f72;
         }
         
@@ -83,7 +83,7 @@
         
         .bread {
             width: 100%;
-            background-color: rgb(245, 245, 245);
+            background-color: #edf2f6;
             border-bottom: 4px solid #DBDBDB;
         }
         
@@ -183,7 +183,7 @@
         .optionBth {
             border: none;
             color: white;
-            border-radius: 10px;
+            border-radius: 7px;
             background: #010B52;
         }
         

@@ -138,10 +138,8 @@ table {
 }
 
 .my_btn {
-    border: none;
     color: white;
-    border-radius: 10px;
-    background: #1471EE;
+    background: #3a4f72;
 }
 
 #carDetail .row {
