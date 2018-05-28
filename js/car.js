@@ -115,15 +115,37 @@ function loadCarList() {
 }
 
 function caroperateFormatter(value, row, index) {
-    var carbtns = '<option><a href="#carTypeIn" data-toggle="tab"><button type="button" id="carTypeIn_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a></option>' +
-        '<option><a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">安全</button></a></option>' +
-        '<option><a href="#wiringCheck" data-toggle="tab"><button type="button" id="warining_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">线束</button></a></option>' +
-        '<option><a href="#bomCheck" data-toggle="tab"><button type="button" id="bomCheck" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">BOM</button></a></option>' +
-        '<option><button type="button" id="rd_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">研发</button></option>' +
-        '<option><a href="#carDetail" data-toggle="tab"><button type="button" id="details_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">详情</button></a></option>' +
-        '<option><button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button></option>';
-    return [
-        '<select>' + carbtns + '</select>'
+    var carbtns = '<li><a href="#carTypeIn" data-toggle="tab"><button type="button" id="carTypeIn_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a></li>'
+    '<li><a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">安全</button></a></li>'
+    '<li><a href="#wiringCheck" data-toggle="tab"><button type="button" id="warining_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">线束</button></a></li>'
+    '<li><a href="#bomCheck" data-toggle="tab"><button type="button" id="bomCheck" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">BOM</button></a></li>'
+    '<li><button type="button" id="rd_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">研发</button></li>'
+    '<li><a href="#carDetail" data-toggle="tab"><button type="button" id="details_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">详情</button></a></li>'
+    '<li><button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button></li>';
+    /*    var carbtns = '<option><a href="#carTypeIn" data-toggle="tab"><button type="button" id="carTypeIn_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a></option>' +
+            '<option><a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">安全</button></a></option>' +
+            '<option><a href="#wiringCheck" data-toggle="tab"><button type="button" id="warining_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">线束</button></a></option>' +
+            '<option><a href="#bomCheck" data-toggle="tab"><button type="button" id="bomCheck" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">BOM</button></a></option>' +
+            '<option><button type="button" id="rd_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">研发</button></option>' +
+            '<option><a href="#carDetail" data-toggle="tab"><button type="button" id="details_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">详情</button></a></option>' +
+            '<option><button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button></option>';
+        return [
+            '<select>' + carbtns + '</select>'
+        ].join('');*/
+    return ['<div class="btn-group">' +
+        '<button type="button" class="btn btn-primary">原始</button>' +
+        '<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">' +
+        '<span class="caret"></span>' +
+        '<span class="sr-only">切换下拉菜单</span>' +
+        '</button>' +
+        '<ul class="dropdown-menu" role="menu">' +
+        carbtns + // '<li><a href="#"><button>功能</button></a></li>' +
+        // '<li><a href="#">另一个功能</a></li>' +
+        // '<li><a href="#">其他</a></li>' +
+        // '<li class="divider"></li>' +
+        // '<li><a href="#">分离的链接</a></li>' +
+        '</ul>' +
+        '</div>'
     ].join('');
 }
 
