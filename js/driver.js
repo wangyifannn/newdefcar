@@ -38,7 +38,7 @@ function loadDriverList() {
         exportTypes: ['excel'], //导出文件类型  
         // Icons: 'glyphicon-export',
         exportOptions: {
-            ignoreColumn: [0, 8], //忽略某一列的索引  
+            ignoreColumn: [0, 10], //忽略某一列的索引  
             fileName: '测试车辆-驾驶员管理列表', //文件名称设置  
             worksheetName: 'sheet1', //表格工作区名称  
             type: 'excel',
@@ -79,7 +79,7 @@ function loadDriverList() {
                 "title": "测试车辆-驾驶员管理列表",
                 "halign": "center",
                 "align": "center",
-                "colspan": 11
+                "colspan": 10
             }],
             [{
                 field: "checkbox",
