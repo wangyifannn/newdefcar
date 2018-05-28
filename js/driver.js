@@ -32,7 +32,11 @@ function loadDriverList() {
         showToggle: true, //是否显示切换视图（table/card）按钮
         searchAlign: "right",
         showExport: true,
-        exportDataType: "basic",
+        exportDataType: "selected",
+        showExport: true, //是否显示导出按钮  
+        buttonsAlign: "left", //按钮位置  
+        exportTypes: ['excel'], //导出文件类型  
+        Icons: 'glyphicon-export',
         exportOptions: {
             ignoreColumn: [0, 8], //忽略某一列的索引  
             fileName: '测试车辆-驾驶员管理列表', //文件名称设置  
