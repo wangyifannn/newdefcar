@@ -123,7 +123,7 @@ function caroperateFormatter(value, row, index) {
         '<option><a href="#carDetail" data-toggle="tab"><button type="button" id="details_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">详情</button></a><option>' +
         '<option><button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button><option>';
     return [
-        '<select>' + cabtns + '</select>'
+        '<select>' + carbtns + '</select>'
     ].join('');
 }
 
