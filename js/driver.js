@@ -37,6 +37,7 @@ function loadDriverList() {
             ignoreColumn: [0, 8], //忽略某一列的索引  
             fileName: '测试车辆-驾驶员管理列表', //文件名称设置  
             worksheetName: 'sheet1', //表格工作区名称  
+            type: 'excel',
             tableName: '测试车辆-驾驶员管理列表',
             excelstyles: ['background-color', 'color', 'font-size', 'font-weight']
                 // onMsoNumberFormat: DoOnMsoNumberFormat
