@@ -467,7 +467,7 @@ form.form-horizontal.even_style.upkeepFormInfo {
 }
 
 .btn-primary {
-    background: #1471EE;
+    /*background: #1471EE;*/
 }
 
 .checkitem_active {
@@ -948,6 +948,7 @@ form.pot_pressure.pot_style {
     width: 200px;
     margin: 0 auto;
     text-align: center;
+    margin-top: 4px;
 }
 
 .data_tab_box {
