@@ -185,19 +185,19 @@ window.caroperateEvents = {
         window.sessionStorage.carInfo = JSON.stringify(row);
     },
     'click #audit_btn': function(e, value, row, index) { //取消授权、禁用
-        $("#add_model").modal();
-        $("#add_model #myModalLabel").html("车辆审核");
-        creatForm(auditInfo, "#add_model .modal-body form", "sub_audit_btn");
+        $("#audit_model").modal();
+        initToolRecord("#audit_model .audit_center", row.vSn); //研发
+        // creatForm(auditInfo, "#add_model .modal-body form", "sub_audit_btn");
         // showData("#add_model .modal-body form", row); // 编辑时数据回显
-        $(".sub_audit_btn").click(function() {
-            var subcar_data = $("#add_model .modal-body form").serialize();
-            var opt = "&carType=" + $("#add_model option:selected").attr("name");
-            subcar_data += opt;
-            var subcar_ubtrl = allurl + "/data-management/vehicle/add.json";
-            console.log(subcar_data);
-            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-            subData(subcar_url, subcar_data, "post", "editDriver_btn");
-        })
+        // $(".sub_audit_btn").click(function() {
+        //     var subcar_data = $("#add_model .modal-body form").serialize();
+        //     var opt = "&carType=" + $("#add_model option:selected").attr("name");
+        //     subcar_data += opt;
+        //     var subcar_ubtrl = allurl + "/data-management/vehicle/add.json";
+        //     console.log(subcar_data);
+        //     $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        //     subData(subcar_url, subcar_data, "post", "editDriver_btn");
+        // })
     }
 };
 $("#Insurance_apply").click(function() {

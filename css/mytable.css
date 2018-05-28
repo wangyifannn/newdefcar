@@ -462,12 +462,13 @@ form.form-horizontal.even_style.upkeepFormInfo {
     border: 1px solid #c1d3de;
 }
 
-.menulist_height {
-    line-height: 30px;
+#carListtable_toolbar span {
+    position: relative;
+    top: -2px;
 }
 
-.btn-primary {
-    /*background: #1471EE;*/
+.menulist_height {
+    line-height: 30px;
 }
 
 .checkitem_active {
@@ -480,7 +481,7 @@ form.form-horizontal.even_style.upkeepFormInfo {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
-    background: #1471EE;
+    background: #4b6ba1;
 }
 
 .fixed-table-loading {

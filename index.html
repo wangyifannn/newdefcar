@@ -1036,52 +1036,41 @@
         </div>
     </div>
     <!--保养记录模态框结束-->
-    <!--维修协调员填写模态框-->
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="coord_model" aria-labelledby="myLargeModalLabel">
+    <!--审核模态框-->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="audit_model" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header model_title">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">维修协调员填写</h4>
+                    <h4 class="modal-title" id="myModalLabel">审核车辆信息</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal maintain_form finish_form">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">车辆编号</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="vSn" name="vSn" placeholder="请输入车辆编号">
+                        <div class="audit_top">
+                            <div class="audit_top_list1">
+                                车辆编号：<span></span>
+                            </div>
+                            <div class="audit_top_list2">
+                                <p>安全检查人：<span class="list21_safe">王一帆</span></p>
+                                <p>线束检查人：<span class="list22_safe">上思思</span> </p>
+                                <p>BOM检查人：<span class="list23_safe">我问问</span></p>
+                            </div>
+                            <div class="audit_top_list3">
+                                <p>安全核对人： <span class="list31_safe">王宇</span></p>
+                                <p>线束核对人： <span class="list32_safe">王一帆</span></p>
+                                <p>BOM核对人： <span class="list33_safe">王祎凡</span></p>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">停放地点</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="finish_park" placeholder="请输入车辆停放地点">
-                            </div>
+                        <div class="audit_center">
+
                         </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">工作内容</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="work" placeholder="请填写工作内容">
+                        <!--<div class="audit_center">
+                            <div class="audit_center_list1">
+                                车辆编号：<span></span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">完成日期</label>
-                            <div class="col-sm-9">
-                                <input placeholder="请选择日期" name="finish_time" class="form-control layer-date mydata_input today-date" id="complete_time">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">备注</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="remark" placeholder="其他信息">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-6">
-                                <button type="button" class="btn btn-default btn-primary" data-dismiss="modal" id="m_cancel_btn">取消</button>
-                                <button type="button" class="btn btn-default btn-primary" data-dismiss="" id="m_submit_btn">提交</button>
-                            </div>
-                        </div>
+                        </div>-->
+                        <div class="audit_footer"></div>
+                        <div class="audit_btn_group"></div>
                     </form>
                 </div>
             </div>
