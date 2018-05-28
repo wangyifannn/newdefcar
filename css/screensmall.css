@@ -4,9 +4,7 @@
 }
 
 html {
-    /*background: #0531b7;*/
     height: 100%;
-    /*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
     font-family: 'simhei';
 }
 
@@ -17,17 +15,23 @@ html {
     height: 100%;
     padding-top: 20px;
     font-family: "微软雅黑";
-    /*background: #0531b7;*/
-    /*font: 20px Helvetica, sans-serif;*/
-    /*font-weight: bold;*/
+}
+
+.item {
+    width: 100%;
+    min-height: 500px;
 }
 
 .shopwhole {
     width: 95%;
-    height: 87%;
     margin: 0 auto;
-    min-height: 740px;
+    /*height: 87%;
+    min-height: 740px;*/
     position: relative;
+}
+
+.weather_group i.iconfont {
+    font-size: 40px;
 }
 
 .workshopList {
@@ -36,12 +40,6 @@ html {
     margin: 0 auto;
     padding-bottom: 40px;
 }
-
-
-/*
-.full_btn {
-    color: red;
-}*/
 
 #btn {
     padding: 4px 20px;
@@ -95,7 +93,6 @@ ul.line li span {
     width: 14%;
     float: left;
     margin-left: 0.8%;
-    /*background: #fff;*/
     color: #0000ff;
     font-size: 16px;
     text-align: center;
@@ -108,14 +105,13 @@ ul.line li span {
 
 .shopwhole {
     position: relative;
-    /*border: 1px solid red;*/
 }
 
 .shopwhole .logo {
     position: absolute;
     width: 200px;
     height: auto;
-    left: 6%;
+    left: 7%;
     top: 0px;
 }
 
@@ -143,12 +139,12 @@ ul.line li span.list6 {
 
 ul.line {
     width: 100%;
-    min-height: 438px;
+    /*min-height: 438px;
     height: 95%;
     text-align: center;
-    overflow: hidden;
+    overflow: hidden;*/
     display: block !important;
-    /*border: 1px solid yellow;*/
+    border: 1px solid yellow;
 }
 
 ul.title li span:first-child,

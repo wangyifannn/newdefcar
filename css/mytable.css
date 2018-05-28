@@ -13,6 +13,10 @@
     padding-top: 12px;
 }
 
+div#carTypeIn .cartypein_apply .form-group:last-child {
+    display: none;
+}
+
 table {
     border: 2px solid #E1E1E1;
 }

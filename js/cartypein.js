@@ -47,7 +47,7 @@ var toolnameArr = [{ "toolname": "12V电源" },
 ];
 
 function ToolRecordApply(name, vSn, page) {
-    var checkitems = '<div class="checktitle"><span>工具或设备名称</span></div>';
+    var checkitems = '<div class="checktitle"><span>工具或设备名称（请在下方空格内填写需要安装的工具或设备名称）</span></div>';
     for (var i = 0; i < toolnameArr.length; i++) {
         checkitems += '<div class="checkitem" id="' + i + '"><span><input type="text" class="toolname" value="' + toolnameArr[i].toolname + '">' +
             '</span></div>';

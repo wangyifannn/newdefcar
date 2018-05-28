@@ -341,7 +341,7 @@ function creatForm(filArr, name, btnname) {
     }
     ss += '<div class="form-group">' +
         '<div class="form_btngroup clearfix">' +
-        '<button type="button" data-dismiss="" aria-label="" class="btn btn-default pull-left btn-primary ' + btnname + '">保存</button>' +
+        '<button type="button" data-dismiss="" aria-label="" class="btn btn-default pull-left btn-primary ' + btnname + '">提交</button>' +
         '<button type="button" class="btn btn-default btn-primary pull-right" data-dismiss="modal">取消</button>' +
         '</div>' +
         '</div>';
@@ -461,7 +461,7 @@ function getcnid(url, boxname, btnname) {
             }
             checkboxs += '<div class="form-group">' +
                 '<div class="form_btngroup clearfix">' +
-                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary pull-left ' + btnname + '">保存</button>' +
+                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary pull-left ' + btnname + '">提交</button>' +
                 '<a href="#" data-toggle="tab"><button type="button" class="btn btn-default btn-primary pull-right cancal_btn">取消</button></a>' +
                 '</div>' +
                 '</div>';
@@ -690,7 +690,7 @@ function getcnidSolve(url, boxname, btnname) {
             }
             checkboxs += '<div class="form-group">' +
                 '<div class="form_btngroup clearfix">' +
-                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary pull-left ' + btnname + '">保存</button>' +
+                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default btn-primary pull-left ' + btnname + '">提交</button>' +
                 '<a href="#" data-toggle="tab"><button type="button" class="btn btn-default btn-primary pull-right cancal_btn">取消</button></a>' +
                 '</div>' +
                 '</div>';
