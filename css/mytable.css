@@ -17,11 +17,19 @@ div#carTypeIn .cartypein_apply .form-group:last-child {
 }
 
 table {
-    border: 2px solid #E1E1E1;
+    border: 2px solid #c1d3de;
 }
 
 .keep-open .dropdown-menu {
     background: #f5f5f5;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+    background-color: #f7fcfe;
 }
 
 .table>thead>tr>th {
@@ -78,8 +86,8 @@ table {
 }
 
 .range_group {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #c1d3de;
+    border-bottom: 1px solid #c1d3de;
     padding: 10px 0px 10px 40px;
     margin-bottom: 10px;
 }
@@ -193,7 +201,7 @@ table {
     width: 100%;
     margin: 0 auto;
     padding: 6px 12px;
-    background: #4A88D5;
+    background: #3a4f72;
     color: #fff;
 }
 
@@ -433,7 +441,7 @@ form.form-horizontal.even_style.upkeepFormInfo {
 }
 
 .fixed-table-container tbody td {
-    border: 1px solid #E1E1E1;
+    border: 1px solid #c1d3de;
 }
 
 #maintainList table tbody td {
@@ -441,12 +449,12 @@ form.form-horizontal.even_style.upkeepFormInfo {
 }
 
 .fixed-table-container thead tr {
-    background: #4A88D5;
-    border-bottom: 1px solid #E1E1E1;
+    background: #3a4f72;
+    border-bottom: 1px solid #c1d3de;
 }
 
 .fixed-table-container thead th {
-    border: 1px solid #E1E1E1;
+    border: 1px solid #c1d3de;
 }
 
 .menulist_height {
@@ -786,7 +794,7 @@ input[type="file"] {
 
 .checkitem p {
     height: 38px;
-    border-top: 1px solid #E1E1E1;
+    border-top: 1px solid #c1d3de;
     line-height: 37px;
     font-size: 13px;
     margin-bottom: 0px;
@@ -883,7 +891,7 @@ button#bom_apply_btn {
 
 .checktitle span:last-child,
 .checkitem span:last-child {
-    border-right: 1px solid #E1E1E1;
+    border-right: 1px solid #c1d3de;
 }
 
 #toolRecord_model .checktitle:nth-child(2) span {
@@ -898,7 +906,7 @@ button#bom_apply_btn {
     height: auto;
     text-align: center;
     line-height: 40px !important;
-    border: 1px solid #E1E1E1;
+    border: 1px solid #c1d3de;
     border-top: none;
     border-right: none;
     vertical-align: middle;
@@ -941,7 +949,7 @@ form.pot_pressure.pot_style {
     width: 100%;
     padding: 10px 20px 17px;
     margin: 10px auto;
-    border: 1px solid #ddd;
+    border: 1px solid #c1d3de;
     box-shadow: 0 0 7px #999;
 }
 
@@ -1021,7 +1029,7 @@ span.item_child {
 }
 
 .checkitem div:hover {
-    background: #4A88D5;
+    background: #3a4f72;
 }
 
 .checkitem span {

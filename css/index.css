@@ -25,7 +25,7 @@
         }
         
         .sidebar-wrapper {
-            background: #010626;
+            background: #202d45;
         }
         
         #role .form-horizontal {
@@ -35,18 +35,18 @@
         }
         
         .sidebar-footer {
-            background: #1A1D3E;
-            box-shadow: 0px -1px 5px #1A1D3E;
-            border-top: 1px solid #1A1D3E;
+            background: 3a4f72;
+            box-shadow: 0px -1px 5px 3a4f72;
+            border-top: 1px solid 3a4f72;
         }
         
         .sidebar-wrapper .sidebar-menu .sidebar-dropdown div {
-            background: #1A1D3E;
+            background: 3a4f72;
         }
         
         .sidebar-wrapper .sidebar-header {
-            border-top: 1px solid #1A1D3E;
-            border-bottom: 1px solid #1A1D3E;
+            border-top: 1px solid 3a4f72;
+            border-bottom: 1px solid 3a4f72;
         }
         
         .form-group.modal_btn_group {
@@ -73,7 +73,7 @@
         
         .sidebar-brand {
             background-color: #F5F5F5;
-            border-bottom: 4px solid #1A1D3E;
+            border-bottom: 4px solid 3a4f72;
         }
         
         .glyphicon-align-justify {
