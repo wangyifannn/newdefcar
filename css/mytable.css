@@ -305,6 +305,19 @@ a.a_select span {
     border-right: none;
 }
 
+.audit_top_list1.col-md-4.col-sm-4 p {
+    height: 81px;
+    line-height: 81px;
+}
+
+.audit_top div:last-child {
+    border-right: 1.5px solid #ddd;
+}
+
+.audit_center {
+    border-top: 1px solid #ddd;
+}
+
 
 /*.panel-body .pull-right {
     margin-bottom: 15px;
@@ -857,7 +870,7 @@ button#bom_apply_btn {
 
 .checktitle span:nth-child(4),
 .checkitem span:nth-child(4) {
-    width: 35%;
+    width: 32%;
 }
 
 #toolForm .checktitle span:nth-child(3),

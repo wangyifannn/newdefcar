@@ -1046,7 +1046,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal maintain_form finish_form">
-                        <div class="audit_top">
+                        <div class="audit_top clearfix">
                             <div class="audit_top_list1 col-md-4 col-sm-4">
                                 <p>
                                     车辆编号：<span>2019-222</span>
@@ -1071,8 +1071,23 @@
                                 车辆编号：<span></span>
                             </div>
                         </div>-->
-                        <div class="audit_footer"></div>
-                        <div class="audit_btn_group"></div>
+                        <div class="audit_footer clearfix">
+                            <div class="col-md-5">
+                                <span>审核是否通过：</span>
+                                <span>
+                                    <input type="radio" value="0">是
+                                    <input type="radio" value="1">否
+                                </span>
+                            </div>
+                            <div class="col-md-7">
+                                <span>审核说明：</span>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="audit_btn_group form_btngroup">
+                            <button type="button" data-dismiss aria-label class="btn btn-default pull-left btn-primary Insurance_typein_btn"></button>
+                            <button type="button" class="btn btn-default btn-primary pull-right" data-dismiss="modal">取消</button>
+                        </div>
                     </form>
                 </div>
             </div>

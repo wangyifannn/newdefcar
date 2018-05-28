@@ -547,7 +547,7 @@ function initToolRecord(name, vSn, page) {
                         }
                     })
                 })
-            } else {
+            } else if (res.operator == null) {
                 var optname = "操作";
                 var datecontent = "";
                 var optcontent = '<button type="button" class="tool_btn btn my_btn" value="">提交</button>';
@@ -611,6 +611,8 @@ function initToolRecord(name, vSn, page) {
                         }
                     })
                 })
+            } else {
+
             }
         },
         "error": function(res) {
