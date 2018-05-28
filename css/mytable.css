@@ -117,6 +117,12 @@ table {
     font-size: 13px;
 }
 
+.table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #c1d3de;
+    /* border-bottom: 2px solid #ddd; */
+}
+
 .detail_input {
     height: 25px;
 }
