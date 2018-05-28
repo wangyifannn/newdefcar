@@ -115,13 +115,13 @@ function loadCarList() {
 }
 
 function caroperateFormatter(value, row, index) {
-    var carbtns = '<option><a href="#carTypeIn" data-toggle="tab"><button type="button" id="carTypeIn_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a><option>' +
-        '<option><a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">安全</button></a><option>' +
-        '<option><a href="#wiringCheck" data-toggle="tab"><button type="button" id="warining_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">线束</button></a><option>' +
-        '<option><a href="#bomCheck" data-toggle="tab"><button type="button" id="bomCheck" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">BOM</button></a><option>' +
-        '<option><button type="button" id="rd_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">研发</button><option>' +
-        '<option><a href="#carDetail" data-toggle="tab"><button type="button" id="details_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">详情</button></a><option>' +
-        '<option><button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button><option>';
+    var carbtns = '<option><a href="#carTypeIn" data-toggle="tab"><button type="button" id="carTypeIn_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button></a></option>' +
+        '<option><a href="#sCheck" data-toggle="tab"><button type="button" id="safe_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">安全</button></a></option>' +
+        '<option><a href="#wiringCheck" data-toggle="tab"><button type="button" id="warining_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">线束</button></a></option>' +
+        '<option><a href="#bomCheck" data-toggle="tab"><button type="button" id="bomCheck" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">BOM</button></a></option>' +
+        '<option><button type="button" id="rd_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">研发</button></option>' +
+        '<option><a href="#carDetail" data-toggle="tab"><button type="button" id="details_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">详情</button></a></option>' +
+        '<option><button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">审核</button></option>';
     return [
         '<select>' + carbtns + '</select>'
     ].join('');
