@@ -67,7 +67,7 @@
     {
         "mid": 3,
         "name": "车辆管理",
-        "url": "carmanger",
+        "url": "cheliangguanli",
         "priority": "1",
         "remark": "车辆管理",
         "createTime": "2018-03-08",
@@ -216,7 +216,7 @@
     {
         "mid": 6,
         "name": "数据管理",
-        "url": "data",
+        "url": "shujuguanli",
         "priority": "1",
         "remark": "数据",
         "createTime": "2018-03-08",
@@ -271,7 +271,7 @@
     {
         "mid": 7,
         "name": "日志管理",
-        "url": "log",
+        "url": "rizhiguanli",
         "priority": "1",
         "remark": "日志",
         "createTime": "2018-03-08",
