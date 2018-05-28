@@ -34,7 +34,7 @@
     {
         "mid": 2,
         "name": "门岗",
-        "url": "CarDoor",
+        "url": "mengang",
         "priority": "1",
         "remark": "门岗",
         "createTime": "2018-03-08",
@@ -128,7 +128,7 @@
     {
         "mid": 4,
         "name": "维修管理",
-        "url": "maintain",
+        "url": "weixiu",
         "priority": "1",
         "remark": "维修",
         "createTime": "2018-03-08",
@@ -161,7 +161,7 @@
     {
         "mid": 5,
         "name": "系统管理",
-        "url": "Sysytem",
+        "url": "xitongguanli1",
         "priority": "1",
         "remark": "系统",
         "createTime": "2018-03-08",
