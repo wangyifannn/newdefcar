@@ -9,14 +9,9 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-3.3.7.min.css">
     <link rel="stylesheet" type="text/css" href="../css/screensmall.css" media="screen and (max-width: 2100px)">
     <link rel="stylesheet" type="text/css" href="../css/screenbig.css" media="screen and (min-width: 2100px) and (max-width: 5148px)">
-    <!--<script type="text/javascript" src="../assets/js/jquery.min.js"></script>-->
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
     <!--<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>-->
-    <!--<script type="text/javascript" src="../assets/js/myslideup.js"></script>-->
-    <link rel="stylesheet" href="http://www.swiper.com.cn/demo/panda/css/idangerous.swiper.css">
-    <link rel="stylesheet" href="http://www.swiper.com.cn/demo/panda/css/style.css">
-
-    <script src="http://www.swiper.com.cn/demo/panda/js/jquery-1.10.1.min.js"></script>
-    <script src="http://www.swiper.com.cn/demo/panda/js/idangerous.swiper.min.js"></script>
+    <script type="text/javascript" src="../assets/js/myslideup.js"></script>
     <style>
         /*声明 WebFont*/
         
@@ -63,14 +58,12 @@
                     <span class="list6">停放地点</span>
                 </li>
             </ul>
-            <div id="myCarousel" class="carousel slide">
-                <!-- 轮播（Carousel）指标 -->
+            <!--<div id="myCarousel" class="carousel slide">
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
-                <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
                     <div class="item active">
                         <img src="../img/index/home.png" alt="First slide">
@@ -83,7 +76,6 @@
                         <li><span>sds</span></li>
                     </div>
                 </div>
-                <!-- 轮播（Carousel）导航 -->
                 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -92,7 +84,7 @@
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
+            </div>-->
 
             <ul class="line">
             </ul>
@@ -144,7 +136,7 @@
         $.ajax({
             // "url": "http://192.168.0.222:8080/car-management/carMaintain/screen.action",
             // "url": "../json/datatable.json",
-            "url": "../json/datatable.json",
+            "url": "../json/data.json",
             "type": "get",
             "success": function(res) {
                 if (res.count == 0) {
@@ -213,7 +205,7 @@
                         });
                         $(".circleChart#1").circleChart({
                             size: 70,
-                            color: "#eb7a00",
+                            color: "#2ff1cf",
                             backgroundColor: "#eee",
                             value: res.currentpercentage,
                             text: 0,
@@ -224,7 +216,7 @@
                         });
                         $(".circleChart#2").circleChart({
                             size: 70,
-                            color: "#2ff1cf",
+                            color: "#eb7a00",
                             backgroundColor: "#eee",
                             value: res.completepercentage,
                             text: 0,
@@ -238,7 +230,7 @@
                 // var obj = res;
                 var screenHtml = "";
                 var classname = "";
-                var obj = res.screen;
+                var obj = res.data;
                 if (obj == null) {
                     return;
                 }
@@ -250,9 +242,9 @@
                     } else if (obj[i].status == "1") {
                         a = '<span style="color:#dd1431;width:100%;weight:bold;">排队中</span>';
                     } else if (obj[i].status == "2") {
-                        a = '<span style="color:#eb7a00;width:100%;weight:bold;">维修中</span>';
+                        a = '<span style="color:#1bcbac;width:100%;weight:bold;">维修中</span>';
                     } else if (obj[i].status == "3") {
-                        a = '<span style="color:#1bcbac;width:100%;weight:bold;">已完成</span>';
+                        a = '<span style="color:#eb7a00;width:100%;weight:bold;">已完成</span>';
                     } else {
                         a = '<span>已完成</span>';
                     }
@@ -269,27 +261,27 @@
 
                     // for (var linum = 0; linum < obj.length; linum++) {
 
-                    for (var pagenum = 0; pagenum < count; pagenum++) {
-                        pageContent += '<div class="item"></div>';
-                        for (var j = 0; j < 10; j++) {
-                            screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[j].vSn +
-                                '</span><span class="list2 ' + classname + '">' + obj[j].operator + '</span><span class="list3">' + obj[j].item +
-                                '</span><span class="list4">' + obj[j].park +
-                                '</span><span class="list5">' + a + '</span>' +
-                                '</span><span class="list6">' + obj[j].park + '</span></li>';
-                        }
-                    }
+                    // for (var pagenum = 0; pagenum < count; pagenum++) {
+                    //     pageContent += '<div class="item"></div>';
+                    //     for (var j = 0; j < 10; j++) {
+                    //         screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[j].vSn +
+                    //             '</span><span class="list2 ' + classname + '">' + obj[j].operator + '</span><span class="list3">' + obj[j].item +
+                    //             '</span><span class="list4">' + obj[j].park +
+                    //             '</span><span class="list5">' + a + '</span>' +
+                    //             '</span><span class="list6">' + obj[j].park + '</span></li>';
+                    //     }
                     // }
-                    // screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[i].vSn +
-                    //     '</span><span class="list2 ' + classname + '">' + obj[i].operator + '</span><span class="list3">' + obj[i].item +
-                    //     '</span><span class="list4">' + obj[i].park +
-                    //     '</span><span class="list5">' + a + '</span>' +
-                    //     '</span><span class="list6">' + obj[i].park + '</span></li>';
+                    // }
+                    screenHtml += '<li style="margin-top:0px;"><span class="list1">' + obj[i].vSn +
+                        '</span><span class="list2 ' + classname + '">' + obj[i].operator + '</span><span class="list3">' + obj[i].data +
+                        '</span><span class="list4">' + obj[i].operator +
+                        '</span><span class="list5">' + a + '</span>' +
+                        '</span><span class="list6">' + obj[i].park + '</span></li>';
                 }
                 $(".line").html(screenHtml);
                 var li = document.querySelectorAll(".line li");
                 console.log(li);
-                // effect();
+
 
             },
             "error": function(res) {
@@ -298,19 +290,6 @@
         })
     }
     getList();
-
-    // function effect() {
-    //     var li = document.querySelectorAll(".line li");
-    //     console.log(li);
-    //     for (var i = 0; i < li.length - 1; i++) {
-    //         if (i > 10) {
-    //             li[i].hide();
-    //         } else {
-    //             li[i].show();
-    //         }
-    //     }
-    // }
-    // effect();
 
     function formatterDate() {
         var date = new Date();
@@ -403,10 +382,13 @@
         }, false);
     }
     var myheight = $("ul.line li").height();
-    $(".line").slideUp("", myheight);
+    // $(".line").slideUp("", myheight);
+
     $("#btn").click(function() {
         myheight = $("ul.line li").height();
-        $(".line").slideUp("", myheight);
+        clearInterval(anifun); //清除自动滑动动画
+        anifun = setInterval('autoScroll()', 2000);
+
     });
     $.ajax({
         url: 'https://restapi.amap.com/v3/weather/weatherInfo',

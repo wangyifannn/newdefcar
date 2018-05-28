@@ -25,8 +25,6 @@ html {
 .shopwhole {
     width: 95%;
     margin: 0 auto;
-    /*height: 87%;
-    min-height: 740px;*/
     position: relative;
 }
 
@@ -36,9 +34,8 @@ html {
 
 .workshopList {
     width: 85%;
-    height: 72%;
+    height: 560px;
     margin: 0 auto;
-    padding-bottom: 40px;
 }
 
 #btn {
@@ -139,12 +136,10 @@ ul.line li span.list6 {
 
 ul.line {
     width: 100%;
-    /*min-height: 438px;
-    height: 95%;
-    text-align: center;
-    overflow: hidden;*/
+    height: 506px;
+    overflow: hidden;
     display: block !important;
-    border: 1px solid yellow;
+    /*border: 1px solid yellow;*/
 }
 
 ul.title li span:first-child,
@@ -165,9 +160,9 @@ ul.line li {
     transition: 1s duration timing-function delay;
 }
 
-.list6 span {
+.list6 span,
+.list5 span {
     display: inline-block;
-    border: 1px solid red;
     width: 100% !important;
 }
 
@@ -233,7 +228,7 @@ p.font-big,
 .footer_right {
     float: right;
     color: #0000ff;
-    margin-top: 10px;
+    margin-top: 27px;
 }
 
 .circleChart_text {

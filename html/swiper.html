@@ -5,16 +5,31 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>熊猫TV走马灯</title>
     <link rel="stylesheet" href="http://www.swiper.com.cn/demo/panda/css/idangerous.swiper.css">
-    <link rel="stylesheet" href="http://www.swiper.com.cn/demo/panda/css/style.css">
+    <!--<link rel="stylesheet" href="http://www.swiper.com.cn/demo/panda/css/style.css">-->
+    <link rel="stylesheet" type="text/css" href="../css/screensmall.css" media="screen and (max-width: 2100px)">
 
     <script src="http://www.swiper.com.cn/demo/panda/js/jquery-1.10.1.min.js"></script>
     <script src="http://www.swiper.com.cn/demo/panda/js/idangerous.swiper.min.js"></script>
-
+    <style>
+        .swiper-slide {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
     <div id="panda-show">
-        <div class="shuffer-title"><img src="images/title.png" alt=""></div>
+        <ul class="title">
+            <li>
+                <span class="list1">车辆编号</span>
+                <span class="list2">申请人</span>
+                <span class="list3">预计完成日期</span>
+                <span class="list4">操作人</span>
+                <span class="list5">维修状态</span>
+                <span class="list6">停放地点</span>
+            </li>
+        </ul>
+        <!--<div class="shuffer-title"><img src="http://www.swiper.com.cn/demo/panda/images/title.png" alt=""></div>-->
         <div class="full">
             <div class="content">
                 <a class="arrow-left" href="#"></a>
@@ -22,9 +37,8 @@
                 <div class="cover-left"></div>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        <!--<div class="swiper-slide">
                             <a href="#">
-                                <img src="http://www.swiper.com.cn/demo/panda/images/girl1.jpg" />
                                 <div class="shuffer-line"></div>
                                 <div class="stars-info">
                                     <div class="name">漂亮妹子</div>
@@ -33,53 +47,360 @@
                                     <div class="number"><i></i>5102</div>
                                 </div>
                             </a>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="cover-right"></div>
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
-        slidesPerView = 10
-        slidesPerGroup = 10
-        if (document.body.clientWidth > 1400) {
-            slidesPerView = 8
-            slidesPerGroup = 8
+        function isFF() {
+            return navigator.userAgent.indexOf("Firefox") != -1;
         }
 
-        var mySwiper = new Swiper('.swiper-container', {
-            loop: true,
-            speed: 1000,
-            onlyExternal: true,
-            slidesPerView: slidesPerView,
-            slidesPerGroup: slidesPerGroup,
-            loopedSlides: 20,
-            loopAdditionalSlides: 20,
-            onSlideChangeEnd: function(swiper) {
-                //alert(swiper.activeIndex);
-                if (swiper.activeIndex == 40) {
-                    swiper.swipeTo(0, 0)
+        function isChrome() {
+            return navigator.userAgent.indexOf("Chrome") > -1;
+        }
+
+        function getList() {
+            $(".line").html("");
+            $.ajax({
+                // "url": "http://192.168.0.222:8080/car-management/carMaintain/screen.action",
+                // "url": "../json/datatable.json",
+                "url": "../json/datatable.json",
+                "type": "get",
+                "success": function(res) {
+                    if (res.count == 0) {
+                        alert("未检索到维修车辆");
+                        return;
+                    }
+                    console.log(res);
+                    $(".maintain_countCar").html(res.count);
+                    $(".maintain_completeCar").html(res.complete);
+                    $(".maintain_currentCar").html(res.current);
+                    $(".maintain_queueCar").html(res.queue);
+                    // ----------------------------------------------------------------------------------------------------------------------------------
+                    if (isFF() || isChrome()) {
+                        $("head").append("<script type='text/javascript' src='../assets/js/circleChart.js'>" + '<' + "/script>");
+                        console.log($(document.body).width());
+                        if ($(document.body).width() >= 3800) {
+                            console.log($(document.body).width());
+                            $("ul.line li span").css("fontSize", "40px");
+                            $("ul.title li span").css("fontSize", "48px");
+                            $("ul.title").css("margin-bottom", "7px");
+                            $("ul.line li").css({
+                                "border-bottom-width": "5px",
+                                "border-bottom-width": "5px"
+                            });
+                            $(".circleChart#0").circleChart({
+                                size: 190,
+                                color: "#eacd51",
+                                backgroundColor: "#505f76",
+                                value: res.queuepercentage,
+                                text: 0,
+                                onDraw: function(el, circle) {
+                                    circle.text(Math.round(circle.value) + "%");
+                                }
+                            });
+                            $(".circleChart#1").circleChart({
+                                size: 190,
+                                color: "#d04390",
+                                backgroundColor: "#505f76",
+                                value: res.currentpercentage,
+                                text: 0,
+                                top: 50,
+                                onDraw: function(el, circle) {
+                                    circle.text(Math.round(circle.value) + "%");
+                                }
+                            });
+                            $(".circleChart#2").circleChart({
+                                size: 190,
+                                color: "#eace50",
+                                backgroundColor: "#505f76",
+                                value: res.completepercentage,
+                                text: 0,
+                                onDraw: function(el, circle) {
+                                    circle.text(Math.round(circle.value) + "%");
+                                }
+                            });
+                        } else {
+                            $(".circleChart#0").circleChart({
+                                size: 70,
+                                color: "#E41937",
+                                backgroundColor: "#eee",
+                                value: res.queuepercentage,
+                                text: 0,
+                                onDraw: function(el, circle) {
+                                    circle.text(Math.round(circle.value) + "%");
+                                }
+                            });
+                            $(".circleChart#1").circleChart({
+                                size: 70,
+                                color: "#eb7a00",
+                                backgroundColor: "#eee",
+                                value: res.currentpercentage,
+                                text: 0,
+                                top: 50,
+                                onDraw: function(el, circle) {
+                                    circle.text(Math.round(circle.value) + "%");
+                                }
+                            });
+                            $(".circleChart#2").circleChart({
+                                size: 70,
+                                color: "#2ff1cf",
+                                backgroundColor: "#eee",
+                                value: res.completepercentage,
+                                text: 0,
+                                onDraw: function(el, circle) {
+                                    circle.text(Math.round(circle.value) + "%");
+                                }
+                            });
+                        }
+                    }
+                    //-----------------------------------------------------------------------------------------------------------------------------------
+                    // var obj = res;
+                    var screenHtml = "";
+                    var classname = "";
+                    var obj = res.screen;
+                    if (obj == null) {
+                        return;
+                    }
+                    console.log(obj);
+                    for (var i = 0; i < obj.length; i++) {
+                        var a = "";
+                        if (obj[i].status == null) {
+                            a = '';
+                        } else if (obj[i].status == "1") {
+                            a = '<span style="color:#dd1431;width:100%;weight:bold;">排队中</span>';
+                        } else if (obj[i].status == "2") {
+                            a = '<span style="color:#eb7a00;width:100%;weight:bold;">维修中</span>';
+                        } else if (obj[i].status == "3") {
+                            a = '<span style="color:#1bcbac;width:100%;weight:bold;">已完成</span>';
+                        } else {
+                            a = '<span>已完成</span>';
+                        }
+                        if (obj[i].operator == null) {
+                            obj[i].operator = "--";
+                        }
+                        if (obj[i].park == null) {
+                            obj[i].park = "--";
+                        }
+                        // var pagenum = "";
+                        // var pagesize = 10;
+                        // var pageContent = ""; //每一页的html内容
+                        // var count = Math.ceil(obj.length / 10); //每页10条，计算可以分几页,有小数，就加一页，上取整
+                        screenHtml += '<div class="swiper-slide line"><li class="" style="margin-top:0px;"><span class="list1">' + obj[i].vSn +
+                            '</span><span class="list2 ' + classname + '">' + obj[i].operator + '</span><span class="list3">' + obj[i].item +
+                            '</span><span class="list4">' + obj[i].park +
+                            '</span><span class="list5">' + a + '</span>' +
+                            '</span><span class="list6">' + obj[i].park + '</span></li></div>';
+                    }
+                    $(".swiper-wrapper").html(screenHtml);
+                    // var li = document.querySelectorAll(".line li");
+
+                    slidesPerView = 4
+                    slidesPerGroup = 4
+                    if (document.body.clientWidth > 1400) {
+                        slidesPerView = 8
+                        slidesPerGroup = 8
+                    }
+
+                    var mySwiper = new Swiper('.swiper-container', {
+                        loop: true,
+                        speed: 1000,
+                        onlyExternal: true,
+                        slidesPerView: slidesPerView,
+                        slidesPerGroup: slidesPerGroup,
+                        loopedSlides: 20,
+                        loopAdditionalSlides: 20,
+                        onSlideChangeEnd: function(swiper) {
+                            //alert(swiper.activeIndex);
+                            if (swiper.activeIndex == 40) {
+                                swiper.swipeTo(0, 0)
+                            }
+                        },
+
+                    });
+                    $('.arrow-left').on('click', function(e) {
+                        e.preventDefault()
+                        mySwiper.swipePrev()
+                    })
+                    $('.arrow-right').on('click', function(e) {
+                        e.preventDefault()
+                        mySwiper.swipeNext()
+                    })
+                    $('a').on('click', function(e) {
+                        e.preventDefault()
+                    });
+                    // console.log(li);
+                    // effect();
+
+                },
+                "error": function(res) {
+                    console.log(res);
                 }
-            },
+            })
+        }
+        getList();
 
+        function formatterDate() {
+            var date = new Date();
+            var month = date.getMonth() + 1;
+            var datetime = date.getFullYear() +
+                "/" // "年"
+                +
+                (month >= 10 ? month : "0" + month) +
+                "/" // "月"
+                +
+                (date.getDate() < 10 ? "0" + date.getDate() : date
+                    .getDate()) +
+                "";
+            return datetime;
+        }
+
+        function formatterDateTime() {
+            var date = new Date()
+            var month = date.getMonth() + 1;
+            var datetimehour = (date.getHours() < 10 ? "0" + date.getHours() : date
+                    .getHours()) +
+                ":" +
+                (date.getMinutes() < 10 ? "0" + date.getMinutes() : date
+                    .getMinutes()) +
+                ":" +
+                (date.getSeconds() < 10 ? "0" + date.getSeconds() : date
+                    .getSeconds());
+            return datetimehour;
+        }
+
+        function formatterDay() {
+            var mydate = new Date();
+            var myday = mydate.getDay() //注:0-6对应为星期日到星期六 
+            if (myday == 0) {
+                return "星期日";
+            } else if (myday == 1) {
+                return "星期一";
+            } else if (myday == 2) {
+                return "星期二";
+            } else if (myday == 3) {
+                return "星期三";
+            } else if (myday == 4) {
+                return "星期四";
+            } else if (myday == 5) {
+                return "星期五";
+            } else if (myday == 6) {
+                return "星期六";
+            }
+        }
+        setInterval(function() {
+            $(".data").html(formatterDate());
+            $(".datatime").html(formatterDateTime());
+            $(".day").html(formatterDay());
+        }, 1000);
+        setInterval(function() {
+            // getList();
+        }, 3000); //1小时刷新一次 维修大屏列表和 百分比
+        // 早上刷新一次，下午刷新一次？
+        // 字体大小变化
+        if ($(document.body).width() >= 3800) {
+            console.log($(document.body).width());
+            $("ul.line li span").css("fontSize", "40px");
+            $("ul.title li span").css("fontSize", "48px");
+            $("ul.title").css("margin-bottom", "7px");
+            $("ul.line li").css({
+                "border-bottom-width": "5px",
+                "border-bottom-width": "5px"
+            });
+        }
+        var viewFullScreen = document.getElementById("btn");
+        if (viewFullScreen) {
+            viewFullScreen.addEventListener("click", function() {
+                var docElm = document.documentElement;
+                if (docElm.requestFullscreen) {
+                    docElm.requestFullscreen();
+                } else if (docElm.msRequestFullscreen) {
+                    docElm = document.body; //overwrite the element (for IE) 
+                    docElm.msRequestFullscreen();
+                } else if (docElm.mozRequestFullScreen) {
+                    docElm.mozRequestFullScreen();
+                } else if (docElm.webkitRequestFullScreen) {
+                    docElm.webkitRequestFullScreen();
+                }
+            }, false);
+        }
+        var myheight = $("ul.line li").height();
+        $(".line").slideUp("", myheight);
+        $("#btn").click(function() {
+            myheight = $("ul.line li").height();
+            $(".line").slideUp("", myheight);
         });
-        $('.arrow-left').on('click', function(e) {
-            e.preventDefault()
-            mySwiper.swipePrev()
+        $.ajax({
+            url: 'https://restapi.amap.com/v3/weather/weatherInfo',
+            type: "post",
+            data: {
+                key: "dfb9a576fbcb2c9a13a65ab736e47004",
+                city: "上海市",
+                extensions: "all"
+            },
+            success: function(res) {
+                console.log(res.forecasts[0]);
+                var obj = res.forecasts[0].casts;
+                console.log(obj);
+                var weathericon = "";
+                if (obj[0].dayweather == "多云") {
+                    weathericon = '<i class="iconfont icon-duoyun"></i>';
+                } else if (obj[0].dayweather == "晴") {
+                    weathericon = '<i class="iconfont icon-qing"></i>';
+                } else if (obj[0].dayweather == "阴天") {
+                    weathericon = '<i class="iconfont icon-yintian"></i>';
+                } else {
+                    weathericon = '<i class="iconfont icon-yu"></i>';
+                }
+                var cast = '<div><span>' + weathericon + '</span><span>' + obj[0].daytemp + '℃</span>' +
+                    '</div><div class="font_smalll"><span class="dayweather">' + obj[0].dayweather + '</span><span>风级' + obj[0].daypower + '</span></div > '
+                $(".weather_group").html(cast);
+            }
         })
-        $('.arrow-right').on('click', function(e) {
-            e.preventDefault()
-            mySwiper.swipeNext()
-        })
-        $('a').on('click', function(e) {
-            e.preventDefault()
-        })
+    </script>
+    <script type="text/javascript">
+        // slidesPerView = 4
+        // slidesPerGroup = 4
+        // if (document.body.clientWidth > 1400) {
+        //     slidesPerView = 8
+        //     slidesPerGroup = 8
+        // }
 
+        // var mySwiper = new Swiper('.swiper-container', {
+        //     loop: true,
+        //     speed: 1000,
+        //     onlyExternal: true,
+        //     slidesPerView: slidesPerView,
+        //     slidesPerGroup: slidesPerGroup,
+        //     loopedSlides: 20,
+        //     loopAdditionalSlides: 20,
+        //     onSlideChangeEnd: function(swiper) {
+        //         //alert(swiper.activeIndex);
+        //         if (swiper.activeIndex == 40) {
+        //             swiper.swipeTo(0, 0)
+        //         }
+        //     },
+
+        // });
+        // $('.arrow-left').on('click', function(e) {
+        //     e.preventDefault()
+        //     mySwiper.swipePrev()
+        // })
+        // $('.arrow-right').on('click', function(e) {
+        //     e.preventDefault()
+        //     mySwiper.swipeNext()
+        // })
+        // $('a').on('click', function(e) {
+        //     e.preventDefault()
+        // })
 
         window.onresize = function() {
             //	alert(document.body.clientWidth );
-
             if (document.body.clientWidth < 1400) {
                 mySwiper.params.slidesPerView = mySwiper.params.slidesPerGroup = 4;
                 mySwiper.reInit();
@@ -93,8 +414,6 @@
                 mySwiper.reInit();
                 mySwiper.swipeTo(0, 0)
             }
-
-
         }
     </script>
 </body>
