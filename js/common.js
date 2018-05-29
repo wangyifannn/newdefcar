@@ -322,13 +322,15 @@ function creatForm(filArr, name, btnname) {
         } else if (filArr[i].type == "checkbox") {
             var optstyle = "";
             for (var j = 0; j < filArr[i].option.length; j++) {
-                optstyle += '<input type="checkbox" value="' + filArr[i].option[j].name + '" name="' + filArr[i].option[j].name + '" class="' + filArr[i].option[j].name + '">' + filArr[i].option[j].name;
+                optstyle += '<input type="checkbox" value="' + filArr[i].option[j].name + '" name="' + filArr[i].option[j].name + '" class="' + filArr[i].option[j].name + '"><span style="margin-right:10px;">' + filArr[i].option[j].name + '</span>';
             }
+            optstyle = '<div class="checkbox_group">' + optstyle + '</div>';
         } else if (filArr[i].type == "radio") {
             var optstyle = "";
             for (var j = 0; j < filArr[i].option.length; j++) {
-                optstyle += '<input type="radio" value="' + filArr[i].option[j].name + '" name="' + filArr[i].option[j].name + '" class="' + filArr[i].option[j].name + '">' + filArr[i].option[j].name;
+                optstyle += '<input type="radio" value="' + filArr[i].option[j].name + '" name="' + filArr[i].option[j].name + '" class="' + filArr[i].option[j].name + '"><span style="margin-right:10px;">' + filArr[i].option[j].name + '</span>';
             }
+            optstyle = '<div class="radio_group">' + optstyle + '</div>';
         } else if (filArr[i].type == "text") {
             optstyle = '<input type="text" name="' + filArr[i].inputName + '" class="form-control col-sm-7 ' + filArr[i].inputName + '"> <label class="col-sm-5 tip_style ">' + filArr[i].must + '</label>'
         } else if (filArr[i].type == "file") {

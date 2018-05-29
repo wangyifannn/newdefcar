@@ -333,6 +333,12 @@ textarea {
 
 .radio_group {
     vertical-align: middle;
+    margin-top: 6px;
+}
+
+.checkbox_group {
+    vertical-align: middle;
+    margin-top: 7px;
 }
 
 .groupsearch_btn {
