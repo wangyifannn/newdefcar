@@ -187,11 +187,15 @@ input.toolname {
     border: none;
 }
 
-.iconfont {
-    font-size: 25px;
+.form_subject .iconfont {
+    font-size: 25px !important;
     vertical-align: middle;
     position: relative;
-    top: -2px;
+    top: -1px;
+}
+
+.table-responsive .iconfont {
+    border: 1px solid red;
 }
 
 #sCheck .form_subject {
