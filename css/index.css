@@ -430,24 +430,26 @@
         /*start 楼层导航*/
         
         #loutinav {
-            width: 35px;
+            width: 60px;
             position: fixed;
             top: 100px;
-            right: 29px;
+            right: 3px;
             z-index: 10;
             display: none;
+            /*border: 1px solid lightgray;*/
+            /*box-shadow: 0px -1px 5px lightgrey;*/
         }
         
         #loutinav ul li {
             width: 60px;
             height: 32px;
+            line-height: 10px;
             border-bottom: 1.5px dotted #d8dde0;
             list-style: none;
             font-size: 12px;
             text-align: center;
             position: relative;
             cursor: pointer;
-            padding: 10px 0;
             background: #edf2f6;
             color: #3a4f72;
         }
@@ -461,10 +463,17 @@
             left: 0;
         }
         
+        ol,
+        ul {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
+        
         #loutinav ul li.last {
             background: #5e4a4a;
             color: #fff;
             border-bottom: 1px solid #ddd;
+            line-height: 32px;
         }
         
         #loutinav ul li.active span {
