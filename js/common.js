@@ -547,7 +547,7 @@ function initToolRecord(name, vSn, page) {
                         }
                     })
                 })
-            } else if (res.operator == null) {
+            } else if (page == "operator") {
                 var optname = "操作";
                 var datecontent = "";
                 var optcontent = '<button type="button" class="tool_btn btn my_btn" value="">提交</button>';
@@ -611,7 +611,7 @@ function initToolRecord(name, vSn, page) {
                         }
                     })
                 })
-            } else {
+            } else if (page == "audit") {
                 var toolItem = '<div class="checktitle"><span style="width:41%;">研发工具申请信息</span><span style="width:59%;">研发工具装备信息</span></div>';
                 toolItem += '<div class="checktitle"><span>工具或设备名称</span><span>申请人</span><span>装备日期</span><span>操作人</span></div>';
                 for (var i = 0; i < res.length; i++) {
@@ -625,7 +625,7 @@ function initToolRecord(name, vSn, page) {
             }
         },
         "error": function(res) {
-            toastr.error('程序内部错误', '审核', messageOpts);
+            toastr.error('程序内部错误', '', messageOpts);
         }
     })
 }

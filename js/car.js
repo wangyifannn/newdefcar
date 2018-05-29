@@ -180,13 +180,13 @@ window.caroperateEvents = {
     },
     'click #rd_btn': function(e, value, row, index) { //研发
         $("#toolRecord_model").modal();
-        initToolRecord("#toolRecord_model .toolForm", row.vSn);
+        initToolRecord("#toolRecord_model .toolForm", row.vSn, "operator");
         $("#toolRecord_model .vSn").val(row.vSn);
         window.sessionStorage.carInfo = JSON.stringify(row);
     },
     'click #audit_btn': function(e, value, row, index) { //取消授权、禁用
         $("#audit_model").modal();
-        initToolRecord("#audit_model .audit_center", row.vSn); //研发
+        initToolRecord("#audit_model .audit_center", row.vSn, "audit"); //研发
     }
 };
 $("#Insurance_apply").click(function() {
