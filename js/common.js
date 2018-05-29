@@ -612,7 +612,16 @@ function initToolRecord(name, vSn, page) {
                     })
                 })
             } else {
-
+                var toolItem = '<div class="checktitle"><span style="width:41%;">研发工具申请信息</span><span style="width:59%;">研发工具装备信息</span></div>';
+                toolItem += '<div class="checktitle"><span>工具或设备名称</span><span>申请人</span><span>装备日期</span><span>操作人</span></div>';
+                for (var i = 0; i < res.length; i++) {
+                    toolItem += '<div class="checkitem" id="' + res[i].id + '"><span><input type="text" readOnly="readOnly" class="bom_name" value="' + res[i].toolName + '">' +
+                        '</span><span><input type="text" readOnly="readOnly" class="bom_num" value="' + res[i].applicant + '">' +
+                        '</span><span>' + res[i].equippedDate +
+                        '</span><span>' + res[i].operator + '</span></div>';
+                }
+                $(name).html("");
+                $(name).html(toolItem);
             }
         },
         "error": function(res) {

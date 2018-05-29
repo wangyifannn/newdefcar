@@ -318,6 +318,14 @@ a.a_select span {
     border-top: 1px solid #ddd;
 }
 
+.audit_footer.clearfix {
+    margin: 12px auto;
+}
+
+textarea {
+    vertical-align: middle;
+}
+
 
 /*.panel-body .pull-right {
     margin-bottom: 15px;
