@@ -12,7 +12,7 @@ getcnidSolve(2, "#wiringCheckForm .wcheck_itembox", "up_wchek_btn");
 // bom
 getcnidSolve(3, "#bomCheckForm .bomcheck_itembox", "up_bchek_btn");
 // 研发
-initToolRecord("#toolForm .toolForm", "2");
+initToolRecord("#toolForm .toolForm", "vSn", "audit");
 // 审核信息
 creatForm(auditInfo, "#add_model .modal-body form", "sub_audit_btn");
 
