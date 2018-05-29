@@ -75,9 +75,6 @@ ul.title li span {
     color: #21c3dc;
     font-size: 20px;
     /*字体垂直居中*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 ul.line li span {

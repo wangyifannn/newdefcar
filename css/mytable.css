@@ -38,7 +38,7 @@ table {
 
 .btn {
     font-size: 12px;
-    padding: 2px 12px;
+    padding: 3px 12px;
 }
 
 .form_twolist .form-group {
@@ -194,8 +194,9 @@ input.toolname {
     top: -1px;
 }
 
-.table-responsive .iconfont {
-    border: 1px solid red;
+#carListtable_toolbar .btn,
+#InsTable_toolbar .btn {
+    padding: 0px 12px;
 }
 
 #sCheck .form_subject {
