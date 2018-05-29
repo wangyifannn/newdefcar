@@ -2,8 +2,8 @@
 creatForm(carCheckInfo, "#carCheckForm form", "carCheck_btn");
 // 车辆录入信息
 creatForm(addcarInfo, "#carTypeInForm .cartypein_apply_detail", "sub_cartypein");
-ToolRecordApply("#carTypeInForm .rd_apply_detail", "");
-bomApply("#carTypeInForm .bom_apply_detail", $("#carTypeIn .vSn").val(), bomapplyArr);
+// ToolRecordApply("#carTypeInForm .rd_apply_detail", "");
+// bomApply("#carTypeInForm .bom_apply_detail", $("#carTypeIn .vSn").val(), bomapplyArr);
 
 // 安全
 findSafeInfo("#sCheckForm .pot_Form", "#sCheckForm .safe_Form", "up_sCheck_btn");

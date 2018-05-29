@@ -326,19 +326,25 @@ textarea {
     vertical-align: middle;
 }
 
-
-/*.panel-body .pull-right {
-    margin-bottom: 15px;
-}*/
-
 .radio_group {
     vertical-align: middle;
     margin-top: 6px;
 }
 
+input[type=checkbox],
+input[type=radio] {
+    margin: 0px;
+    margin-top: 1px\9;
+    vertical-align: middle;
+}
+
 .checkbox_group {
     vertical-align: middle;
     margin-top: 7px;
+}
+
+#audit_model .modal-dialog.modal-lg {
+    margin-top: 5% !important;
 }
 
 .groupsearch_btn {
