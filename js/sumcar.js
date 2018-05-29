@@ -104,6 +104,8 @@ function sumcaroperateFormatter(value, row, index) {
 
 window.sumcaroperateEvents = {
     'click #sumcar_detail': function(e, value, row, index) { //，
+        window.location.hash = "carDetail";
+        $(".sumCarList").removeClass("active");
     }
 };
 $("#yanche").click(function() {
