@@ -174,38 +174,10 @@ table {
     margin: 0px 0px 0px 0px;
 }
 
-#returncarCheck span {
-    margin-top: 9px;
-}
-
-#returncarCheck .col-sm-7.car_tools_check {
-    margin-top: 9px;
-}
-
-#driverTypeIn .form-group,
-#returncarCheck .form-group {
-    height: 60px;
-    line-height: 44px;
-}
-
-#driverTypeIn .col-sm-7,
-#returncarCheck .col-sm-7 {
-    margin-top: 11px;
-}
-
-#driverTypeIn .col-sm-5,
-#returncarCheck .col-sm-5 {
-    margin-top: 7px;
-}
-
-#driverList {
-    position: relative;
-}
-
 .form_subject {
     width: 100%;
     margin: 0 auto;
-    padding: 6px 12px;
+    padding: 0px 12px;
     background: #3a4f72;
     color: #fff;
 }
@@ -213,6 +185,13 @@ table {
 input.toolname {
     width: 100%;
     border: none;
+}
+
+.iconfont {
+    font-size: 25px;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
 }
 
 #sCheck .form_subject {
